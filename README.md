@@ -14,10 +14,11 @@
 
 ## Install
 
-1. Install Morphe Manager.
-2. Add this repo as a patch source: `musaib120604/morphepatches`.
-3. Pick an app from the list below, choose the patches you want, and patch it.
-4. Install the patched APK. You may need to uninstall the original first.
+1. Install Morphe Manager. link : https://morphe.software/
+2. I don't hold any responsibility for the https://morphe.software/ as I am not officially or unofficial connected to the morphe project 
+3. Add this repo as a patch source: `musaib120604/morphepatches`.
+4. Pick an app from the list below, choose the patches you want, and patch it.
+5. Install the patched APK. You may need to uninstall the original first.
 
 <!-- PATCHES_START -->
 > **v1.77.0**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;538 patches total
