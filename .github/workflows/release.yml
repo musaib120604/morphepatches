@@ -1,0 +1,172 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      discussions: write
+      packages: write
+      id-token: write
+      attestations: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check regexes for Android
+        run: python3 .github/scripts/check_android_regex.py
+
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Run script tests
+        run: |
+          pip install requests
+          for test in .github/scripts/test_*.py .github/actions/triage/test_*.py; do
+            python "$test" || exit 1
+          done
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+
+      - name: Check Java style
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :extensions:extension:checkstyle :extensions:extension:lintRelease --no-daemon
+
+      - name: Run tests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :patches:test :extensions:extension:test --no-daemon
+
+      - name: Remove test build outputs
+        run: rm -rf patches/build/libs
+
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v8
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Attest
+        if: steps.release.outputs.new_release_published == 'true'
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-name: 'Morphe Patches ${{ steps.release.outputs.new_release_git_tag }}'
+          subject-path: patches/build/libs/patches-*.mpp
+
+      - name: Label issues fixed in the pre-release
+        if: steps.release.outputs.new_release_published == 'true' && github.ref_name == 'dev'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ steps.release.outputs.new_release_git_tag }}
+          LAST: ${{ steps.release.outputs.last_release_git_tag }}
+        run: |
+          python3 .github/scripts/closed_issues.py "$REPO" "${LAST:+$LAST..}$TAG" |
+          while read -r n; do
+            [ "$(gh issue view "$n" --repo "$REPO" --json state --jq .state)" = OPEN ] || continue
+            gh issue edit "$n" --repo "$REPO" --add-label "in pre-release"
+            echo "labelled #$n"
+          done
+
+      - name: Comment on app requests shipped in the pre-release
+        if: steps.release.outputs.new_release_published == 'true' && github.ref_name == 'dev'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ steps.release.outputs.new_release_git_tag }}
+          LAST: ${{ steps.release.outputs.last_release_git_tag }}
+        run: |
+          set -o pipefail
+          discussion=.github/actions/triage/discussion.sh
+          git show "$LAST:patches-list.json" > "$RUNNER_TEMP/previous.json"
+          git show "$TAG:patches-list.json" > "$RUNNER_TEMP/current.json"
+          bash -eo pipefail "$discussion" list app-requests > "$RUNNER_TEMP/requests.json"
+          python3 .github/scripts/shipped_requests.py "$RUNNER_TEMP/previous.json" "$RUNNER_TEMP/current.json" "$RUNNER_TEMP/requests.json" "$TAG" "$REPO" |
+          while read -r row; do
+            n=$(jq -r .number <<< "$row")
+            app=$(jq -r .app <<< "$row")
+            jq -r .comment <<< "$row" > "$RUNNER_TEMP/comment.md"
+            bash -eo pipefail "$discussion" comment "$n" "$RUNNER_TEMP/comment.md" >/dev/null
+            echo "commented on #$n ($app) for $TAG"
+          done
+
+      - name: Remove the pre-release label from shipped issues
+        if: steps.release.outputs.new_release_published == 'true' && github.ref_name == 'main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ steps.release.outputs.new_release_git_tag }}
+          LAST: ${{ steps.release.outputs.last_release_git_tag }}
+        run: |
+          python3 .github/scripts/closed_issues.py "$REPO" "${LAST:+$LAST..}$TAG" |
+          while read -r n; do
+            gh issue edit "$n" --repo "$REPO" --remove-label "in pre-release" >/dev/null 2>&1 || true
+          done
+
+      - name: Close shipped app requests
+        if: steps.release.outputs.new_release_published == 'true' && github.ref_name == 'main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ steps.release.outputs.new_release_git_tag }}
+          LAST: ${{ steps.release.outputs.last_release_git_tag }}
+        run: |
+          discussion=.github/actions/triage/discussion.sh
+          git show "$LAST:patches-list.json" > "$RUNNER_TEMP/previous.json"
+          git show "$TAG:patches-list.json" > "$RUNNER_TEMP/current.json"
+          bash -eo pipefail "$discussion" list app-requests > "$RUNNER_TEMP/requests.json"
+          python3 .github/scripts/shipped_requests.py "$RUNNER_TEMP/previous.json" "$RUNNER_TEMP/current.json" "$RUNNER_TEMP/requests.json" |
+          while read -r row; do
+            n=$(jq -r .number <<< "$row")
+            app=$(jq -r .app <<< "$row")
+            printf '<!-- shipped-bot -->\n%s\n' "$(python3 .github/actions/triage/replies.py shipped app="$app" tag="$TAG")" \
+              > "$RUNNER_TEMP/comment.md"
+            bash -eo pipefail "$discussion" comment "$n" "$RUNNER_TEMP/comment.md" >/dev/null
+            if jq -e --argjson n "$n" '.[] | select(.number == $n) | (.labels // []) | map(.name) | index("in progress")' "$RUNNER_TEMP/requests.json" >/dev/null; then
+              bash -eo pipefail "$discussion" remove-labels "$n" "in progress"
+            fi
+            bash -eo pipefail "$discussion" close "$n" RESOLVED
+            bash -eo pipefail "$discussion" lock "$n"
+            echo "closed #$n ($app) as shipped in $TAG"
+          done
+
+      - name: Verify project compiles
+        if: steps.release.outputs.new_release_published != 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :patches:buildAndroid clean --no-daemon

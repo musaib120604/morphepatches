@@ -1,0 +1,42 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.symfonium.misc.premium
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patcher.util.returnEarly
+import app.morphe.patches.shared.compat.AppCompatibilities
+import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
+
+@Suppress("unused")
+val unlockPremiumPatch = bytecodePatch(
+    name = "Unlock premium",
+    description = "Unlocks all premium features.",
+) {
+    compatibleWith(AppCompatibilities.SYMFONIUM)
+
+    execute {
+        val licensedState = IsLicensedFingerprint.matchSingle()
+            .instructionMatches.first()
+            .getInstruction<WideLiteralInstruction>()
+            .wideLiteral
+
+        LicenseStateWriterFingerprint.matchSingle().method
+            .addInstructions(0, "const-wide p1, ${licensedState}L")
+
+        LicenseKeyCheckFingerprint.matchSingle().method.addInstructions(
+            0,
+            """
+                sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+                return-object v0
+            """,
+        )
+
+        TrialExpiryTextFingerprint.matchSingle().method.returnEarly(null)
+
+        NativeVerdictHandlerFingerprint.matchSingle().method.returnEarly()
+    }
+}

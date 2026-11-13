@@ -1,0 +1,60 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.connected2.misc.deleted
+
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.Opcode
+
+private const val DELETE_WINDOW_MILLIS = 3_600_000L
+
+internal object DeleteMessageHandlerFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("delete_message:"),
+        methodCall(definingClass = "Ljava/lang/String;", name = "replace", location = MatchAfterWithin(3)),
+        methodCall(name = "findMessageWithStanzaId", location = MatchAfterWithin(3)),
+        literal(DELETE_WINDOW_MILLIS, location = MatchAfterWithin(30)),
+        opcode(Opcode.IF_GTZ, location = MatchAfterWithin(2)),
+    ),
+)
+
+internal fun messageContentTypeGetterFingerprint(messageType: String) = Fingerprint(
+    definingClass = messageType,
+    name = "getMessageContentType",
+    parameters = listOf(),
+)
+
+internal fun textContentTypeFingerprint(contentType: String) = Fingerprint(
+    definingClass = contentType,
+    name = "<clinit>",
+    filters = listOf(string("TEXT"), fieldAccess(opcode = Opcode.SPUT_OBJECT)),
+)
+
+internal fun messageBodyGetterFingerprint(messageType: String) = Fingerprint(
+    definingClass = messageType,
+    name = "getBody",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+)
+
+internal fun messageBodySetterFingerprint(messageType: String) = Fingerprint(
+    definingClass = messageType,
+    name = "setBody",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;"),
+)
+
+internal fun recordSaveFingerprint(recordType: String) = Fingerprint(
+    definingClass = recordType,
+    name = "save",
+    returnType = "J",
+    parameters = listOf(),
+)

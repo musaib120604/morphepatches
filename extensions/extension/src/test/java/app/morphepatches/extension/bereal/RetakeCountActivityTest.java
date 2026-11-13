@@ -1,0 +1,208 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Additional term under GPLv3 Section 7(b): When conveying this material
+ * or modified versions, preserve this notice and credit Musaib Bhat for this
+ * material in any Appropriate Legal Notices displayed by works containing it.
+ */
+package app.morphepatches.extension.bereal;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import app.morphe.extension.shared.Utils;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.android.controller.ActivityController;
+
+@RunWith(RobolectricTestRunner.class)
+public final class RetakeCountActivityTest {
+
+    @Before
+    public void attachContext() {
+        Utils.setContext(RuntimeEnvironment.getApplication());
+        PatchSettings.CUSTOM_RETAKE_COUNT.save(true);
+        RetakeCount.retakeCount(0);
+    }
+
+    @After
+    public void restoreDefaults() {
+        RetakeCount.retakeCount(0);
+        PatchSettings.CUSTOM_RETAKE_COUNT.save(false);
+    }
+
+    @Test
+    public void startsAtTheRealCount() {
+        RetakeCount.sendStarted(3);
+
+        final RetakeCountActivity activity = open();
+
+        assertTrue(hasExactText(activity, "3"));
+        assertTrue(hasExactText(activity, "Real count: 3"));
+    }
+
+    @Test
+    public void appliesTheSteppedCount() {
+        RetakeCount.sendStarted(3);
+        final RetakeCountActivity activity = open();
+
+        click(describedAs(activity, "Increase"));
+        click(describedAs(activity, "Increase"));
+        click(texts(activity, "Apply").get(0));
+
+        assertEquals(5, RetakeCount.retakeCount(3));
+        assertTrue(activity.isFinishing());
+    }
+
+    @Test
+    public void appliesTheTypedCount() {
+        RetakeCount.sendStarted(3);
+        final RetakeCountActivity activity = open();
+
+        type(activity, "100");
+        click(texts(activity, "Apply").get(0));
+
+        assertEquals(100, RetakeCount.retakeCount(3));
+    }
+
+    @Test
+    public void stepsFromTheTypedCount() {
+        RetakeCount.sendStarted(3);
+        final RetakeCountActivity activity = open();
+
+        type(activity, "250");
+        click(describedAs(activity, "Increase"));
+        click(texts(activity, "Apply").get(0));
+
+        assertEquals(251, RetakeCount.retakeCount(3));
+    }
+
+    @Test
+    public void stopsAtTheLargestIntCount() {
+        RetakeCount.sendStarted(3);
+        final RetakeCountActivity activity = open();
+
+        type(activity, "9999999999");
+        click(describedAs(activity, "Increase"));
+        click(texts(activity, "Apply").get(0));
+
+        assertEquals(Integer.MAX_VALUE, RetakeCount.retakeCount(3));
+    }
+
+    @Test
+    public void disablesApplyWhileTheCountIsEmpty() {
+        RetakeCount.sendStarted(3);
+        final RetakeCountActivity activity = open();
+
+        type(activity, "");
+
+        assertFalse(texts(activity, "Apply").get(0).isEnabled());
+    }
+
+    @Test
+    public void stopsAtZero() {
+        RetakeCount.sendStarted(1);
+        final RetakeCountActivity activity = open();
+
+        click(describedAs(activity, "Decrease"));
+        click(describedAs(activity, "Decrease"));
+        click(texts(activity, "Apply").get(0));
+
+        assertEquals(0, RetakeCount.retakeCount(1));
+    }
+
+    @Test
+    public void keepsTheRealCountWhenAskedTo() {
+        RetakeCount.sendStarted(3);
+        final RetakeCountActivity activity = open();
+
+        click(describedAs(activity, "Increase"));
+        click(texts(activity, "Use real count").get(0));
+
+        assertEquals(3, RetakeCount.retakeCount(3));
+    }
+
+    @Test
+    public void keepsTheRealCountWhenDismissed() {
+        RetakeCount.sendStarted(3);
+        final ActivityController<RetakeCountActivity> controller = Robolectric.buildActivity(RetakeCountActivity.class);
+        controller.create().start().resume();
+        click(describedAs(controller.get(), "Increase"));
+
+        controller.get().finish();
+        controller.pause().stop().destroy();
+
+        assertEquals(3, RetakeCount.retakeCount(3));
+    }
+
+    @Test
+    public void givesTheTapTargetsAtLeast48dp() {
+        RetakeCount.sendStarted(3);
+        final RetakeCountActivity activity = open();
+        final float density = activity.getResources().getDisplayMetrics().density;
+
+        assertTrue(((TextView) describedAs(activity, "Increase")).getMinHeight() >= 48 * density);
+        assertTrue(((TextView) describedAs(activity, "Decrease")).getMinWidth() >= 48 * density);
+    }
+
+    private static RetakeCountActivity open() {
+        return Robolectric.buildActivity(RetakeCountActivity.class).setup().get();
+    }
+
+    private static View describedAs(RetakeCountActivity activity, String description) {
+        final ArrayList<View> found = new ArrayList<>();
+        activity.getWindow()
+            .getDecorView()
+            .findViewsWithText(found, description, View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);
+        return found.get(0);
+    }
+
+    private static ArrayList<View> texts(RetakeCountActivity activity, String text) {
+        final ArrayList<View> found = new ArrayList<>();
+        activity.getWindow().getDecorView().findViewsWithText(found, text, View.FIND_VIEWS_WITH_TEXT);
+        return found;
+    }
+
+    private static boolean hasExactText(RetakeCountActivity activity, String text) {
+        for (View view : texts(activity, text)) {
+            if (view instanceof TextView && text.contentEquals(((TextView) view).getText())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void type(RetakeCountActivity activity, String text) {
+        ((EditText) describedAs(activity, "Retake count")).setText(text);
+    }
+
+    private static void click(View view) {
+        assertTrue(view instanceof TextView);
+        view.performClick();
+    }
+
+}

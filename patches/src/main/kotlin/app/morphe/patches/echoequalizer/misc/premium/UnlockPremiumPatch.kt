@@ -1,0 +1,31 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.echoequalizer.misc.premium
+
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.pairip.removePairipProtectionPatch
+import app.morphe.patches.shared.misc.revenuecat.grantRevenueCatEntitlements
+import app.morphe.patches.shared.misc.signature.spoofSignature
+
+private const val APPLICATION_CLASS = "Lcom/pairip/application/Application;"
+private const val ENTITLEMENT = "echoeq Pro"
+private const val PRODUCT = "echo-pro-1"
+
+@Suppress("unused")
+val unlockPremiumPatch = bytecodePatch(
+    name = "Unlock premium",
+    description = "Unlocks Echo Pro, including the 15- and 31-band equalizers, compressor, limiter and Safe Hearing protect mode.",
+) {
+    dependsOn(removePairipProtectionPatch)
+    compatibleWith(AppCompatibilities.ECHO_EQUALIZER)
+    extendWith("extensions/extension.mpe")
+
+    execute {
+        spoofSignature(APPLICATION_CLASS)
+
+        grantRevenueCatEntitlements(ENTITLEMENT to PRODUCT)
+    }
+}

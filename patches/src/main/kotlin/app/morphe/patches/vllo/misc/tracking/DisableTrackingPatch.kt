@@ -1,0 +1,34 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.vllo.misc.tracking
+
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patcher.util.returnEarly
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.analytics.disableAnalyticsCollectionPatch
+import app.morphe.patches.shared.misc.pairip.removePairipProtectionPatch
+import app.morphe.patches.shared.misc.pairip.removePairipVirtualizationPatch
+import app.morphe.patches.shared.misc.requireArm64
+
+@Suppress("unused")
+val disableTrackingPatch = bytecodePatch(
+    name = "Disable tracking",
+    description = "Stops AppsFlyer, Firebase Analytics, and Facebook from collecting usage data.",
+) {
+    compatibleWith(AppCompatibilities.VLLO)
+
+    dependsOn(
+        removePairipVirtualizationPatch,
+        removePairipProtectionPatch,
+        disableAnalyticsCollectionPatch,
+    )
+
+    availability(requireArm64)
+
+    execute {
+        AppsFlyerStartFingerprint.matchSingle().method.returnEarly()
+    }
+}

@@ -1,0 +1,229 @@
+name: 🔄 App update
+description: A supported app has a version newer than the ones this bundle targets.
+title: "[App Update]: "
+labels: ["app-update"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One request per app version.
+
+        - The README lists the supported versions under each app. A version listed there needs no request.
+        - Check the open update requests first. Yours may already be tracked.
+        - A listed version that no longer patches or works is a bug report, not an update.
+  - type: dropdown
+    id: app
+    attributes:
+      label: App
+      options:
+        # generated:apps
+        - "1Weather"
+        - "3way"
+        - "aCalendar"
+        - "Albo"
+        - "AliExpress"
+        - "All Video Player App"
+        - "All-In-One Calculator"
+        - "Aloa"
+        - "AlpineQuest"
+        - "AnyTracker"
+        - "APNA Tunnel Lite"
+        - "Arc Player"
+        - "Athan"
+        - "AtloMaps"
+        - "atvTools"
+        - "Audible"
+        - "Audiobook Unlimited for Kindle"
+        - "AudioLab"
+        - "Audiomack"
+        - "Bangla Calendar"
+        - "BeHisabi"
+        - "BeReal"
+        - "BetterSleep"
+        - "Biobird Flashcards"
+        - "Biwenger"
+        - "blockit"
+        - "BlurWall"
+        - "botim"
+        - "CalcNote"
+        - "Cast Plug-in for Musicolet"
+        - "Castle"
+        - "Castle for TV"
+        - "Catzy"
+        - "Clink"
+        - "Clip Studio Paint"
+        - "Clone App"
+        - "Coddy"
+        - "Connected2.me"
+        - "Cubasis LE 3"
+        - "Cx File Explorer"
+        - "Cxxdroid"
+        - "DepthPix"
+        - "Desh Telugu Keyboard"
+        - "DevCheck"
+        - "Duolingo"
+        - "DWG FastView"
+        - "Echo Equalizer"
+        - "Echogram"
+        - "Etsy"
+        - "Fast STL Viewer"
+        - "Fddb"
+        - "Flights25"
+        - "FocusNow"
+        - "ForusApp"
+        - "Freedom"
+        - "Glass Widgets"
+        - "Graph Messenger"
+        - "Ground News"
+        - "Habitify"
+        - "Hindu Calendar"
+        - "Hypic"
+        - "imo"
+        - "Internet Speed Meter Lite"
+        - "IoToToy"
+        - "Joyn"
+        - "Joyn Austria"
+        - "Jujo"
+        - "Jvdroid"
+        - "Keepa"
+        - "Kick"
+        - "Klassik Radio+"
+        - "Lagguy Wallpapers"
+        - "LaunchBox"
+        - "LED Blinker"
+        - "Liftoff"
+        - "LingoDeer"
+        - "Magic Earth"
+        - "MangaTime"
+        - "May: Beautiful Bullet Journal"
+        - "MBC Shahid"
+        - "MedicNEET"
+        - "MemoNeet"
+        - "MiniShare"
+        - "Monet Launcher"
+        - "Moon+ Reader"
+        - "MovieBox"
+        - "MovieBox TV"
+        - "MuscleWiki"
+        - "Musicolet"
+        - "Musixmatch"
+        - "Muviz Widgets"
+        - "My APK"
+        - "MyMoveset"
+        - "MyScript Math"
+        - "MyScript Notes"
+        - "Nara Baby"
+        - "NEETprep"
+        - "NEETprep Essential"
+        - "Network Analyzer"
+        - "Notein"
+        - "Notesnook"
+        - "OK"
+        - "One4Home Launcher"
+        - "Opal"
+        - "Patreon"
+        - "Period Tracker and Calendar"
+        - "Perplexity"
+        - "Photo Editor Pro"
+        - "Photone"
+        - "Pixlr"
+        - "Pleco"
+        - "Pocket Whip"
+        - "Poe"
+        - "Prayer Times and Qibla"
+        - "Privacy Notes"
+        - "Projectivy Launcher"
+        - "Proton Authenticator"
+        - "Proton Lumo"
+        - "Proton Mail"
+        - "Proton Pass"
+        - "Proton VPN"
+        - "Psiphon"
+        - "Public"
+        - "Pydroid 3"
+        - "QR & Barcode Scanner"
+        - "Quick Cursor"
+        - "Quranify"
+        - "Radio Javan"
+        - "Raindrop.io"
+        - "RateGlance"
+        - "ReadEra"
+        - "Realme Link"
+        - "Resprite"
+        - "Ridmik Keyboard"
+        - "Ringtone Maker"
+        - "RISE Sleep Tracker"
+        - "Rubber Bands"
+        - "Serializd"
+        - "Sheytoon"
+        - "Showly"
+        - "SQCOM"
+        - "STEEZY"
+        - "Storywise"
+        - "Sygic"
+        - "Symfonium"
+        - "TeraBox"
+        - "TradingView"
+        - "Trainline"
+        - "Transparent clock & weather"
+        - "TunnelDOOM VPN"
+        - "U Dictionary"
+        - "Ultimate Guitar"
+        - "ULTIMEA"
+        - "UPTCL"
+        - "USA VPN"
+        - "Viber"
+        - "Video Editor"
+        - "VLLO"
+        - "VPN India"
+        - "VPN Super Unlimited Proxy"
+        - "vpnify"
+        - "Wallmaa"
+        - "WalP"
+        - "WATCH IT"
+        - "Wattpad"
+        - "weather24"
+        - "X-plore File Manager"
+        - "Xianyu"
+        - "Xtream Player"
+        - "Yanosik"
+        - "Yi iot"
+        - "Yuka"
+        # /generated
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: New version
+      description: As shown on the download page or in the app's About screen.
+      placeholder: "5.20.57.0"
+    validations:
+      required: true
+  - type: input
+    id: apk-source
+    attributes:
+      label: APK source
+      description: |
+        Link to the stock build. APKMirror, APKPure, Uptodown, APKCombo or APKCube. Not apkmod, Softonic,
+        HappyMod or anything else that repackages APKs.
+      placeholder: https://www.apkmirror.com/...
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Patching this version
+      options:
+        - Not tried
+        - Patching fails
+        - Patching works, the app misbehaves
+        - Patching works and so does the app
+    validations:
+      required: true
+  - type: textarea
+    id: error-logs
+    attributes:
+      label: Error logs
+      description: If patching failed, tap **Copy** on Morphe Manager's error dialog and paste it here.
+      render: shell

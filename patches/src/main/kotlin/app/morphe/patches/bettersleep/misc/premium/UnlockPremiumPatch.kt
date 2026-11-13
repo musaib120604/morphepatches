@@ -1,0 +1,95 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.bettersleep.misc.premium
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patcher.util.returnEarly
+import app.morphe.patches.bettersleep.misc.fix.iterable.restoreIterableRequestsPatch
+import app.morphe.patches.bettersleep.misc.fix.screenevents.restoreScreenEventsPatch
+import app.morphe.patches.bettersleep.misc.fix.signature.spoofSignaturePatch
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.pairip.removePairipVirtualizationPatch
+import app.morphe.patches.shared.misc.smali.addStaticMethod
+import app.morphe.patches.shared.misc.smali.descriptor
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+
+internal const val PURCHASE_CLASS = "Lcom/ipnossoft/api/purchasemanager/purchaserepo/localdb/Purchase;"
+
+private const val LIFETIME_PURCHASE_METHOD = "lifetimePurchase"
+private const val PURCHASE_TIME = 1735689600000L
+private const val EXPIRY_TIME = 4891363200000L
+
+@Suppress("unused")
+val unlockPremiumPatch = bytecodePatch(
+    name = "Unlock premium",
+    description = "Unlocks all premium content and skips the free trial screen.",
+) {
+    compatibleWith(AppCompatibilities.BETTERSLEEP)
+
+    dependsOn(removePairipVirtualizationPatch, restoreIterableRequestsPatch, restoreScreenEventsPatch, spoofSignaturePatch)
+
+    execute {
+        IsContentUnlockedFingerprint.matchSingle().method.returnEarly(true)
+
+        val hasSubscription = OnAskForUserPremiumFingerprint.matchSingle()
+            .instructionMatches.first().getMethodCalled()
+        hasSubscription.returnEarly(true)
+
+        val featureManager = mutableClassDefBy(hasSubscription.definingClass)
+        featureManager.methods.single { it.parameters.isEmpty() && it.returnType == PURCHASE_CLASS }
+            .addInstructions(
+                0,
+                """
+                    invoke-static {}, ${featureManager.type}->$LIFETIME_PURCHASE_METHOD()$PURCHASE_CLASS
+                    move-result-object v0
+                    return-object v0
+                """,
+            )
+
+        val constructor = PurchaseConstructorFingerprint.matchSingle().originalMethod
+        val dataSourceName = constructor.parameterTypes[6].toString()
+        val purchaseType = constructor.parameterTypes[7].toString()
+        listOf(dataSourceName to "GOOGLE", purchaseType to "PURCHASE").forEach { (type, name) ->
+            check(mutableClassDefBy(type).staticFields.any { it.name == name && it.type == type }) { "$type->$name not found" }
+        }
+
+        featureManager.addStaticMethod(
+            LIFETIME_PURCHASE_METHOD,
+            emptyList(),
+            PURCHASE_CLASS,
+            20,
+            lifetimePurchaseSmali(constructor, dataSourceName, purchaseType),
+        )
+    }
+}
+
+private fun lifetimePurchaseSmali(
+    constructor: MethodReference,
+    dataSourceName: String,
+    purchaseType: String,
+) = """
+        new-instance v0, $PURCHASE_CLASS
+        const-string v1, "lifetime"
+        const-string v2, ""
+        const-string v3, ""
+        const-wide v4, ${PURCHASE_TIME}L
+        const-wide v6, ${EXPIRY_TIME}L
+        const-string v8, "GOOGLE"
+        sget-object v9, $dataSourceName->GOOGLE:$dataSourceName
+        sget-object v10, $purchaseType->PURCHASE:$purchaseType
+        const/4 v11, 0x0
+        const/4 v12, 0x0
+        const/4 v13, 0x0
+        const/4 v14, 0x0
+        const/4 v15, 0x0
+        const/16 v16, 0x1
+        const/16 v17, 0x0
+        const/16 v18, 0x0
+        const/16 v19, 0x0
+        invoke-direct/range { v0 .. v19 }, ${descriptor(constructor)}
+        return-object v0
+    """

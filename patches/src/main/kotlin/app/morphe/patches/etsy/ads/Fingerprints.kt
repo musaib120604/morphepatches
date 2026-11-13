@@ -1,0 +1,15 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.etsy.ads
+
+import app.morphe.patcher.Fingerprint
+
+internal object SearchGridBoxFingerprint : Fingerprint(
+    strings = listOf("Layout type not supported: "),
+)
+
+internal object SearchHeaderFingerprint : Fingerprint(
+    parameters = listOf("I", "Lcom/etsy/android/ui/search/model/api/AdsTooltipApiModel;", "Ljava/util/List;"),
+)

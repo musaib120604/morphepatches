@@ -1,0 +1,55 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.protonmail.misc.theme.webview
+
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
+import com.android.tools.smali.dexlib2.Opcode
+
+internal object CachedMessageBodyFingerprint : Fingerprint(
+    name = "shouldInterceptRequest",
+    returnType = "Landroid/webkit/WebResourceResponse;",
+    strings = listOf("text/html", "utf-8"),
+)
+
+internal object InlineMessageBodyFingerprint : Fingerprint(
+    strings = listOf("https://ch.proton.local.body.host/body/"),
+    filters = listOf(methodCall(definingClass = "Landroid/webkit/WebView;", name = "loadDataWithBaseURL")),
+)
+
+internal object ComposerCssFingerprint : Fingerprint(
+    strings = listOf("Raw css resource is not found"),
+    filters = listOf(
+        resourceLiteral(ResourceType.RAW, "css_reset_with_custom_props"),
+        methodCall(
+            "Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;",
+            location = MatchAfterImmediately(),
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+    ),
+)
+
+internal object WebSettingsClientFingerprint : Fingerprint(
+    strings = listOf("web-settings: onReceivedSslError: "),
+)
+
+internal object WebSettingsPageFinishedFingerprint : Fingerprint(
+    classFingerprint = WebSettingsClientFingerprint,
+    name = "onPageFinished",
+    parameters = listOf("Landroid/webkit/WebView;", "Ljava/lang/String;"),
+)
+
+internal object WebSettingsCreatedFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(
+        "Z",
+        "Lch/protonmail/android/mailsettings/presentation/websettings/WebSettingsJavaScriptInterface;",
+        "Landroid/webkit/WebView;",
+    ),
+)

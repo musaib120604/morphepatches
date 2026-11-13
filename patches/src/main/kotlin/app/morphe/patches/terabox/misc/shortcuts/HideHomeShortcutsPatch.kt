@@ -1,0 +1,115 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.terabox.misc.shortcuts
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.booleanOption
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.terabox.misc.settings.TERABOX_PATCH_SETTINGS_CLASS
+import app.morphe.patches.terabox.misc.settings.markPatchApplied
+import app.morphe.patches.terabox.misc.settings.patchesSettingsPatch
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+
+private const val EXTENSION_CLASS = "Lapp/morphepatches/extension/terabox/HomeShortcutFilter;"
+
+private const val HOME_SHORTCUTS_CONFIG_KEY = "na_ai_new_home_search_tool_lv1"
+private const val MORE_SHORTCUTS_CONFIG_KEY = "na_ai_new_home_search_tool_lv2"
+private const val SEARCH_SHORTCUTS_CONFIG_KEY = "na_ai_search_tool_config_new_convenience"
+
+private enum class Shortcut(
+    val optionKey: String,
+    val label: String,
+    val types: List<String>,
+    val groupTitleKey: String? = null,
+    val hiddenByDefault: Boolean = true,
+) {
+    CREATIVE_GENERATION(
+        "hideCreativeGeneration",
+        "Creative Generation",
+        listOf("beautify", "ai_video", "ai_transcribe", "horoscope", "tarot", "mbti", "dream", "love_luck"),
+        "home_lv2_group_creation",
+        hiddenByDefault = false,
+    ),
+    TRANSLATE("hideTranslate", "Translate", listOf("ai_translate")),
+    SIGNATURE("hideSignature", "Signature", listOf("pdf_sign"), hiddenByDefault = false),
+    PDF_ENCRYPTION("hidePdfEncryption", "PDF Encryption", listOf("pdf_encrypt"), hiddenByDefault = false),
+    ADD_WATERMARK("hideAddWatermark", "Add Watermark", listOf("pdf_add_watermark"), hiddenByDefault = false),
+    SHORT_DRAMA("hideShortDrama", "Short Drama", listOf("drama")),
+    TRENDING("hideTrending", "Trending", listOf("hotlist")),
+}
+
+@Suppress("unused")
+val hideHomeShortcutsPatch: BytecodePatch = bytecodePatch(
+    name = "Hide home shortcuts",
+    description = "Removes Trending and Short Drama from Home and More, and Translate where it appears. " +
+        "Options hide the Creative Generation tools, Signature, PDF Encryption and Add Watermark too.",
+) {
+    compatibleWith(AppCompatibilities.TERABOX)
+
+    dependsOn(patchesSettingsPatch)
+
+    extendWith("extensions/extension.mpe")
+
+    val hideShortcutOptions = Shortcut.entries.associateWith { shortcut ->
+        booleanOption(
+            key = shortcut.optionKey,
+            default = shortcut.hiddenByDefault,
+            title = "Hide ${shortcut.label}",
+            description = "Hides ${shortcut.label} from the home screen and the More screen.",
+        )
+    }
+
+    execute {
+        markPatchApplied("hideHomeShortcuts", hideHomeShortcutsPatch)
+        val hidden = hideShortcutOptions.filterValues { it.value == true }.keys
+        if (hidden.isEmpty()) return@execute
+
+        val types = hidden.flatMap { it.types }.joinToString(",")
+        val groupTitleKeys = hidden.mapNotNull { it.groupTitleKey }.joinToString(",")
+
+        listOf(HOME_SHORTCUTS_CONFIG_KEY, MORE_SHORTCUTS_CONFIG_KEY, SEARCH_SHORTCUTS_CONFIG_KEY).forEach { configKey ->
+            shortcutConfigFingerprint(configKey).matchSingle().apply {
+                val returnIndex = instructionMatches.last().index
+                val configRegister = instructionMatches.last().getInstruction<OneRegisterInstruction>().registerA
+                val valueRegister = method.findFreeRegister(returnIndex, configRegister)
+
+                val filterCalls = buildList {
+                    add(
+                        "$EXTENSION_CLASS->removeShortcuts(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" to
+                            types,
+                    )
+                    if (configKey == MORE_SHORTCUTS_CONFIG_KEY && groupTitleKeys.isNotEmpty()) {
+                        add(
+                            "$EXTENSION_CLASS->removeShortcutGroups(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" to
+                                groupTitleKeys,
+                        )
+                    }
+                }
+
+                method.addInstructionsWithLabels(
+                    returnIndex,
+                    """
+                        invoke-static {}, $TERABOX_PATCH_SETTINGS_CLASS->isHomeShortcutsHidden()Z
+                        move-result v$valueRegister
+                        if-eqz v$valueRegister, :original
+                    """ + filterCalls.joinToString("\n") { (filterMethod, values) ->
+                        """
+                            const-string v$valueRegister, "$values"
+                            invoke-static { v$configRegister, v$valueRegister }, $filterMethod
+                            move-result-object v$configRegister
+                        """
+                    },
+                    ExternalLabel("original", method.getInstruction(returnIndex)),
+                )
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.wallmaa.misc.tracking
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patches.shared.compat.AppCompatibilities
+
+@Suppress("unused")
+val disableTrackingPatch = bytecodePatch(
+    name = "Disable tracking",
+    description = "Stops the LevelPlay ad mediation SDK and its ad networks from starting. " +
+        "Ads no longer load.",
+) {
+    compatibleWith(AppCompatibilities.WALLMAA)
+
+    execute {
+        LevelPlayInitFingerprint.matchSingle().method.apply {
+            val nullRegister = getFreeRegisterProvider(0, 1).getFreeRegister4Bit()
+
+            addInstructions(
+                0,
+                """
+                    const/4 v$nullRegister, 0x0
+                    invoke-interface { p2, v$nullRegister }, Lio/flutter/plugin/common/MethodChannel${'$'}Result;->success(Ljava/lang/Object;)V
+                    return-void
+                """,
+            )
+        }
+    }
+}

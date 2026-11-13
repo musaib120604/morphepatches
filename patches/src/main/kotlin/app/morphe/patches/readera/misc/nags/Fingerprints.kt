@@ -1,0 +1,53 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.readera.misc.nags
+
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
+
+internal object StartupNagDispatchFingerprint : Fingerprint(
+    definingClass = "Lorg/readera/MainActivity;",
+    accessFlags = listOf(AccessFlags.PUBLIC),
+    returnType = "V",
+    parameters = listOf("Z"),
+    filters = listOf(
+        methodCall(
+            parameters = listOf("Landroid/app/Activity;"),
+            returnType = "V",
+            opcodes = listOf(Opcode.INVOKE_STATIC),
+        ),
+        methodCall(
+            returnType = "V",
+            opcodes = listOf(Opcode.INVOKE_STATIC),
+            location = InstructionLocation.MatchAfterImmediately(),
+        ),
+    ),
+)
+
+internal const val FRESH_INSTALL_TOOLBAR_MODE = -2
+
+internal object ToolbarPromoModeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "I",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(definingClass = "Ljava/util/concurrent/TimeUnit;", name = "toDays"),
+        literal(FRESH_INSTALL_TOOLBAR_MODE),
+    ),
+)
+
+internal fun promoMenuItemsFingerprint(promoClass: String, promoModeMethod: String) = Fingerprint(
+    definingClass = promoClass,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "V",
+    parameters = listOf("Landroid/view/Menu;"),
+    filters = listOf(
+        methodCall(definingClass = promoClass, name = promoModeMethod),
+    ),
+)

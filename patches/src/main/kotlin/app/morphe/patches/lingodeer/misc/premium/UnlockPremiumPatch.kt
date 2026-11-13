@@ -1,0 +1,34 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.lingodeer.misc.premium
+
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patches.lingodeer.misc.fix.signature.spoofSignaturePatch
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.pairip.removePairipProtectionPatch
+import app.morphe.patches.shared.misc.pairip.removePairipVirtualizationPatch
+import app.morphe.patches.shared.misc.requireArm
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+
+@Suppress("unused")
+val unlockPremiumPatch = bytecodePatch(
+    name = "Unlock premium",
+    description = "Unlocks every course, lesson and practice mode.",
+) {
+    compatibleWith(AppCompatibilities.LINGODEER)
+
+    availability(requireArm)
+
+    dependsOn(removePairipVirtualizationPatch, removePairipProtectionPatch, spoofSignaturePatch)
+
+    execute {
+        val match = PremiumStateFingerprint.matchSingle()
+        val (_, _, _, isEmptyResult) = match.instructionMatches
+        val register = isEmptyResult.getInstruction<OneRegisterInstruction>().registerA
+        match.method.replaceInstruction(isEmptyResult.index, "const/4 v$register, 0x0")
+    }
+}

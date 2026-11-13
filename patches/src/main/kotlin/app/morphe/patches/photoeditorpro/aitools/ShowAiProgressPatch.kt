@@ -1,0 +1,196 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.photoeditorpro.aitools
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patches.photoeditorpro.misc.fix.platform.spoofIosPlatformPatch
+import app.morphe.patches.photoeditorpro.misc.fix.signature.spoofSignaturePatch
+import app.morphe.patches.photoeditorpro.shared.ENHANCE_CALLBACK_CLASS
+import app.morphe.patches.photoeditorpro.shared.EXTENSION_PACKAGE
+import app.morphe.patches.photoeditorpro.shared.REMOVAL_CALLBACK_CLASS
+import app.morphe.patches.photoeditorpro.shared.SubmitRequestFingerprint
+import app.morphe.patches.photoeditorpro.shared.markPatchInstalled
+import app.morphe.patches.photoeditorpro.shared.markPatchMetadata
+import app.morphe.patches.photoeditorpro.shared.methodMatching
+import app.morphe.patches.photoeditorpro.shared.taskClass
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.smali.parameterRegister
+import app.morphe.util.indexOfFirstInstruction
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstLiteralInstruction
+import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.StringReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+
+private const val PROGRESS_TRACE_CLASS = "$EXTENSION_PACKAGE/ProgressTrace;"
+
+private const val LOADING_FRAGMENT_PACKAGE =
+    "Lcom/camerasideas/collagemaker/activity/fragment/loading"
+private const val REMOVAL_LOADING_FRAGMENT = "$LOADING_FRAGMENT_PACKAGE/RemovalLoadingFragment;"
+private const val ENHANCE_LOADING_FRAGMENT = "$LOADING_FRAGMENT_PACKAGE/EnhanceLoadingFragment;"
+
+private const val SET_DURATION =
+    "Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;"
+private const val ADD_UPDATE_LISTENER = "addUpdateListener"
+private const val SET_TEXT = "Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V"
+private const val THREAD_SLEEP = "Ljava/lang/Thread;->sleep(J)V"
+private const val PREDICT_PATH = "/predict/"
+
+private const val RESULT_DELIVERED = 0x400L
+private const val STOCK_PROGRESS_FLOOR = 50L
+
+private val TRACED_TOOLS = mapOf(
+    REMOVAL_CALLBACK_CLASS to (REMOVAL_LOADING_FRAGMENT to "AI Remove"),
+    ENHANCE_CALLBACK_CLASS to (ENHANCE_LOADING_FRAGMENT to "Enhance"),
+)
+
+@Suppress("unused")
+val showAiProgressPatch: BytecodePatch = bytecodePatch(
+    name = "Show AI progress",
+    description = "Shows the current stage of AI Remove and Enhance on their loading screens.",
+) {
+    compatibleWith(AppCompatibilities.PHOTO_EDITOR_PRO)
+    dependsOn(spoofIosPlatformPatch, spoofSignaturePatch)
+    extendWith("extensions/extension.mpe")
+
+    execute {
+        markPatchMetadata("showAiProgress", showAiProgressPatch)
+        val submit = SubmitRequestFingerprint.matchSingle().method
+
+        TRACED_TOOLS.forEach { (callbackClass, tool) ->
+            val (fragmentClass, feature) = tool
+            hookTask(taskClass(callbackClass), feature, submit)
+            hookLoadingFragment(fragmentClass)
+        }
+
+        markPatchInstalled("pep_show_ai_progress")
+    }
+}
+
+private fun hookTask(
+    task: MutableClass,
+    feature: String,
+    submit: MutableMethod,
+) {
+    val runMethod = task.methodMatching("run") {
+        it.name == "run" && it.parameterTypes.isEmpty() && it.returnType == "V"
+    }
+    val register = runMethod.getFreeRegisterProvider(0, 1).getFreeRegister4Bit()
+    runMethod.addInstructions(
+        0,
+        """
+            const-string v$register, "$feature"
+            invoke-static { v$register }, $PROGRESS_TRACE_CLASS->beginUpload(Ljava/lang/String;)V
+        """,
+    )
+
+    task.methodMatching("predict") {
+        it.indexOfFirstInstruction {
+            val reference = getReference<MethodReference>()
+            reference?.definingClass == submit.definingClass && reference.name == submit.name
+        } >= 0 &&
+            it.indexOfFirstInstruction {
+                getReference<StringReference>()?.string?.contains(PREDICT_PATH) == true
+            } >= 0
+    }.addInstructions(0, "invoke-static { }, $PROGRESS_TRACE_CLASS->predict()V")
+
+    task.methodMatching("polling") {
+        it.indexOfFirstInstruction { getReference<MethodReference>()?.toString() == THREAD_SLEEP } >= 0
+    }.addInstructions(0, "invoke-static { }, $PROGRESS_TRACE_CLASS->polling()V")
+
+    val resultHandler = task.methodMatching("result handler") {
+        it.parameterTypes.count { type -> type.toString() == "I" } == 1 && it.returnType == "V" &&
+            it.indexOfFirstLiteralInstruction(RESULT_DELIVERED) >= 0
+    }
+    val statusIndex = resultHandler.parameterTypes.indexOfFirst { it.toString() == "I" }
+    val statusRegister = resultHandler.parameterRegister(statusIndex)
+    resultHandler.addInstructions(0, "invoke-static { $statusRegister }, $PROGRESS_TRACE_CLASS->finished(I)V")
+}
+
+private fun BytecodePatchContext.hookLoadingFragment(fragmentClass: String) {
+    val fragment = mutableClassDefBy(fragmentClass)
+
+    val progressMethod = fragment.methodMatching("progress animator") {
+        it.parameterTypes.map(CharSequence::toString) == listOf("I") &&
+            it.returnType == "V" &&
+            it.indexOfFirstInstruction { getReference<MethodReference>()?.toString() == SET_DURATION } >= 0
+    }
+
+    val listenerType = progressMethod.run {
+        val listenerIndex = indexOfFirstInstructionOrThrow {
+            opcode == Opcode.INVOKE_VIRTUAL &&
+                getReference<MethodReference>()?.name == ADD_UPDATE_LISTENER
+        }
+        val newIndex = (listenerIndex - 1 downTo 0).firstOrNull {
+            getInstruction(it).opcode == Opcode.NEW_INSTANCE
+        } ?: throw PatchException("No listener allocation before $ADD_UPDATE_LISTENER")
+
+        getInstruction(newIndex).getReference<TypeReference>()!!.type
+    }
+
+    progressMethod.apply {
+        val durationIndex = indexOfFirstInstructionOrThrow {
+            getReference<MethodReference>()?.toString() == SET_DURATION
+        }
+        val durationRegister = getInstruction<Instruction35c>(durationIndex).registerD
+
+        addInstructions(
+            durationIndex,
+            """
+                invoke-static { v$durationRegister, v${durationRegister + 1} }, $PROGRESS_TRACE_CLASS->progressDurationMs(J)J
+                move-result-wide v$durationRegister
+            """,
+        )
+
+        val floorIndex = indexOfFirstLiteralInstructionOrThrow(STOCK_PROGRESS_FLOOR)
+        val floorRegister = getInstruction<OneRegisterInstruction>(floorIndex).registerA
+        replaceInstruction(floorIndex, "const/16 v$floorRegister, 0x0")
+
+        addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $PROGRESS_TRACE_CLASS->progress(I)I
+                move-result p1
+            """,
+        )
+    }
+
+    mutableClassDefBy(listenerType).methodMatching("label") {
+        it.indexOfFirstInstruction { getReference<MethodReference>()?.toString() == SET_TEXT } >= 0
+    }.apply {
+        val fragmentCastIndex = indexOfFirstInstruction {
+            opcode == Opcode.CHECK_CAST && getReference<TypeReference>()?.type == fragmentClass
+        }
+        val index = indexOfFirstInstructionOrThrow(maxOf(fragmentCastIndex, 0)) {
+            getReference<MethodReference>()?.toString() == SET_TEXT
+        }
+        val setText = getInstruction<Instruction35c>(index)
+        val view = setText.registerC
+        val register = setText.registerD
+
+        addInstructions(
+            index,
+            """
+                invoke-static { v$view, v$register }, $PROGRESS_TRACE_CLASS->label(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                move-result-object v$register
+            """,
+        )
+    }
+}

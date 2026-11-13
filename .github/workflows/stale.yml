@@ -1,0 +1,120 @@
+name: Close stale issues and lock closed ones
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Print what would be marked, closed or locked without doing it
+        type: boolean
+        default: true
+
+permissions:
+  issues: write
+  discussions: write
+
+jobs:
+  requests:
+    if: github.event_name != 'schedule' || github.event.schedule == '0 * * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github/actions/triage/discussion.sh
+            .github/actions/triage/replies.py
+            .github/actions/triage/discussion_timeouts.py
+            .github/scripts/versions.py
+          sparse-checkout-cone-mode: false
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
+          DRY_RUN: ${{ inputs.dry-run || false }}
+        shell: bash
+        run: |
+          discussion=.github/actions/triage/discussion.sh
+          python3 .github/actions/triage/replies.py request-stale > "$RUNNER_TEMP/comment.md"
+          bash -eo pipefail "$discussion" list app-requests > "$RUNNER_TEMP/requests.json"
+          python3 .github/actions/triage/discussion_timeouts.py "$RUNNER_TEMP/requests.json" "$OWNER" |
+          while read -r row; do
+            n=$(jq -r .number <<< "$row")
+            reason=$(jq -r .reason <<< "$row")
+            if [ "$DRY_RUN" = true ]; then echo "would close #$n ($reason)"; continue; fi
+            if [ "$reason" = needs-info ]; then
+              bash -eo pipefail "$discussion" comment "$n" "$RUNNER_TEMP/comment.md" >/dev/null
+            fi
+            bash -eo pipefail "$discussion" close "$n" OUTDATED
+            bash -eo pipefail "$discussion" lock "$n"
+            mapfile -t labels < <(jq -r --argjson n "$n" '.[] | select(.number == $n) | .labels[].name | select(. == "needs info" or . == "stale")' "$RUNNER_TEMP/requests.json")
+            [ "${#labels[@]}" -eq 0 ] || bash -eo pipefail "$discussion" remove-labels "$n" "${labels[@]}"
+            echo "closed #$n"
+          done
+
+  stale:
+    if: github.event_name != 'schedule' || github.event.schedule == '0 6 * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github/actions/triage/replies.py
+            .github/scripts/versions.py
+          sparse-checkout-cone-mode: false
+      - id: replies
+        shell: bash
+        run: |
+          for reply in issue-stale issue-stale-closed issue-needs-info-closed; do
+            printf '%s<<EOF\n%s\nEOF\n' "$reply" "$(python3 .github/actions/triage/replies.py "$reply")"
+          done >> "$GITHUB_OUTPUT"
+      - uses: actions/stale@v11
+        with:
+          debug-only: ${{ inputs.dry-run || false }}
+          days-before-issue-stale: 30
+          days-before-issue-close: 7
+          stale-issue-label: "stale"
+          stale-issue-message: ${{ steps.replies.outputs.issue-stale }}
+          close-issue-message: ${{ steps.replies.outputs.issue-stale-closed }}
+          days-before-pr-stale: -1
+          days-before-pr-close: -1
+          exempt-all-assignees: true
+          exempt-all-milestones: true
+          exempt-issue-labels: "needs info,app-update,in pre-release,in progress,bot-wrong,no-stale,P0,P1,confirmed"
+          operations-per-run: 30
+      - uses: actions/stale@v11
+        with:
+          debug-only: ${{ inputs.dry-run || false }}
+          only-labels: "needs info"
+          days-before-issue-stale: 3
+          days-before-issue-close: 0
+          stale-issue-label: "stale"
+          stale-issue-message: ${{ steps.replies.outputs.issue-needs-info-closed }}
+          close-issue-reason: not_planned
+          days-before-pr-stale: -1
+          days-before-pr-close: -1
+          exempt-all-assignees: true
+          exempt-issue-labels: "bot-wrong,app-update,in pre-release,in progress,no-stale,P0,P1,confirmed"
+          operations-per-run: 30
+
+  lock:
+    if: github.event_name != 'schedule' || github.event.schedule == '0 6 * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          DRY_RUN: ${{ inputs.dry-run || false }}
+        shell: bash
+        run: |
+          cutoff=$(date -u -d '7 days ago' +%F)
+          gh issue list --repo "$REPO" --state closed --limit 50 --json number \
+            --search "is:unlocked -label:no-stale updated:<$cutoff" --jq '.[].number' |
+          while read -r n; do
+            if [ "$DRY_RUN" = true ]; then echo "would lock #$n"; continue; fi
+            gh issue lock "$n" --repo "$REPO" --reason resolved || { echo "::warning::Could not lock #$n"; continue; }
+            echo "locked #$n"
+          done

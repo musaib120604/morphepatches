@@ -1,0 +1,39 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.protonpass.misc.inappmessages
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patches.protonpass.misc.settings.patchesSettingsPatch
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.proton.markPatchApplied
+
+@Suppress("unused")
+val hidePromotionalMessagesPatch: BytecodePatch = bytecodePatch(
+    name = "Hide promotional messages",
+    description = "Hides promotional banners, offers and pop-up messages.",
+) {
+    compatibleWith(AppCompatibilities.PROTON_PASS)
+    dependsOn(patchesSettingsPatch)
+
+    execute {
+        markPatchApplied("hidePromotionalMessages", hidePromotionalMessagesPatch)
+
+        StoreInAppMessagesFingerprint.matchSingle().method.apply {
+            val register = getFreeRegisterProvider(0, 1).getFreeRegister()
+
+            addInstructions(
+                0,
+                """
+                    sget-object v$register, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+                    return-object v$register
+                """,
+            )
+        }
+    }
+}

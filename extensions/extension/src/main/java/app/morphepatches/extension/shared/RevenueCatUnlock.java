@@ -1,0 +1,165 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Additional term under GPLv3 Section 7(b): When conveying this material
+ * or modified versions, preserve this notice and credit Musaib Bhat for this
+ * material in any Appropriate Legal Notices displayed by works containing it.
+ */
+package app.morphepatches.extension.shared;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+@SuppressWarnings("unused")
+public final class RevenueCatUnlock {
+
+    private static final String PURCHASE_DATE = "2020-01-01T00:00:00Z";
+
+    private static final String EXPIRES_DATE = "2099-01-01T00:00:00Z";
+
+    private static final List<String> NULLABLE_SUBSCRIPTION_FIELDS = Collections
+        .unmodifiableList(Arrays.asList("unsubscribe_detected_at", "billing_issues_detected_at",
+                "grace_period_expires_date", "refunded_at", "store_transaction_id"));
+
+    private RevenueCatUnlock() {
+
+    }
+
+    public static void grantEntitlement(JSONObject body, String entitlement, String product) {
+        if (body == null) {
+            return;
+        }
+
+        try {
+            JSONObject subscriber = body.optJSONObject("subscriber");
+            if (subscriber == null) {
+                return;
+            }
+
+            JSONObject subscriptions = getOrCreateObject(subscriber, "subscriptions");
+            if (!subscriptions.has(product)) {
+                subscriptions.put(product, buildSubscription());
+            }
+
+            JSONObject entitlements = getOrCreateObject(subscriber, "entitlements");
+            entitlements.put(entitlement, buildEntitlement(product));
+
+            renew(subscriptions, true);
+            renew(entitlements, false);
+        } catch (Exception ignored) {
+        }
+    }
+
+    public static void grantLifetimeEntitlement(JSONObject body, String entitlement, String product) {
+        if (body == null) {
+            return;
+        }
+
+        try {
+            JSONObject subscriber = body.optJSONObject("subscriber");
+            if (subscriber == null) {
+                return;
+            }
+
+            JSONObject nonSubscriptions = getOrCreateObject(subscriber, "non_subscriptions");
+            if (!nonSubscriptions.has(product)) {
+                nonSubscriptions.put(product, new JSONArray().put(buildNonSubscriptionTransaction()));
+            }
+
+            getOrCreateObject(subscriber, "entitlements").put(entitlement, buildLifetimeEntitlement(product));
+        } catch (Exception ignored) {
+        }
+    }
+
+    private static JSONObject getOrCreateObject(JSONObject parent, String name) throws JSONException {
+        JSONObject child = parent.optJSONObject(name);
+        if (child == null) {
+            child = new JSONObject();
+            parent.put(name, child);
+        }
+        return child;
+    }
+
+    private static void renew(JSONObject entriesById, boolean subscriptionEntries) throws JSONException {
+        for (Iterator<String> keys = entriesById.keys(); keys.hasNext();) {
+            JSONObject entry = entriesById.optJSONObject(keys.next());
+            if (entry == null) {
+                continue;
+            }
+            entry.put("expires_date", EXPIRES_DATE);
+            if (!entry.isNull("grace_period_expires_date")) {
+                entry.put("grace_period_expires_date", EXPIRES_DATE);
+            }
+            renewNullableFields(entry, subscriptionEntries);
+        }
+    }
+
+    private static void renewNullableFields(JSONObject entry, boolean includeMissingFields) throws JSONException {
+        for (String field : NULLABLE_SUBSCRIPTION_FIELDS) {
+            boolean clearsBillingStatus = field.equals("billing_issues_detected_at")
+                    || field.equals("unsubscribe_detected_at");
+            boolean hasField = entry.has(field);
+            if ((clearsBillingStatus && hasField) || (includeMissingFields && !hasField)) {
+                entry.put(field, JSONObject.NULL);
+            }
+        }
+    }
+
+    private static JSONObject buildSubscription() throws JSONException {
+        JSONObject subscription = new JSONObject();
+        subscription.put("purchase_date", PURCHASE_DATE);
+        subscription.put("original_purchase_date", PURCHASE_DATE);
+        subscription.put("expires_date", EXPIRES_DATE);
+        subscription.put("store", "play_store");
+        subscription.put("is_sandbox", false);
+        subscription.put("period_type", "normal");
+        subscription.put("ownership_type", "PURCHASED");
+        return subscription;
+    }
+
+    private static JSONObject buildEntitlement(String product) throws JSONException {
+        JSONObject entitlement = new JSONObject();
+        entitlement.put("product_identifier", product);
+        entitlement.put("purchase_date", PURCHASE_DATE);
+        entitlement.put("expires_date", EXPIRES_DATE);
+        return entitlement;
+    }
+
+    private static JSONObject buildNonSubscriptionTransaction() throws JSONException {
+        JSONObject transaction = new JSONObject();
+        transaction.put("id", "hx_lifetime");
+        transaction.put("purchase_date", PURCHASE_DATE);
+        transaction.put("original_purchase_date", PURCHASE_DATE);
+        transaction.put("store", "play_store");
+        transaction.put("is_sandbox", false);
+        return transaction;
+    }
+
+    private static JSONObject buildLifetimeEntitlement(String product) throws JSONException {
+        JSONObject entitlement = new JSONObject();
+        entitlement.put("product_identifier", product);
+        entitlement.put("purchase_date", PURCHASE_DATE);
+        entitlement.put("expires_date", JSONObject.NULL);
+        return entitlement;
+    }
+
+}

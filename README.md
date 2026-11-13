@@ -1,0 +1,3249 @@
+<div align="center">
+
+# morphepatches
+
+**Ad and tracking removal, settings tweaks and AMOLED themes for 100+ Android apps.**
+
+</div>
+
+## How it works
+
+1. **Morphe** patches an app's APK by applying the patches you choose.
+2. This repo provides those patches as a bundle (`patches-bundle.json` plus the `.mpp` file).
+3. You install the patched APK. Your original app stays as it is.
+
+## Install
+
+1. Install Morphe Manager.
+2. Add this repo as a patch source: `musaib120604/morphepatches`.
+3. Pick an app from the list below, choose the patches you want, and patch it.
+4. Install the patched APK. You may need to uninstall the original first.
+
+<!-- PATCHES_START -->
+> **v1.77.0**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;538 patches total
+
+### Featured apps
+
+<table align="center">
+<tr>
+<td align="center" width="160"><a href="#viber"><img src=".github/assets/icons/viber.png" width="40"><br>Viber</a><br><sub>23 patches</sub></td>
+<td align="center" width="160"><a href="#bereal"><img src=".github/assets/icons/bereal.png" width="40"><br>BeReal</a><br><sub>21 patches</sub></td>
+<td align="center" width="160"><a href="#moviebox"><img src=".github/assets/icons/moviebox.png" width="40"><br>MovieBox</a><br><sub>4 patches</sub></td>
+</tr>
+<tr>
+<td align="center" width="160"><a href="#proton-mail"><img src=".github/assets/icons/protonmail.png" width="40"><br>Proton Mail</a><br><sub>11 patches</sub></td>
+<td align="center" width="160"><a href="#proton-vpn"><img src=".github/assets/icons/protonvpn.png" width="40"><br>Proton VPN</a><br><sub>14 patches</sub></td>
+<td align="center" width="160"><a href="#keepa"><img src=".github/assets/icons/keepa.png" width="40"><br>Keepa</a><br><sub>4 patches</sub></td>
+</tr>
+<tr>
+<td align="center" width="160"><a href="#terabox"><img src=".github/assets/icons/terabox.png" width="40"><br>TeraBox</a><br><sub>11 patches</sub></td>
+<td align="center" width="160"><a href="#imo"><img src=".github/assets/icons/imo.png" width="40"><br>imo</a><br><sub>31 patches</sub></td>
+<td align="center" width="160"><a href="#duolingo"><img src=".github/assets/icons/duolingo.png" width="40"><br>Duolingo</a><br><sub>4 patches</sub></td>
+</tr>
+<tr>
+<td align="center" width="160"><a href="#aliexpress"><img src=".github/assets/icons/aliexpress.png" width="40"><br>AliExpress</a><br><sub>9 patches</sub></td>
+<td align="center" width="160"><a href="#photo-editor-pro"><img src=".github/assets/icons/photoeditorpro.png" width="40"><br>Photo Editor Pro</a><br><sub>6 patches</sub></td>
+<td align="center" width="160"><a href="#cx-file-explorer"><img src=".github/assets/icons/cx.png" width="40"><br>Cx File Explorer</a><br><sub>3 patches</sub></td>
+</tr>
+</table>
+
+##  Full list
+
+<details open>
+<summary>click to expand or collapse</summary>
+
+<a id="1weather"></a>
+<details>
+<summary><img src=".github/assets/icons/oneweather.png" width="18" align="top">&nbsp;&nbsp;1Weather&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 13.1.0 | 12.9.3 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="1weather-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/oneweather/misc/telemetry/DisableTrackingPatch.kt) | Stops installs, sessions and in-app events from reaching AppsFlyer. |
+| <a id="1weather-hide-shorts"></a>[Hide Shorts](patches/src/main/kotlin/app/morphe/patches/oneweather/misc/shorts/HideShortsPatch.kt) | Hides the 1Weather Shorts card from the Today screen. |
+| <a id="1weather-hide-skyla"></a>[Hide Skyla](patches/src/main/kotlin/app/morphe/patches/oneweather/misc/skyla/HideSkylaPatch.kt) | Hides the Skyla AI assistant, its prompts and the Summarize buttons. |
+| <a id="1weather-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/oneweather/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium and removes ads. |
+
+</details>
+
+<a id="3way"></a>
+<details>
+<summary><img src=".github/assets/icons/3way.png" width="18" align="top">&nbsp;&nbsp;3way&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.1.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="3way-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/threeway/misc/premium/UnlockPremiumPatch.kt) | Unlocks Gold: unblurred photos of the people who liked or visited you, the Gold crown, and the advanced search filters. |
+
+</details>
+
+<a id="acalendar"></a>
+<details>
+<summary><img src=".github/assets/icons/acalendar.png" width="18" align="top">&nbsp;&nbsp;aCalendar&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.9.5 | 2.9.6 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="acalendar-unlock-acalendar"></a>[Unlock aCalendar+](patches/src/main/kotlin/app/morphe/patches/acalendar/misc/premium/UnlockPlusPatch.kt) | Unlocks public holidays, color schemes, business features and tasks, and removes ads. |
+
+</details>
+
+<a id="albo"></a>
+<details>
+<summary><img src=".github/assets/icons/albo.png" width="18" align="top">&nbsp;&nbsp;Albo&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.25.6 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="albo-enable-guest-sign-in"></a>[Enable guest sign-in](patches/src/main/kotlin/app/morphe/patches/albo/misc/guest/EnableGuestSignInPatch.kt) | Enables guest sign-in without a Google account. |
+| <a id="albo-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="albo-remove-bulk-import-limit"></a>[Remove bulk import limit](patches/src/main/kotlin/app/morphe/patches/albo/misc/imports/RemoveBulkImportLimitPatch.kt) | Removes the credit limit on bulk imports. Doesn't affect the weekly limit on single imports. |
+| <a id="albo-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/albo/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro and Max features. Import limits are not included. |
+
+</details>
+
+<a id="aliexpress"></a>
+<details>
+<summary><img src=".github/assets/icons/aliexpress.png" width="18" align="top">&nbsp;&nbsp;AliExpress&nbsp;&nbsp;•&nbsp;&nbsp;9 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 8.180.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="aliexpress-disable-analytics"></a>[Disable analytics](patches/src/main/kotlin/app/morphe/patches/aliexpress/misc/analytics/DisableAnalyticsPatch.kt) | Stops usage statistics and affiliate link reports. |
+| <a id="aliexpress-disable-update-prompts"></a>[Disable update prompts](patches/src/main/kotlin/app/morphe/patches/aliexpress/misc/updates/DisableUpdatePromptsPatch.kt) | Removes automatic update dialogs. The Version row in Settings still checks manually. |
+| <a id="aliexpress-enable-image-saving"></a>[Enable image saving](patches/src/main/kotlin/app/morphe/patches/aliexpress/misc/images/EnableImageSavingPatch.kt) | Shows a save button on full-screen product and review photos. |
+| <a id="aliexpress-fix-dark-mode"></a>[Fix dark mode](patches/src/main/kotlin/app/morphe/patches/aliexpress/misc/theme/DarkThemePatch.kt) | Fixes the screens and web pages the built-in Dark mode leaves white. Requires Android 10 or later. |
+| <a id="aliexpress-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="aliexpress-remove-promotional-popups"></a>[Remove promotional popups](patches/src/main/kotlin/app/morphe/patches/aliexpress/misc/promotions/RemovePromotionalPopupsPatch.kt) | Stops coupon offers opening over Home and search results. |
+| <a id="aliexpress-remove-sponsored-items"></a>[Remove sponsored items](patches/src/main/kotlin/app/morphe/patches/aliexpress/ads/RemoveSponsoredItemsPatch.kt) | Removes paid placements from search results and product feeds. |
+| <a id="aliexpress-skip-splash-promotions"></a>[Skip splash promotions](patches/src/main/kotlin/app/morphe/patches/aliexpress/misc/splash/SkipSplashPromotionsPatch.kt) | Skips the full-screen promotion shown at launch. |
+| <a id="aliexpress-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/aliexpress/misc/signin/SpoofSignaturePatch.kt) | Restores product loading on patched installs. |
+
+</details>
+
+<a id="all-video-player-app"></a>
+<details>
+<summary><img src=".github/assets/icons/allvideoplayer.png" width="18" align="top">&nbsp;&nbsp;All Video Player App&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="all-video-player-app-allow-offline-use"></a>[Allow offline use](patches/src/main/kotlin/app/morphe/patches/allvideoplayer/offline/AllowOfflineUsePatch.kt) | Opens the app without an internet connection. |
+| <a id="all-video-player-app-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/allvideoplayer/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics, Facebook and OneSignal from collecting usage data. |
+| <a id="all-video-player-app-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/allvideoplayer/ads/HideAdsPatch.kt) | Removes app open, interstitial and native ads, and the promoted apps list. |
+| <a id="all-video-player-app-remove-rating-prompts"></a>[Remove rating prompts](patches/src/main/kotlin/app/morphe/patches/allvideoplayer/rate/RemoveRatingPromptsPatch.kt) | Removes the prompts asking for a rating. |
+| <a id="all-video-player-app-resume-videos-opened-from-other-apps"></a>[Resume videos opened from other apps](patches/src/main/kotlin/app/morphe/patches/allvideoplayer/resume/ResumeExternalVideosPatch.kt) | Resumes videos opened from a file manager or gallery where playback stopped. |
+| <a id="all-video-player-app-skip-splash-delay"></a>[Skip splash delay](patches/src/main/kotlin/app/morphe/patches/allvideoplayer/splash/SkipSplashDelayPatch.kt) | Opens the app without waiting on the splash screen. |
+
+</details>
+
+<a id="all-in-one-calculator"></a>
+<details>
+<summary><img src=".github/assets/icons/allinonecalculator.png" width="18" align="top">&nbsp;&nbsp;All-In-One Calculator&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.4.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="all-in-one-calculator-gmscore-support"></a>[GmsCore support](patches/src/main/kotlin/app/morphe/patches/allinonecalculator/misc/gms/GmsCoreSupportPatch.kt) | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="all-in-one-calculator-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/allinonecalculator/misc/premium/UnlockPremiumPatch.kt) | Unlocks the Pro tools and removes ads. |
+
+</details>
+
+<a id="aloa"></a>
+<details>
+<summary><img src=".github/assets/icons/aloa.png" width="18" align="top">&nbsp;&nbsp;Aloa&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.3.3 | 1.3.4 | 1.3.5 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="aloa-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="aloa-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/aloa/misc/premium/UnlockPremiumPatch.kt) | Unlocks conversations, tutor lessons and roadmaps. |
+
+</details>
+
+<a id="alpinequest"></a>
+<details>
+<summary><img src=".github/assets/icons/alpinequest.png" width="18" align="top">&nbsp;&nbsp;AlpineQuest&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.4.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="alpinequest-unlock-full-version"></a>[Unlock full version](patches/src/main/kotlin/app/morphe/patches/alpinequest/misc/activation/UnlockFullVersionPatch.kt) | Unlocks the Off-Road Explorer features. |
+
+</details>
+
+<a id="anytracker"></a>
+<details>
+<summary><img src=".github/assets/icons/anytracker.png" width="18" align="top">&nbsp;&nbsp;AnyTracker&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.5.4 | 7.5.6 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="anytracker-unlock-platinum"></a>[Unlock Platinum](patches/src/main/kotlin/app/morphe/patches/anytracker/misc/premium/UnlockPlatinumPatch.kt) | Unlocks the Platinum plan with unlimited tracked items, every-minute updates, widgets, watchlists and backups. |
+
+</details>
+
+<a id="apna-tunnel-lite"></a>
+<details>
+<summary><img src=".github/assets/icons/apnatunnellite.png" width="18" align="top">&nbsp;&nbsp;APNA Tunnel Lite&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| APNA |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="apna-tunnel-lite-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/apnatunnel/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics and Firebase Sessions from collecting usage data. |
+| <a id="apna-tunnel-lite-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/apnatunnel/misc/ads/RemoveAdsPatch.kt) | Removes app open, banner and interstitial ads and the ad consent form. |
+
+</details>
+
+<a id="arc-player"></a>
+<details>
+<summary><img src=".github/assets/icons/com.videoplayer.arcplayer.png" width="18" align="top">&nbsp;&nbsp;Arc Player&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.4.2.141 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="arc-player-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/arcplayer/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics and Firebase Sessions from collecting usage data. |
+| <a id="arc-player-remove-rating-prompts"></a>[Remove rating prompts](patches/src/main/kotlin/app/morphe/patches/arcplayer/misc/rate/RemoveRatingPromptsPatch.kt) | Removes the feedback and rating popup that appears after watching videos. |
+| <a id="arc-player-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/arcplayer/misc/premium/UnlockPremiumPatch.kt) | Unlocks the pure black theme and custom subtitle fonts, and removes the premium prompts. |
+
+</details>
+
+<a id="athan"></a>
+<details>
+<summary><img src=".github/assets/icons/athan.png" width="18" align="top">&nbsp;&nbsp;Athan&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 11.0.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="athan-dark-theme"></a>[Dark theme](patches/src/main/kotlin/app/morphe/patches/athan/misc/theme/DarkThemePatch.kt) | Shows the app in dark colors when the system dark theme is on. |
+| <a id="athan-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/athan/misc/tracking/DisableTrackingPatch.kt) | Stops usage events from reaching Firebase and Facebook, and disables Crashlytics and Firebase performance monitoring. |
+| <a id="athan-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="athan-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/athan/ads/RemoveAdsPatch.kt) | Removes banner, native, app open and interstitial ads, including the ad shown before sharing. |
+| <a id="athan-remove-promotions"></a>[Remove promotions](patches/src/main/kotlin/app/morphe/patches/athan/misc/promotion/RemovePromotionsPatch.kt) | Removes the Athan Academy banner in the Quran tab, and the Academy popup and teacher feedback bar in the chapter reader. |
+| <a id="athan-save-images-to-gallery"></a>[Save images to gallery](patches/src/main/kotlin/app/morphe/patches/athan/misc/share/SaveImagesToGalleryPatch.kt) | Adds a Save to gallery option to the share sheet of verse, dua and greeting card images. Requires Android 10 or newer. |
+| <a id="athan-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/athan/misc/premium/UnlockPremiumPatch.kt) | Unlocks Athan Premium, including the premium Quran themes and athans, and removes ads. |
+
+</details>
+
+<a id="atlomaps"></a>
+<details>
+<summary><img src=".github/assets/icons/atlomaps.png" width="18" align="top">&nbsp;&nbsp;AtloMaps&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.0.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="atlomaps-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/atlomaps/misc/premium/UnlockPremiumPatch.kt) | Unlocks the custom map sources, navigation settings and backup restore. Premium map packages are not included. |
+
+</details>
+
+<a id="atvtools"></a>
+<details>
+<summary><img src=".github/assets/icons/atvtools.png" width="18" align="top">&nbsp;&nbsp;atvTools&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.3.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="atvtools-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/atvtools/misc/premium/UnlockPremiumPatch.kt) | Unlocks all features and removes the ads. |
+
+</details>
+
+<a id="audible"></a>
+<details>
+<summary><img src=".github/assets/icons/audible.png" width="18" align="top">&nbsp;&nbsp;Audible&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.30.05 | 26.38.08 | 26.41.06 | 26.41.07 | 26.43.17 |
+| :---: | :---: | :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="audible-hide-membership-upselling"></a>[Hide membership upselling](patches/src/main/kotlin/app/morphe/patches/audible/misc/upselling/HideMembershipUpsellingPatch.kt) | Hides the membership promotion on the Home screen and the free trial bottom sheet. |
+| <a id="audible-open-library-on-launch"></a>[Open Library on launch](patches/src/main/kotlin/app/morphe/patches/audible/startup/OpenLibraryOnLaunchPatch.kt) | Opens the Library tab instead of Home on launch. Applies only while signed in. |
+
+</details>
+
+<a id="audiobook-unlimited-for-kindle"></a>
+<details>
+<summary><img src=".github/assets/icons/audiobookunlimited.png" width="18" align="top">&nbsp;&nbsp;Audiobook Unlimited for Kindle&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.7.24 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="audiobook-unlimited-for-kindle-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="audiobook-unlimited-for-kindle-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/audiobookunlimited/misc/premium/UnlockPremiumPatch.kt) | Unlocks Unlimited Books and skips the subscription offer shown after onboarding. Disables OTA updates. |
+
+</details>
+
+<a id="audiolab"></a>
+<details>
+<summary><img src=".github/assets/icons/audiolab.png" width="18" align="top">&nbsp;&nbsp;AudioLab&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.3.33 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="audiolab-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/audiolab/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro tools and removes ads, reward videos and upgrade prompts. The AI tools are not included. |
+
+</details>
+
+<a id="audiomack"></a>
+<details>
+<summary><img src=".github/assets/icons/audiomack.png" width="18" align="top">&nbsp;&nbsp;Audiomack&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 8.11.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="audiomack-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="audiomack-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/audiomack/misc/premium/UnlockPremiumPatch.kt) | Unlocks Plus features. Region-limited songs are still restricted. |
+
+</details>
+
+<a id="bangla-calendar"></a>
+<details>
+<summary><img src=".github/assets/icons/banglacalendar.png" width="18" align="top">&nbsp;&nbsp;Bangla Calendar&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.0.01e |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="bangla-calendar-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/banglacalendar/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics and Crashlytics from collecting usage data. |
+| <a id="bangla-calendar-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/banglacalendar/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium and removes ads. |
+
+</details>
+
+<a id="behisabi"></a>
+<details>
+<summary><img src=".github/assets/icons/behisabi.png" width="18" align="top">&nbsp;&nbsp;BeHisabi&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.0.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="behisabi-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/behisabi/misc/premium/UnlockPremiumPatch.kt) | Unlocks BeHisabi Pro features. AI features require your own API key. |
+
+</details>
+
+<a id="bereal"></a>
+<details>
+<summary><img src=".github/assets/icons/bereal.png" width="18" align="top">&nbsp;&nbsp;BeReal&nbsp;&nbsp;•&nbsp;&nbsp;21 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.97.1 | 3.98.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="bereal-back-up-memories"></a>[Back up memories](patches/src/main/kotlin/app/morphe/patches/bereal/misc/backup/BackupMemoriesPatch.kt) | Adds Back up memories to Musaib Bhat patches. Saves every memory as separate back and front photos with the time, place and caption, plus the BTS video. Writes JSON sidecars with location, friends' usernames and comments to Download/BeReal unless a folder is picked. |
+| <a id="bereal-change-download-location"></a>[Change download location](patches/src/main/kotlin/app/morphe/patches/bereal/misc/download/ChangeDownloadLocationPatch.kt) | Saves downloaded BeReals to Pictures/BeReal, DCIM/BeReal or a folder you pick. Requires Android 10 or newer. |
+| <a id="bereal-custom-location"></a>[Custom location](patches/src/main/kotlin/app/morphe/patches/bereal/misc/post/CustomLocationPatch.kt) | Sets the location shown on your BeReal to a place you choose on a map or by name. |
+| <a id="bereal-custom-retake-count"></a>[Custom retake count](patches/src/main/kotlin/app/morphe/patches/bereal/misc/post/CustomRetakeCountPatch.kt) | Asks before each BeReal how many retakes your friends see on it. |
+| <a id="bereal-disable-data-collection"></a>[Disable data collection](patches/src/main/kotlin/app/morphe/patches/bereal/misc/privacy/DisableDataCollectionPatch.kt) | Turns off ad tracking, Firebase crash reports and sessions, Amplitude and Datadog analytics, Adjust attribution and the Shake bug reporter. |
+| <a id="bereal-disable-typing-indicator"></a>[Disable typing indicator](patches/src/main/kotlin/app/morphe/patches/bereal/misc/typing/DisableTypingIndicatorPatch.kt) | Stops showing friends that you're typing in a chat. You still see when they type. |
+| <a id="bereal-disable-view-receipts"></a>[Disable view receipts](patches/src/main/kotlin/app/morphe/patches/bereal/misc/seen/DisableViewReceiptsPatch.kt) | Stops sending which BeReals you viewed and which chats you opened. |
+| <a id="bereal-post-from-gallery"></a>[Post from gallery](patches/src/main/kotlin/app/morphe/patches/bereal/misc/gallery/GalleryPhotosPatch.kt) | Adds a gallery button to the camera for picking the back and front photo of your BeReal. |
+| <a id="bereal-remove-friends-of-friends-prompts"></a>[Remove Friends of Friends prompts](patches/src/main/kotlin/app/morphe/patches/bereal/misc/fof/RemoveFriendsOfFriendsPromptsPatch.kt) | Removes the "Share with Friends of Friends" card and the end-of-feed messages. |
+| <a id="bereal-remove-friends-of-friends-tab"></a>[Remove Friends of Friends tab](patches/src/main/kotlin/app/morphe/patches/bereal/misc/fof/RemoveFriendsOfFriendsTabPatch.kt) | Removes the Friends of Friends tab from the home screen. |
+| <a id="bereal-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/bereal/misc/ads/RemoveAdsPatch.kt) | Removes the full-screen ad at launch and sponsored BeReals in both feeds. Stops the ad networks from loading. |
+| <a id="bereal-remove-contacts-permission"></a>[Remove contacts permission](patches/src/main/kotlin/app/morphe/patches/bereal/misc/privacy/RemoveContactsPermissionPatch.kt) | Stops BeReal from asking for or reading your phone's contacts. |
+| <a id="bereal-remove-friend-suggestions"></a>[Remove friend suggestions](patches/src/main/kotlin/app/morphe/patches/bereal/misc/friends/RemoveFriendSuggestionsPatch.kt) | Removes suggested friends, Contacts on BeReal and popular accounts from the Friends screen and the feed. |
+| <a id="bereal-remove-late-flag"></a>[Remove late flag](patches/src/main/kotlin/app/morphe/patches/bereal/misc/post/RemoveLateFlagPatch.kt) | Sends BeReals you take after the moment's window as on time. |
+| <a id="bereal-remove-late-label"></a>[Remove late label](patches/src/main/kotlin/app/morphe/patches/bereal/misc/late/RemoveLateLabelPatch.kt) | Replaces the late label on friends' BeReals with how long ago they posted. |
+| <a id="bereal-remove-promotions"></a>[Remove promotions](patches/src/main/kotlin/app/morphe/patches/bereal/misc/promos/RemovePromotionsPatch.kt) | Removes Recap cards, the "How's BeReal?" review prompt, the profile completion card, the notifications banner and the music tooltip. |
+| <a id="bereal-remove-streak-prompts"></a>[Remove streak prompts](patches/src/main/kotlin/app/morphe/patches/bereal/misc/streak/RemoveStreakPromptsPatch.kt) | Removes the offers to recover your streak and the Save your streak sheet. Your streak count doesn't change. |
+| <a id="bereal-remove-update-prompts"></a>[Remove update prompts](patches/src/main/kotlin/app/morphe/patches/bereal/misc/update/RemoveUpdatePromptsPatch.kt) | Removes BeReal's required and suggested update dialogs and the Play Store update prompt. |
+| <a id="bereal-remove-watermark"></a>[Remove watermark](patches/src/main/kotlin/app/morphe/patches/bereal/misc/download/RemoveWatermarkPatch.kt) | Saves downloaded BeReals at full size without the BeReal logo. |
+| <a id="bereal-save-friends-bereals"></a>[Save friends' BeReals](patches/src/main/kotlin/app/morphe/patches/bereal/misc/download/SaveFriendsBeRealsPatch.kt) | Adds Download to the 3-dot menu of friends' BeReals in the feed and on the RealMoji screen. |
+| <a id="bereal-show-friends-posts-before-posting"></a>[Show friends' posts before posting](patches/src/main/kotlin/app/morphe/patches/bereal/misc/blur/ShowFriendsPostsPatch.kt) | Shows friends' BeReals in My Friends and Friends of Friends before you post your own. |
+
+</details>
+
+<a id="bettersleep"></a>
+<details>
+<summary><img src=".github/assets/icons/bettersleep.png" width="18" align="top">&nbsp;&nbsp;BetterSleep&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.19 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="bettersleep-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/bettersleep/misc/premium/UnlockPremiumPatch.kt) | Unlocks all premium content and skips the free trial screen. |
+
+</details>
+
+<a id="biobird-flashcards"></a>
+<details>
+<summary><img src=".github/assets/icons/biobird.png" width="18" align="top">&nbsp;&nbsp;Biobird Flashcards&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.0.2 | 3.0.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="biobird-flashcards-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="biobird-flashcards-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/biobird/misc/premium/UnlockPremiumPatch.kt) | Unlocks all chapters and previous-year papers. Signing in requires GmsCore support. |
+
+</details>
+
+<a id="biwenger"></a>
+<details>
+<summary><img src=".github/assets/icons/biwenger.png" width="18" align="top">&nbsp;&nbsp;Biwenger&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.0.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="biwenger-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="biwenger-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/biwenger/ads/RemoveAdsPatch.kt) | Removes banner, interstitial, rewarded, native and app open ads. |
+| <a id="biwenger-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/biwenger/premium/UnlockPremiumPatch.kt) | Unlocks the Premium league settings that the server accepts. The server refuses custom scoring, release clauses, substitutes and player tracking. Actions that cost credits still charge you, with no confirmation. |
+
+</details>
+
+<a id="blockit"></a>
+<details>
+<summary><img src=".github/assets/icons/blockit.png" width="18" align="top">&nbsp;&nbsp;blockit&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.2.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="blockit-free-parachutes"></a>[Free parachutes](patches/src/main/kotlin/app/morphe/patches/blockit/misc/parachutes/FreeParachutesPatch.kt) | Adds parachute packs without a purchase. |
+| <a id="blockit-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/blockit/misc/premium/UnlockPremiumPatch.kt) | Unlocks Premium, the big suitcase and the sound pack. |
+
+</details>
+
+<a id="blurwall"></a>
+<details>
+<summary><img src=".github/assets/icons/blurwall.png" width="18" align="top">&nbsp;&nbsp;BlurWall&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.9.8 | 3.0.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="blurwall-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/blurwall/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black. |
+| <a id="blurwall-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/blurwall/misc/tracking/DisableTrackingPatch.kt) | Stops the Google Mobile Ads SDK from starting and reading the advertising ID. |
+| <a id="blurwall-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/blurwall/misc/premium/UnlockPremiumPatch.kt) | Unlocks the HalfBlur effect. |
+
+</details>
+
+<a id="botim"></a>
+<details>
+<summary><img src=".github/assets/icons/botim.png" width="18" align="top">&nbsp;&nbsp;botim&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.20.1 | 4.21.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="botim-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/botim/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics, Adjust and MoEngage from collecting usage data. |
+| <a id="botim-fix-sign-in"></a>[Fix sign-in](patches/src/main/kotlin/app/morphe/patches/botim/misc/signin/FixSignInPatch.kt) | Fixes sending the verification code when signing in with a phone number. |
+| <a id="botim-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/botim/misc/signin/SpoofSignaturePatch.kt) | Lets a new phone number receive the verification code and sign in. |
+| <a id="botim-unlock-vip"></a>[Unlock VIP](patches/src/main/kotlin/app/morphe/patches/botim/misc/premium/UnlockVipPatch.kt) | Removes ads and upgrade prompts. Shows the VIP badge in the header. |
+
+</details>
+
+<a id="calcnote"></a>
+<details>
+<summary><img src=".github/assets/icons/calcnote.png" width="18" align="top">&nbsp;&nbsp;CalcNote&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.25.111 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="calcnote-unlock-pro"></a>[Unlock pro](patches/src/main/kotlin/app/morphe/patches/calcnote/misc/premium/UnlockProPatch.kt) | Unlocks Pro features and removes ads. |
+
+</details>
+
+<a id="cast-plug-in-for-musicolet"></a>
+<details>
+<summary><img src=".github/assets/icons/musicoletcastplugin.png" width="18" align="top">&nbsp;&nbsp;Cast Plug-in for Musicolet&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.9 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="cast-plug-in-for-musicolet-remove-app-protection"></a>[Remove app protection](patches/src/main/kotlin/app/morphe/patches/musicoletcastplugin/misc/protection/RemoveAppProtectionPatch.kt) | Lets a patched build start. Cast in Musicolet requires both apps patched with the same signing key. |
+
+</details>
+
+<a id="castle"></a>
+<details>
+<summary><img src=".github/assets/icons/castle.png" width="18" align="top">&nbsp;&nbsp;Castle&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.1.1 | 2.1.3 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="castle-disable-update-prompt"></a>[Disable update prompt](patches/src/main/kotlin/app/morphe/patches/castle/misc/update/DisableUpdatePromptPatch.kt) | Disables the new version dialog and the required update. |
+| <a id="castle-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/castle/ads/RemoveAdsPatch.kt) | Removes banner, video, interstitial and rewarded ads. Actions that waited on a rewarded ad run immediately. |
+| <a id="castle-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/castle/misc/fix/signature/SpoofSignaturePatch.kt) | Removes the modified app warning that stops video playback. |
+| <a id="castle-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/castle/misc/premium/UnlockPremiumPatch.kt) | Unlocks member-only titles, shows the account as Premium and removes the premium bundle offer. Requires a signed-in account. |
+
+</details>
+
+<a id="castle-for-tv"></a>
+<details>
+<summary><img src=".github/assets/icons/castlefortv.png" width="18" align="top">&nbsp;&nbsp;Castle for TV&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| [1.1.5](https://download.sxwon.com/CastleTV_v1.1.5_0929_19_30_official.apk "Download stock APK") |
+| :---: |
+
+Always verify the downloaded APK's SHA-256 against a trusted checksum before patching.
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="castle-for-tv-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/castletv/ads/RemoveAdsPatch.kt) | Removes the pre-roll and mid-roll ads from playback. |
+| <a id="castle-for-tv-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/castletv/misc/fix/signature/SpoofSignaturePatch.kt) | Removes the modified app warning that stops video playback. |
+| <a id="castle-for-tv-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/castletv/misc/premium/UnlockPremiumPatch.kt) | Unlocks member-only titles and shows the account as Premium. Requires a signed-in account. |
+
+</details>
+
+<a id="catzy"></a>
+<details>
+<summary><img src=".github/assets/icons/catzy.png" width="18" align="top">&nbsp;&nbsp;Catzy&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.61.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="catzy-max-intimacy-level"></a>Max intimacy level | Raises pet intimacy to the highest level. |
+| <a id="catzy-remove-usage-limits"></a>Remove usage limits | Removes daily caps on store refreshes, blind boxes, feeding, petting and the Book of Answers. Opens the Item Recycling Center every day and shortens pet exploration to three minutes. |
+| <a id="catzy-unlimited-cat-coins"></a>Unlimited cat coins | Buys every store item without running out of cat coins. |
+| <a id="catzy-unlock-premium"></a>Unlock premium | Unlocks premium goals, journeys, breathing exercises, focus timers, sounds and themes. |
+
+</details>
+
+<a id="clink"></a>
+<details>
+<summary><img src=".github/assets/icons/clink.png" width="18" align="top">&nbsp;&nbsp;Clink&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.9.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="clink-unlock-pro"></a>[Unlock Pro](patches/src/main/kotlin/app/morphe/patches/clink/misc/premium/UnlockProPatch.kt) | Unlocks Clink Pro. |
+
+</details>
+
+<a id="clip-studio-paint"></a>
+<details>
+<summary><img src=".github/assets/icons/clipstudiopaint.png" width="18" align="top">&nbsp;&nbsp;Clip Studio Paint&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.1.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="clip-studio-paint-open-drawing-on-launch"></a>[Open drawing on launch](patches/src/main/kotlin/app/morphe/patches/clipstudiopaint/misc/launch/OpenDrawingOnLaunchPatch.kt) | Opens the selected Studio or Simple Mode workspace on launch. |
+| <a id="clip-studio-paint-skip-plan-selection"></a>[Skip plan selection](patches/src/main/kotlin/app/morphe/patches/clipstudiopaint/misc/launch/SkipPlanSelectionPatch.kt) | Opens the app in doodle mode without showing the plan selection screen. Log in from the home screen to use a plan. |
+| <a id="clip-studio-paint-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/clipstudiopaint/misc/premium/UnlockPremiumPatch.kt) | Removes the monthly drawing time limit. Unlocks saving and exporting in doodle mode and full-length timelapse export with an optional logo. |
+
+</details>
+
+<a id="clone-app"></a>
+<details>
+<summary><img src=".github/assets/icons/cloneapp.png" width="18" align="top">&nbsp;&nbsp;Clone App&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.2.3 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="clone-app-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/cloneapp/misc/tracking/DisableTrackingPatch.kt) | Stops sending usage events, the cloned app list and the private browser's search and download history to the developer, and disables Firebase Analytics. |
+| <a id="clone-app-fix-manage-google-account"></a>[Fix Manage Google account](patches/src/main/kotlin/app/morphe/patches/cloneapp/misc/googleaccount/FixManageGoogleAccountPatch.kt) | Opens the Google Account settings from Manage Google account. |
+| <a id="clone-app-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/cloneapp/ads/RemoveAdsPatch.kt) | Removes splash, banner, native and interstitial ads, including the ad shown when a cloned app opens, and the ad consent form. |
+| <a id="clone-app-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/cloneapp/misc/premium/UnlockPremiumPatch.kt) | Unlocks VIP: multiple copies of each app, batch cloning, bubble mode, custom themes and no ads. Removes the 50% off offer and the Free VIP, Renew VIP and Get F-Code entries. |
+
+</details>
+
+<a id="coddy"></a>
+<details>
+<summary><img src=".github/assets/icons/coddy.png" width="18" align="top">&nbsp;&nbsp;Coddy&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.3.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="coddy-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/coddy/misc/premium/UnlockPremiumPatch.kt) | Unlocks Coddy Plus with unlimited energy and no ads, and removes the daily AI tutor limit and the free project limit. |
+
+</details>
+
+<a id="connected2-me"></a>
+<details>
+<summary><img src=".github/assets/icons/connected2.png" width="18" align="top">&nbsp;&nbsp;Connected2.me&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.396 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="connected2-me-enable-chat-in-all-regions"></a>[Enable chat in all regions](patches/src/main/kotlin/app/morphe/patches/connected2/misc/region/EnableChatInAllRegionsPatch.kt) | Enables sign-in and chat in regions the server blocks. Creating an account still requires a supported region. |
+| <a id="connected2-me-keep-deleted-messages"></a>[Keep deleted messages](patches/src/main/kotlin/app/morphe/patches/connected2/misc/deleted/KeepDeletedMessagesPatch.kt) | Keeps messages the other person deletes and marks deleted text messages with 🗑. |
+| <a id="connected2-me-remove-app-protection"></a>[Remove app protection](patches/src/main/kotlin/app/morphe/patches/connected2/misc/protection/RemoveAppProtectionPatch.kt) | Lets a patched build start. |
+| <a id="connected2-me-remove-screenshot-restriction"></a>[Remove screenshot restriction](patches/src/main/kotlin/app/morphe/patches/connected2/misc/screenshot/RemoveScreenshotRestrictionPatch.kt) | Allows screenshots of view-once photos and videos. |
+| <a id="connected2-me-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/connected2/misc/fix/signature/SpoofSignaturePatch.kt) | Enables sign-up and sign-in. |
+
+</details>
+
+<a id="cubasis-le-3"></a>
+<details>
+<summary><img src=".github/assets/icons/cubasisle3.png" width="18" align="top">&nbsp;&nbsp;Cubasis LE 3&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.8.6 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="cubasis-le-3-disable-telemetry"></a>[Disable telemetry](patches/src/main/kotlin/app/morphe/patches/cubasisle3/misc/telemetry/DisableTelemetryPatch.kt) | Stops crash reports, sessions and configuration requests from reaching Bugsnag. |
+| <a id="cubasis-le-3-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/cubasisle3/misc/premium/UnlockPremiumPatch.kt) | Unlocks the full Cubasis version and the in-app shop content. |
+
+</details>
+
+<a id="cx-file-explorer"></a>
+<details>
+<summary><img src=".github/assets/icons/cx.png" width="18" align="top">&nbsp;&nbsp;Cx File Explorer&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.7.8 | 2.7.9 | 2.8.1 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="cx-file-explorer-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/cx/misc/theme/AmoledThemePatch.kt) | Adds a pure black option to the dark theme. |
+| <a id="cx-file-explorer-dark-theme"></a>[Dark theme](patches/src/main/kotlin/app/morphe/patches/cx/misc/theme/DarkThemePatch.kt) | Renders the app's dark theme and adds it to the settings. |
+| <a id="cx-file-explorer-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/cx/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium and removes ads. |
+
+</details>
+
+<a id="cxxdroid"></a>
+<details>
+<summary><img src=".github/assets/icons/cxxdroid.png" width="18" align="top">&nbsp;&nbsp;Cxxdroid&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.6_arm64 | 6.0_arm64 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="cxxdroid-amoled-dark-theme"></a>AMOLED dark theme | Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active. |
+| <a id="cxxdroid-disable-tracking"></a>Disable tracking | Stops Firebase Analytics from collecting usage data. |
+| <a id="cxxdroid-unlock-premium"></a>Unlock premium | Unlocks premium and removes ads. |
+
+</details>
+
+<a id="depthpix"></a>
+<details>
+<summary><img src=".github/assets/icons/depthpix.png" width="18" align="top">&nbsp;&nbsp;DepthPix&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.0.35 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="depthpix-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="depthpix-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/depthpix/ads/HideAdsPatch.kt) | Removes banner, native, interstitial and rewarded ads. |
+| <a id="depthpix-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/depthpix/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro wallpapers, 3D motion, particles and clock presets. Unlimited photo designs are not included. |
+
+</details>
+
+<a id="desh-telugu-keyboard"></a>
+<details>
+<summary><img src=".github/assets/icons/deshtelugu.png" width="18" align="top">&nbsp;&nbsp;Desh Telugu Keyboard&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 17.7.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="desh-telugu-keyboard-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/deshtelugu/misc/tracking/DisableTrackingPatch.kt) | Stops the keyboard sending typed text, voice input, usage events, device details, install attribution and crash reports to Desh Keyboard, Meta and Firebase. |
+| <a id="desh-telugu-keyboard-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/deshtelugu/misc/premium/UnlockPremiumPatch.kt) | Unlocks Premium, which removes promoted app suggestions and the Desh Keyboard signature added to messages and shared stickers. |
+
+</details>
+
+<a id="devcheck"></a>
+<details>
+<summary><img src=".github/assets/icons/devcheck.png" width="18" align="top">&nbsp;&nbsp;DevCheck&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.57 | 6.60 | 6.62 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="devcheck-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/devcheck/misc/theme/AmoledThemePatch.kt) | Adds a pure black option to the dark theme. |
+| <a id="devcheck-hide-menu-items"></a>[Hide menu items](patches/src/main/kotlin/app/morphe/patches/devcheck/layout/menu/HideMenuItemsPatch.kt) | Hides Manage subscription, Share and About from the main menu. |
+| <a id="devcheck-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/devcheck/misc/premium/UnlockPremiumPatch.kt) | Unlocks the Pro tools, tests, themes and colors. |
+
+</details>
+
+<a id="duolingo"></a>
+<details>
+<summary><img src=".github/assets/icons/duolingo.png" width="18" align="top">&nbsp;&nbsp;Duolingo&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.103.6 | 6.104.4 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="duolingo-disable-dynamic-app-icon"></a>[Disable dynamic app icon](patches/src/main/kotlin/app/morphe/patches/duolingo/misc/icon/DisableDynamicAppIconPatch.kt) | Keeps the default launcher icon. |
+| <a id="duolingo-enable-debug-mode"></a>[Enable debug mode](patches/src/main/kotlin/app/morphe/patches/duolingo/misc/debug/EnableDebugModePatch.kt) | Shows the debug menu and debug button. Turn it on in the patches menu. |
+| <a id="duolingo-unlimited-rampup-time"></a>[Unlimited RampUp time](patches/src/main/kotlin/app/morphe/patches/duolingo/misc/rampup/UnlimitedRampUpTimePatch.kt) | Holds the RampUp timer at one hour. |
+| <a id="duolingo-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/duolingo/misc/premium/UnlockPremiumPatch.kt) | Unlocks Super or Max and keeps energy full. Max Video Call does not work. |
+
+</details>
+
+<a id="dwg-fastview"></a>
+<details>
+<summary><img src=".github/assets/icons/dwgfastview.png" width="18" align="top">&nbsp;&nbsp;DWG FastView&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.19.4 | 5.19.6 | 5.20.0 | 5.21.0 |
+| :---: | :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="dwg-fastview-block-telemetry"></a>[Block telemetry](patches/src/main/kotlin/app/morphe/patches/gstarmc/misc/telemetry/BlockTelemetryPatch.kt) | Blocks the Umeng, ByteDance and ad network analytics endpoints. |
+| <a id="dwg-fastview-hide-rating-dialog"></a>[Hide rating dialog](patches/src/main/kotlin/app/morphe/patches/gstarmc/misc/rating/HideRatingDialogPatch.kt) | Removes the prompt asking for a store review. |
+| <a id="dwg-fastview-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/gstarmc/misc/premium/UnlockPremiumPatch.kt) | Unlocks the paid drawing, annotation and measurement tools, and removes ads. |
+
+</details>
+
+<a id="echo-equalizer"></a>
+<details>
+<summary><img src=".github/assets/icons/echoequalizer.png" width="18" align="top">&nbsp;&nbsp;Echo Equalizer&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 9.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="echo-equalizer-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/echoequalizer/misc/premium/UnlockPremiumPatch.kt) | Unlocks Echo Pro, including the 15- and 31-band equalizers, compressor, limiter and Safe Hearing protect mode. |
+
+</details>
+
+<a id="echogram"></a>
+<details>
+<summary><img src=".github/assets/icons/echogram.png" width="18" align="top">&nbsp;&nbsp;Echogram&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.1.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="echogram-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/echogram/misc/premium/UnlockPremiumPatch.kt) | Unlocks all premium features. |
+
+</details>
+
+<a id="etsy"></a>
+<details>
+<summary><img src=".github/assets/icons/etsy.png" width="18" align="top">&nbsp;&nbsp;Etsy&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.97.0 | 8.1.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="etsy-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/etsy/ads/HideAdsPatch.kt) | Removes promoted listings and the "with Ads" label from search results. |
+
+</details>
+
+<a id="fast-stl-viewer"></a>
+<details>
+<summary><img src=".github/assets/icons/faststlviewer.png" width="18" align="top">&nbsp;&nbsp;Fast STL Viewer&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.94 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="fast-stl-viewer-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/faststlviewer/misc/premium/UnlockPremiumPatch.kt) | Unlocks slice view, colors, lighting, normals, measurements, printability analysis and transform, and removes ads. |
+
+</details>
+
+<a id="fddb"></a>
+<details>
+<summary><img src=".github/assets/icons/fddb.png" width="18" align="top">&nbsp;&nbsp;Fddb&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| v7.8.7-Build-1-gms-release |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="fddb-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/fddb/misc/premium/UnlockPremiumPatch.kt) | Unlocks the weekly report, intermittent fasting, the calorie and nutrient planners, and custom nutrient targets. |
+
+</details>
+
+<a id="flights25"></a>
+<details>
+<summary><img src=".github/assets/icons/flights25.png" width="18" align="top">&nbsp;&nbsp;Flights25&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.4.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="flights25-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="flights25-remove-calendar-import-limit"></a>[Remove calendar import limit](patches/src/main/kotlin/app/morphe/patches/flights25/misc/premium/CalendarImportPatch.kt) | Removes limit on single-flight calendar imports. |
+| <a id="flights25-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/flights25/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium features. AI imports, Gmail scans and automatic calendar imports are not unlocked. |
+
+</details>
+
+<a id="focusnow"></a>
+<details>
+<summary><img src=".github/assets/icons/focusnow.png" width="18" align="top">&nbsp;&nbsp;FocusNow&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.8.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="focusnow-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/focusnow/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics and Crashlytics from collecting usage data. |
+| <a id="focusnow-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="focusnow-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/focusnow/misc/premium/UnlockPremiumPatch.kt) | Unlocks FocusNow Pro. |
+
+</details>
+
+<a id="forusapp"></a>
+<details>
+<summary><img src=".github/assets/icons/forus.png" width="18" align="top">&nbsp;&nbsp;ForusApp&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.0.15 | 3.0.18 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="forusapp-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/forus/misc/premium/UnlockPremiumPatch.kt) | Unlocks all premium features. |
+
+</details>
+
+<a id="freedom"></a>
+<details>
+<summary><img src=".github/assets/icons/freedom.png" width="18" align="top">&nbsp;&nbsp;Freedom&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.18.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="freedom-remove-upsells"></a>[Remove upsells](patches/src/main/kotlin/app/morphe/patches/freedom/misc/upsell/RemoveUpsellsPatch.kt) | Removes the sign-up trial offers and the Unlock Premium prompts on Today and in Settings. |
+| <a id="freedom-unlock-locked-mode"></a>[Unlock Locked Mode](patches/src/main/kotlin/app/morphe/patches/freedom/misc/lockedmode/UnlockLockedModePatch.kt) | Unlocks Locked Mode on free accounts. |
+
+</details>
+
+<a id="glass-widgets"></a>
+<details>
+<summary><img src=".github/assets/icons/glasswidgets.png" width="18" align="top">&nbsp;&nbsp;Glass Widgets&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.0.10 | 1.0.2 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="glass-widgets-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/glasswidgets/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro widgets, glass styles and settings and removes ads. |
+
+</details>
+
+<a id="graph-messenger"></a>
+<details>
+<summary><img src=".github/assets/icons/graphmessenger.png" width="18" align="top">&nbsp;&nbsp;Graph Messenger&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 13.0.2.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="graph-messenger-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/graphmessenger/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics and AppMetrica from collecting and sending usage data. |
+| <a id="graph-messenger-keep-timed-media"></a>[Keep timed media](patches/src/main/kotlin/app/morphe/patches/graphmessenger/misc/timedmedia/KeepTimedMediaPatch.kt) | Stops photos, videos and voice messages with a timer from self-destructing after you open them. Media Telegram's servers already deleted can't be restored. |
+| <a id="graph-messenger-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/graphmessenger/misc/ads/RemoveAdsPatch.kt) | Removes banner, interstitial, native, app open and rewarded ads, Graph's own promotions, Telegram sponsored messages and the proxy sponsor channel. |
+| <a id="graph-messenger-remove-forced-update"></a>[Remove forced update](patches/src/main/kotlin/app/morphe/patches/graphmessenger/misc/update/RemoveForcedUpdatePatch.kt) | Removes the dialog that blocks the app when Graph marks this version unsupported. |
+| <a id="graph-messenger-remove-restrictions"></a>[Remove restrictions](patches/src/main/kotlin/app/morphe/patches/graphmessenger/misc/restrictions/RemoveRestrictionsPatch.kt) | Allows copying, forwarding, saving and screenshots in chats and channels that restrict them. |
+| <a id="graph-messenger-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/graphmessenger/misc/premium/UnlockPremiumPatch.kt) | Unlocks Graph Premium and Telegram Premium features in the client. Features Telegram's servers meter still need a Premium account. |
+
+</details>
+
+<a id="ground-news"></a>
+<details>
+<summary><img src=".github/assets/icons/groundnews.png" width="18" align="top">&nbsp;&nbsp;Ground News&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.0.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="ground-news-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/groundnews/misc/tracking/DisableTrackingPatch.kt) | Stops usage analytics and crash reporting. |
+| <a id="ground-news-remove-article-ads"></a>[Remove article ads](patches/src/main/kotlin/app/morphe/patches/groundnews/misc/ads/RemoveArticleAdsPatch.kt) | Blocks advertising hosts in the in-app article browser. |
+| <a id="ground-news-remove-promotions"></a>[Remove promotions](patches/src/main/kotlin/app/morphe/patches/groundnews/misc/promotions/RemovePromotionsPatch.kt) | Removes subscription promotions from the main screen. |
+| <a id="ground-news-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/groundnews/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium features. |
+
+</details>
+
+<a id="habitify"></a>
+<details>
+<summary><img src=".github/assets/icons/habitify.png" width="18" align="top">&nbsp;&nbsp;Habitify&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 50.2.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="habitify-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="habitify-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/habitify/misc/premium/UnlockPremiumPatch.kt) | Unlocks lifetime Pro features and unlimited habits. Requires a signed-in account. |
+
+</details>
+
+<a id="hindu-calendar"></a>
+<details>
+<summary><img src=".github/assets/icons/hinducalendar.png" width="18" align="top">&nbsp;&nbsp;Hindu Calendar&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 9.4.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="hindu-calendar-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/hinducalendar/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics from collecting usage data. |
+| <a id="hindu-calendar-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/hinducalendar/ads/HideAdsPatch.kt) | Removes banner and interstitial ads and the Remove Ads menu item. |
+
+</details>
+
+<a id="hypic"></a>
+<details>
+<summary><img src=".github/assets/icons/hypic.png" width="18" align="top">&nbsp;&nbsp;Hypic&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 9.9.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="hypic-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="hypic-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/hypic/misc/upselling/HideUpgradePromotionsPatch.kt) | Hides the Pro button on the home screen, the Pro banner and promotions on the Me tab, free trial tips in the editor and on export, and Plans & billing in Settings. Closes subscription pages before they show. |
+| <a id="hypic-remove-reinstall-prompt"></a>[Remove reinstall prompt](patches/src/main/kotlin/app/morphe/patches/hypic/misc/prompt/RemoveReinstallPromptPatch.kt) | Removes the prompt to download the official app. Keeps saved app data. |
+| <a id="hypic-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/hypic/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro filters, effects, templates and tools. AI features that use server credits are not unlocked. |
+
+</details>
+
+<a id="imo"></a>
+<details>
+<summary><img src=".github/assets/icons/imo.png" width="18" align="top">&nbsp;&nbsp;imo&nbsp;&nbsp;•&nbsp;&nbsp;31 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2026.08.1041 | 2026.09.1051 | 2026.10.1021 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="imo-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/imo/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black. |
+| <a id="imo-allow-sending-apk-files"></a>[Allow sending APK files](patches/src/main/kotlin/app/morphe/patches/imo/misc/files/AllowSendingApkFilesPatch.kt) | Adds the Apps option to the chat file menu for sending installed apps as APK files. |
+| <a id="imo-allow-story-recording-during-calls"></a>[Allow story recording during calls](patches/src/main/kotlin/app/morphe/patches/imo/misc/story/AllowStoryRecordingInCallPatch.kt) | Allows recording and posting stories while a call is active. |
+| <a id="imo-disable-analytics"></a>[Disable analytics](patches/src/main/kotlin/app/morphe/patches/imo/misc/analytics/DisableAnalyticsPatch.kt) | Blocks usage statistics sent to imo, AppsFlyer, Firebase and Facebook, and the advertising ID upload. |
+| <a id="imo-disable-update-check"></a>[Disable update check](patches/src/main/kotlin/app/morphe/patches/imo/misc/update/DisableUpdateCheckPatch.kt) | Removes the forced update screen and the update prompts. |
+| <a id="imo-enable-burn-after-read-messages"></a>[Enable burn-after-read messages](patches/src/main/kotlin/app/morphe/patches/imo/misc/burn/EnableBurnAfterReadPatch.kt) | Adds the burn-after-read option to voice messages in private and group chats. |
+| <a id="imo-enable-chat-search-results"></a>[Enable chat search results](patches/src/main/kotlin/app/morphe/patches/imo/misc/search/EnableChatSearchResultsPatch.kt) | Adds a results list to in-chat search. |
+| <a id="imo-enable-jump-to-first-unread"></a>[Enable jump to first unread](patches/src/main/kotlin/app/morphe/patches/imo/misc/unread/EnableJumpToUnreadPatch.kt) | Jumps to the first unread chat when the Chats tab is double-tapped. |
+| <a id="imo-enable-message-translation"></a>[Enable message translation](patches/src/main/kotlin/app/morphe/patches/imo/misc/translation/EnableMessageTranslationPatch.kt) | Enables translating received messages. |
+| <a id="imo-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="imo-hide-voice-club-tab"></a>[Hide Voice Club tab](patches/src/main/kotlin/app/morphe/patches/imo/misc/tabs/HideVoiceClubTabPatch.kt) | Removes the Voice Club tab from the home screen. |
+| <a id="imo-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/imo/ads/HideAdsPatch.kt) | Removes splash, chat list, story and end-of-call ads, and skips the ad consent form. |
+| <a id="imo-hide-invite-prompts"></a>[Hide invite prompts](patches/src/main/kotlin/app/morphe/patches/imo/misc/invite/HideInvitePromptsPatch.kt) | Hides the invite friends dialog, the invite entry in the chat list, the call sharing banner and the Invite to Official imo dialog for unregistered numbers. |
+| <a id="imo-keep-screen-on-while-recording"></a>[Keep screen on while recording](patches/src/main/kotlin/app/morphe/patches/imo/misc/recording/KeepScreenOnWhileRecordingPatch.kt) | Keeps the screen on while recording a voice message. |
+| <a id="imo-prevent-screenshot-detection"></a>[Prevent screenshot detection](patches/src/main/kotlin/app/morphe/patches/imo/misc/screenshot/PreventScreenshotDetectionPatch.kt) | Stops chats and calls from reporting screenshots and screen recordings to the other person. |
+| <a id="imo-raise-gif-size-limit"></a>[Raise GIF size limit](patches/src/main/kotlin/app/morphe/patches/imo/misc/limits/RaiseGifSizeLimitPatch.kt) | Raises the size limit on GIFs picked for custom stickers to 100 MB. |
+| <a id="imo-raise-time-machine-erase-limit"></a>[Raise Time Machine erase limit](patches/src/main/kotlin/app/morphe/patches/imo/misc/limits/RaiseTimeMachineEraseLimitPatch.kt) | Raises the limit on messages erased at once with Time Machine to 1000. |
+| <a id="imo-raise-channel-video-limit"></a>[Raise channel video limit](patches/src/main/kotlin/app/morphe/patches/imo/misc/channel/RaiseChannelVideoLimitPatch.kt) | Raises the length limit on videos posted to a channel to 24 hours. |
+| <a id="imo-raise-media-sending-limit"></a>[Raise media sending limit](patches/src/main/kotlin/app/morphe/patches/imo/misc/limits/RaiseMediaSendingLimitPatch.kt) | Raises the limit on photos, videos and files sent at once to 100 and the size of each photo and video to 3 GB. |
+| <a id="imo-remove-chat-protection"></a>[Remove chat protection](patches/src/main/kotlin/app/morphe/patches/imo/misc/privacy/RemoveChatProtectionPatch.kt) | Allows copying, sharing, forwarding and downloading messages in chats with chat privacy or Time Machine turned on. |
+| <a id="imo-remove-contact-selection-limit"></a>[Remove contact selection limit](patches/src/main/kotlin/app/morphe/patches/imo/misc/limits/RemoveContactSelectionLimitPatch.kt) | Raises the limit on contacts selected for iBubble close friends, Family Guard invites and group calls to 999. Experimental. |
+| <a id="imo-remove-forwarding-restrictions"></a>[Remove forwarding restrictions](patches/src/main/kotlin/app/morphe/patches/imo/misc/forwarding/RemoveForwardingRestrictionsPatch.kt) | Allows forwarding disappearing and view-once text messages. |
+| <a id="imo-remove-premium-entry"></a>[Remove premium entry](patches/src/main/kotlin/app/morphe/patches/imo/misc/premium/RemovePremiumEntryPatch.kt) | Removes the imo Premium entry from the Me page. |
+| <a id="imo-remove-screenshot-restriction"></a>[Remove screenshot restriction](patches/src/main/kotlin/app/morphe/patches/imo/misc/screenshot/RemoveScreenshotRestrictionPatch.kt) | Allows screenshots and screen recording in chats, calls, media and profiles. |
+| <a id="imo-remove-story-notification-limit"></a>[Remove story notification limit](patches/src/main/kotlin/app/morphe/patches/imo/misc/story/RemoveStoryNotificationLimitPatch.kt) | Removes the 5 minute spacing between story notifications from 18:00 to 23:59. |
+| <a id="imo-remove-story-video-limit"></a>[Remove story video limit](patches/src/main/kotlin/app/morphe/patches/imo/misc/story/RemoveStoryVideoLimitPatch.kt) | Removes the length limit on story videos picked from the gallery or recorded. |
+| <a id="imo-send-long-messages"></a>[Send long messages](patches/src/main/kotlin/app/morphe/patches/imo/misc/messages/SendLongMessagesPatch.kt) | Sends text longer than 2000 characters as consecutive messages. Raises the chat input limit to 10000 characters. Privacy Chat messages are cut at 2000 characters. |
+| <a id="imo-show-full-profile-photos"></a>[Show full profile photos](patches/src/main/kotlin/app/morphe/patches/imo/misc/privacy/ShowFullProfilePhotosPatch.kt) | Opens profile photos in full size when their owner restricts it. |
+| <a id="imo-show-invisible-friends-in-contacts"></a>[Show invisible friends in contacts](patches/src/main/kotlin/app/morphe/patches/imo/misc/invisiblefriends/ShowInvisibleFriendsInContactsPatch.kt) | Adds the Invisible Friends entry to the contacts list. Requires at least one invisible friend. |
+| <a id="imo-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/imo/misc/signin/SpoofSignaturePatch.kt) | Restores phone verification by call when signing in and lets the app get its push token. |
+| <a id="imo-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/imo/misc/premium/UnlockPremiumPatch.kt) | Unlocks imo Premium. |
+
+</details>
+
+<a id="internet-speed-meter-lite"></a>
+<details>
+<summary><img src=".github/assets/icons/internetspeedmeterlite.png" width="18" align="top">&nbsp;&nbsp;Internet Speed Meter Lite&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.7.0-lite |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="internet-speed-meter-lite-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/internetspeedmeter/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics and Sessions from collecting usage data. |
+| <a id="internet-speed-meter-lite-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/internetspeedmeter/ads/RemoveAdsPatch.kt) | Removes ads and the prompts to allow them. |
+| <a id="internet-speed-meter-lite-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/internetspeedmeter/premium/UnlockPremiumPatch.kt) | Unlocks the notification dialog, smart notifications, themes, notification accent and the starting hour of the day. |
+
+</details>
+
+<a id="iototoy"></a>
+<details>
+<summary><img src=".github/assets/icons/iototoy.png" width="18" align="top">&nbsp;&nbsp;IoToToy&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.1.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="iototoy-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/iototoy/misc/tracking/DisableTrackingPatch.kt) | Stops the AppBrain SDK from starting, loading ads and reading the advertising ID. Disables ML Kit usage logging. |
+| <a id="iototoy-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/iototoy/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium blocks, diagrams over 25 blocks and runs longer than 15 minutes. Removes ads. |
+
+</details>
+
+<a id="joyn"></a>
+<details>
+<summary><img src=".github/assets/icons/joyn.png" width="18" align="top">&nbsp;&nbsp;Joyn&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.9.2-AOS-609282180 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="joyn-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/joyn/ads/HideAdsPatch.kt) | Removes ads before and during videos. Live TV is unavailable from outside Joyn's supported countries. |
+
+</details>
+
+<a id="joyn-austria"></a>
+<details>
+<summary><img src=".github/assets/icons/joyn-austria.png" width="18" align="top">&nbsp;&nbsp;Joyn Austria&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.9.0-AOS-JOYN_AT-2212264 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="joyn-austria-hide-ads"></a>Hide ads | Removes ads before and during videos. Live TV is unavailable from outside Joyn's supported countries. |
+
+</details>
+
+<a id="jujo"></a>
+<details>
+<summary><img src=".github/assets/icons/com.dev2a.junk_journal.png" width="18" align="top">&nbsp;&nbsp;Jujo&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.2.5 | 1.2.6 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="jujo-gmscore-support"></a>[GmsCore support](patches/src/main/kotlin/app/morphe/patches/shared/misc/gms/GetCredentialGmsCoreSupportPatch.kt) | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="jujo-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/jujo/misc/premium/UnlockPremiumPatch.kt) | Unlocks unlimited journals and widgets, premium templates, brushes, papers, stamp options, HD video export without a watermark, more pictures per page, longer PDF imports and sync for every journal. |
+
+</details>
+
+<a id="jvdroid"></a>
+<details>
+<summary><img src=".github/assets/icons/jvdroid.png" width="18" align="top">&nbsp;&nbsp;Jvdroid&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.8 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="jvdroid-amoled-dark-theme"></a>AMOLED dark theme | Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active. |
+| <a id="jvdroid-disable-tracking"></a>Disable tracking | Stops Firebase Analytics from collecting usage data. |
+| <a id="jvdroid-unlock-premium"></a>Unlock premium | Unlocks premium and removes ads. |
+
+</details>
+
+<a id="keepa"></a>
+<details>
+<summary><img src=".github/assets/icons/keepa.png" width="18" align="top">&nbsp;&nbsp;Keepa&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.7.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="keepa-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/keepa/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics and Crashlytics from collecting usage data. |
+| <a id="keepa-multiple-accounts"></a>[Multiple accounts](patches/src/main/kotlin/app/morphe/patches/keepa/misc/accounts/MultipleAccountsPatch.kt) | Signs in to several Keepa accounts at once and lists their price watches together. Accounts are added and removed in Settings > Accounts. |
+| <a id="keepa-show-offer-counts"></a>[Show offer counts](patches/src/main/kotlin/app/morphe/patches/keepa/misc/offercount/ShowOfferCountsPatch.kt) | Shows the new and used offer counts in the product overview. |
+| <a id="keepa-unlock-price-increase-tracking"></a>[Unlock price increase tracking](patches/src/main/kotlin/app/morphe/patches/keepa/misc/priceincrease/UnlockPriceIncreaseTrackingPatch.kt) | Adds the rise option when creating or editing a price watch. |
+
+</details>
+
+<a id="kick"></a>
+<details>
+<summary><img src=".github/assets/icons/kick.png" width="18" align="top">&nbsp;&nbsp;Kick&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| Any version |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="kick-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/kick/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black. Disables over-the-air updates that would restore the original background. |
+
+</details>
+
+<a id="klassik-radio"></a>
+<details>
+<summary><img src=".github/assets/icons/klassikradio.png" width="18" align="top">&nbsp;&nbsp;Klassik Radio+&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| p5.12.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="klassik-radio-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/klassikradio/misc/premium/UnlockPremiumPatch.kt) | Unlocks the premium music channels, on-demand playback and unlimited track skipping, and hides the trial banner. Requires a signed-in account. |
+
+</details>
+
+<a id="lagguy-wallpapers"></a>
+<details>
+<summary><img src=".github/assets/icons/lagguy.png" width="18" align="top">&nbsp;&nbsp;Lagguy Wallpapers&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 40.0.44 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="lagguy-wallpapers-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="lagguy-wallpapers-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/lagguy/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro collections, wide walls, original-size downloads and unlimited saves. Requires a signed-in account. |
+
+</details>
+
+<a id="launchbox"></a>
+<details>
+<summary><img src=".github/assets/icons/launchbox.png" width="18" align="top">&nbsp;&nbsp;LaunchBox&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.23 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="launchbox-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/launchbox/misc/premium/UnlockPremiumPatch.kt) | Removes the 100-game limit and the license prompts. |
+
+</details>
+
+<a id="led-blinker"></a>
+<details>
+<summary><img src=".github/assets/icons/ledblinker.png" width="18" align="top">&nbsp;&nbsp;LED Blinker&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.01.08 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="led-blinker-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/ledblinker/misc/premium/UnlockPremiumPatch.kt) | Unlocks pocket mode, notification history and statistics, and removes ads. |
+
+</details>
+
+<a id="liftoff"></a>
+<details>
+<summary><img src=".github/assets/icons/liftoff.png" width="18" align="top">&nbsp;&nbsp;Liftoff&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.17.5 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="liftoff-unlock-customizations"></a>[Unlock customizations](patches/src/main/kotlin/app/morphe/patches/liftoff/misc/customizations/UnlockCustomizationsPatch.kt) | Unlocks themes, profile borders and profile banners. |
+| <a id="liftoff-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/liftoff/misc/premium/UnlockPremiumPatch.kt) | Unlocks rank analysis, bodygraph, full chart history and nutrition tools. Requires a Liftoff account. |
+
+</details>
+
+<a id="lingodeer"></a>
+<details>
+<summary><img src=".github/assets/icons/lingodeer.png" width="18" align="top">&nbsp;&nbsp;LingoDeer&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.99.419 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="lingodeer-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="lingodeer-skip-sign-in-prompt"></a>[Skip sign-in prompt](patches/src/main/kotlin/app/morphe/patches/lingodeer/misc/signin/SkipSignInPromptPatch.kt) | Opens lessons past the second unit without an account. |
+| <a id="lingodeer-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/lingodeer/misc/premium/UnlockPremiumPatch.kt) | Unlocks every course, lesson and practice mode. |
+
+</details>
+
+<a id="magic-earth"></a>
+<details>
+<summary><img src=".github/assets/icons/magicearth.png" width="18" align="top">&nbsp;&nbsp;Magic Earth&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.1.26.26.21DB1F1B.3C81F7001 | 7.1.26.38.B4684D03.6207A61BA |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="magic-earth-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/magicearth/misc/premium/UnlockPremiumPatch.kt) | Unlocks offline maps, real-time traffic and weather, elevation maps, activity recording, vehicle profiles, personalized voices and Android Auto. |
+
+</details>
+
+<a id="mangatime"></a>
+<details>
+<summary><img src=".github/assets/icons/mangatime.png" width="18" align="top">&nbsp;&nbsp;MangaTime&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.24.5 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="mangatime-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="mangatime-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/mangatime/misc/premium/UnlockPremiumPatch.kt) | Removes ads and chapter limits, and unlocks reading history, binge mode and section settings. AI recommendation refresh and custom explore views are not unlocked. |
+
+</details>
+
+<a id="may-beautiful-bullet-journal"></a>
+<details>
+<summary><img src=".github/assets/icons/com.azeravn.bulletjournal.png" width="18" align="top">&nbsp;&nbsp;May: Beautiful Bullet Journal&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.0.216 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="may-beautiful-bullet-journal-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/bulletjournal/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium features. |
+
+</details>
+
+<a id="mbc-shahid"></a>
+<details>
+<summary><img src=".github/assets/icons/shahid.png" width="18" align="top">&nbsp;&nbsp;MBC Shahid&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 8.11.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="mbc-shahid-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/shahid/misc/tracking/DisableTrackingPatch.kt) | Stops AppsFlyer, mParticle, CleverTap, NPAW, Bugsnag, Firebase Analytics and Facebook from collecting usage data. |
+| <a id="mbc-shahid-fix-sign-in"></a>[Fix sign-in](patches/src/main/kotlin/app/morphe/patches/shahid/misc/signin/FixSignInPatch.kt) | Fixes signing in with an email, phone number or social account. |
+| <a id="mbc-shahid-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="mbc-shahid-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/shahid/ads/RemoveAdsPatch.kt) | Removes video ads, pause ads and sponsored cards on the home, show and Shorts pages. |
+| <a id="mbc-shahid-remove-root-detection"></a>[Remove root detection](patches/src/main/kotlin/app/morphe/patches/shahid/misc/root/RemoveRootDetectionPatch.kt) | Opens the app and plays videos on rooted devices. |
+| <a id="mbc-shahid-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/shahid/misc/premium/UnlockPremiumPatch.kt) | Unlocks Full HD playback. VIP titles require a subscription. |
+
+</details>
+
+<a id="medicneet"></a>
+<details>
+<summary><img src=".github/assets/icons/medicneet.png" width="18" align="top">&nbsp;&nbsp;MedicNEET&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.5.138 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="medicneet-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="medicneet-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/medicneet/misc/premium/UnlockPremiumPatch.kt) | Unlocks the AIMTS test series, the PYQ generator, video lectures and tier 1 and 2 questions in every topic. Tier 3 questions and flashcards are not included. |
+
+</details>
+
+<a id="memoneet"></a>
+<details>
+<summary><img src=".github/assets/icons/memoneet.png" width="18" align="top">&nbsp;&nbsp;MemoNeet&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 62.6 | 62.9 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="memoneet-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="memoneet-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/memoneet/misc/premium/UnlockPremiumPatch.kt) | Unlocks the premium question banks, notes, test series, previous-year papers and shop plans, with no energy cost or ads. Signing in requires GmsCore support. |
+
+</details>
+
+<a id="minishare"></a>
+<details>
+<summary><img src=".github/assets/icons/minishare.png" width="18" align="top">&nbsp;&nbsp;MiniShare&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.6.6 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="minishare-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/minishare/misc/theme/AmoledThemePatch.kt) | Replaces the light theme with a pure black dark theme. |
+
+</details>
+
+<a id="monet-launcher"></a>
+<details>
+<summary><img src=".github/assets/icons/monet.png" width="18" align="top">&nbsp;&nbsp;Monet Launcher&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.1.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="monet-launcher-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/monet/misc/premium/UnlockPremiumPatch.kt) | Unlocks Monet Premium. |
+
+</details>
+
+<a id="moon-reader"></a>
+<details>
+<summary><img src=".github/assets/icons/moonreader.png" width="18" align="top">&nbsp;&nbsp;Moon+ Reader&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 10.7 | 10.8 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="moon-reader-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/moonreader/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics from collecting usage data and the Google Mobile Ads SDK from starting at launch. |
+| <a id="moon-reader-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/moonreader/ads/HideAdsPatch.kt) | Hides full-screen ads and the Remove ads button in the side menu. |
+| <a id="moon-reader-unlock-pro"></a>[Unlock pro](patches/src/main/kotlin/app/morphe/patches/moonreader/misc/premium/UnlockProPatch.kt) | Unlocks Pro features, including PDF annotations and form filling, WebDAV and FTP sync, text-to-speech controls, the home screen widget and extra toolbar and shelf options. |
+
+</details>
+
+<a id="moviebox"></a>
+<details>
+<summary><img src=".github/assets/icons/moviebox.png" width="18" align="top">&nbsp;&nbsp;MovieBox&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.0.03.1020.03 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="moviebox-all-in-one"></a>[All-In-One](patches/src/main/kotlin/app/morphe/patches/moviebox/misc/allinone/AllInOnePatch.kt) | Enables video playback and downloads, removes ads and upsell prompts, and unlocks the Laboratory menu. Requires Android 10 or later. |
+| <a id="moviebox-hide-buzzbox"></a>[Hide BuzzBox](patches/src/main/kotlin/app/morphe/patches/moviebox/misc/buzzbox/HideBuzzBoxPatch.kt) | Removes the BuzzBox tabs from the bottom navigation bar and the home screen. |
+| <a id="moviebox-hide-midnight-tab"></a>[Hide Midnight tab](patches/src/main/kotlin/app/morphe/patches/moviebox/misc/midnight/HideMidnightTabPatch.kt) | Removes the Midnight 18+ tab from the home screen. Requires All-In-One. |
+| <a id="moviebox-hide-permanent-notification"></a>[Hide permanent notification](patches/src/main/kotlin/app/morphe/patches/moviebox/misc/permanentnotification/HidePermanentNotificationPatch.kt) | Hides the permanent notification. Requires All-In-One. |
+
+</details>
+
+<a id="moviebox-tv"></a>
+<details>
+<summary><img src=".github/assets/icons/movieboxtv.png" width="18" align="top">&nbsp;&nbsp;MovieBox TV&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| [1.2.0.0923.web_socialmedia](https://apk.aoneroom.com/apk/moviebox/release/1.2.0.0923/com.community.mbox.tv-release-1.2.0.0923-ws-50040018-h.apk "Download stock APK") |
+| :---: |
+
+Always verify the downloaded APK's SHA-256 against a trusted checksum before patching.
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="moviebox-tv-all-in-one"></a>[All-In-One](patches/src/main/kotlin/app/morphe/patches/movieboxtv/misc/allinone/AllInOnePatch.kt) | Unlocks video playback and removes ads and forced updates. Requires Android 10 or later. |
+
+</details>
+
+<a id="musclewiki"></a>
+<details>
+<summary><img src=".github/assets/icons/musclewiki.png" width="18" align="top">&nbsp;&nbsp;MuscleWiki&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.2.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="musclewiki-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="musclewiki-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/musclewiki/misc/premium/UnlockPremiumPatch.kt) | Unlocks MuscleWiki Premium and removes ads. Requires a signed-in account. |
+
+</details>
+
+<a id="musicolet"></a>
+<details>
+<summary><img src=".github/assets/icons/musicolet.png" width="18" align="top">&nbsp;&nbsp;Musicolet&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.14.1 build540 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="musicolet-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/musicolet/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro features. |
+
+</details>
+
+<a id="musixmatch"></a>
+<details>
+<summary><img src=".github/assets/icons/musixmatch.png" width="18" align="top">&nbsp;&nbsp;Musixmatch&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 8.5.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="musixmatch-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/musixmatch/misc/premium/UnlockPremiumPatch.kt) | Unlocks offline lyrics, animated backgrounds and Android Auto lyrics. |
+
+</details>
+
+<a id="muviz-widgets"></a>
+<details>
+<summary><img src=".github/assets/icons/muvizwidgets.png" width="18" align="top">&nbsp;&nbsp;Muviz Widgets&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.1.5.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="muviz-widgets-fix-weather"></a>[Fix weather](patches/src/main/kotlin/app/morphe/patches/muvizwidgets/misc/weather/FixWeatherPatch.kt) | Loads weather and finds the current city in the weather widgets. Fetches weather from Open-Meteo and the current city from BigDataCloud. |
+| <a id="muviz-widgets-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/muvizwidgets/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro widgets and styles and removes ads. |
+
+</details>
+
+<a id="my-apk"></a>
+<details>
+<summary><img src=".github/assets/icons/com.andatsoft.myapk.fwa.png" width="18" align="top">&nbsp;&nbsp;My APK&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.1.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="my-apk-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/myapk/premium/UnlockPremiumPatch.kt) | Unlocks premium and removes ads. |
+
+</details>
+
+<a id="mymoveset"></a>
+<details>
+<summary><img src=".github/assets/icons/mymoveset.png" width="18" align="top">&nbsp;&nbsp;MyMoveset&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.4.0 | 1.5.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="mymoveset-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/mymoveset/misc/tracking/DisableTrackingPatch.kt) | Stops the install identifier from reaching Expo and usage events from reaching Google. Disables OTA updates. |
+| <a id="mymoveset-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/mymoveset/misc/premium/UnlockPremiumPatch.kt) | Unlocks unlimited move views, goals and move cards, manual sync, earlier library updates and card customization. Disables OTA updates. |
+
+</details>
+
+<a id="myscript-math"></a>
+<details>
+<summary><img src=".github/assets/icons/myscriptmath.png" width="18" align="top">&nbsp;&nbsp;MyScript Math&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.12.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="myscript-math-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/myscriptmath/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics, Firebase Sessions and Survicate surveys from collecting usage data. |
+| <a id="myscript-math-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/myscriptmath/misc/premium/UnlockPremiumPatch.kt) | Unlocks all features after the free trial ends. |
+
+</details>
+
+<a id="myscript-notes"></a>
+<details>
+<summary><img src=".github/assets/icons/myscriptnotes.png" width="18" align="top">&nbsp;&nbsp;MyScript Notes&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.4.8 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="myscript-notes-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/myscriptnotes/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics, Firebase Sessions and Survicate surveys from collecting usage data. |
+| <a id="myscript-notes-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/myscriptnotes/misc/premium/UnlockPremiumPatch.kt) | Unlocks unlimited notes and pages, text conversion, shape and scratch-out gestures, PDF import and AI tools. |
+
+</details>
+
+<a id="nara-baby"></a>
+<details>
+<summary><img src=".github/assets/icons/narababy.png" width="18" align="top">&nbsp;&nbsp;Nara Baby&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.8.3 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="nara-baby-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/narababy/misc/tracking/DisableTrackingPatch.kt) | Stops Google Analytics, Crashlytics, Facebook App Events, Kochava and Klaviyo from collecting usage data. |
+| <a id="nara-baby-remove-forced-update"></a>[Remove forced update](patches/src/main/kotlin/app/morphe/patches/narababy/misc/update/RemoveForcedUpdatePatch.kt) | Removes the update screen that blocks the app when a newer build is published. |
+| <a id="nara-baby-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/narababy/misc/premium/UnlockPremiumPatch.kt) | Unlocks Nara Lifetime for every family the account belongs to. |
+
+</details>
+
+<a id="neetprep"></a>
+<details>
+<summary><img src=".github/assets/icons/neetprep.png" width="18" align="top">&nbsp;&nbsp;NEETprep&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 15.0.93 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="neetprep-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="neetprep-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/neetprep/misc/premium/UnlockPremiumPatch.kt) | Unlocks question and test explanations, Ask AI and attempt deletion. |
+
+</details>
+
+<a id="neetprep-essential"></a>
+<details>
+<summary><img src=".github/assets/icons/neetprepessential.png" width="18" align="top">&nbsp;&nbsp;NEETprep Essential&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.2.95 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="neetprep-essential-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="neetprep-essential-remove-screenshot-restriction"></a>[Remove screenshot restriction](patches/src/main/kotlin/app/morphe/patches/neetprepessential/misc/screenshot/RemoveScreenshotRestrictionPatch.kt) | Allows screenshots and screen recording on every screen. |
+| <a id="neetprep-essential-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/neetprepessential/misc/premium/UnlockPremiumPatch.kt) | Unlocks all chapters, practice sets, flashcards, hardest questions, mock tests and PYQ Marked NCERT questions. |
+
+</details>
+
+<a id="network-analyzer"></a>
+<details>
+<summary><img src=".github/assets/icons/netanalyzer.png" width="18" align="top">&nbsp;&nbsp;Network Analyzer&nbsp;&nbsp;•&nbsp;&nbsp;18 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="network-analyzer-bonjour-browser"></a>[Bonjour browser](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/bonjour/BonjourBrowserPatch.kt) | Lists the Bonjour services announced on the Wi-Fi network, grouped by type, with each service's host, address, port and TXT records. |
+| <a id="network-analyzer-common-ports-list"></a>[Common ports list](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/commonports/CommonPortsPatch.kt) | Adds an editor for the ports the Common port scan checks. |
+| <a id="network-analyzer-custom-device-names"></a>[Custom device names](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/devicenames/CustomDeviceNamesPatch.kt) | Adds custom names for Wi-Fi networks and LAN devices, shown in the Wi-Fi and LAN lists. |
+| <a id="network-analyzer-export-results"></a>[Export results](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/export/ExportResultsPatch.kt) | Adds an export menu to Ping, Traceroute, Port Scan, DNS, Whois, LAN Scan, Wi-Fi Signal and Information, with plain text and CSV output. |
+| <a id="network-analyzer-external-ip-details"></a>[External IP details](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/externalip/ExternalIpDetailsPatch.kt) | Adds a Details button to the External IP rows that shows the address's hostname, network operator and location. |
+| <a id="network-analyzer-host-details"></a>[Host details](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/hostdetails/HostDetailsPatch.kt) | Adds a details page for each ping reply and traceroute hop with its address, hostname, round-trip times, TTL, AS and location. |
+| <a id="network-analyzer-lan-device-details"></a>[LAN device details](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/lan/LanDeviceDetailsPatch.kt) | Adds a details page for each device in the LAN scan with its names, Wake on LAN, Bonjour and UPnP services and web interface, plus text and CSV export of the scan. |
+| <a id="network-analyzer-lan-scan-history"></a>[LAN scan history](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/lanhistory/LanScanHistoryPatch.kt) | Saves each finished LAN scan and its devices, lets you star, delete or clear saved scans, and scans a custom IP range. |
+| <a id="network-analyzer-ping-statistics"></a>[Ping statistics](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/pingstatistics/PingStatisticsPatch.kt) | Adds a bar chart of the current or last ping's round-trip times with min, median, max and lost packets. |
+| <a id="network-analyzer-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/ads/RemoveAdsPatch.kt) | Removes the banner ads, the ad consent prompt and the Pro upgrade prompts. |
+| <a id="network-analyzer-settings"></a>[Settings](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/settings/SettingsPatch.kt) | Adds a Settings screen with the theme, Wi-Fi scan frequency and 6 GHz scan options. |
+| <a id="network-analyzer-speed-test"></a>[Speed test](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/speedtest/SpeedTestPatch.kt) | Adds an internet speed test with download and upload charts and a test history. |
+| <a id="network-analyzer-tool-options"></a>[Tool options](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/tooloptions/ToolOptionsPatch.kt) | Adds ping protocol, TCP ping, probe delay, payload size, don't fragment and audible ping, traceroute and port scan delays, whois and RDAP servers, and DNS flags. |
+| <a id="network-analyzer-tools-history"></a>[Tools history](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/toolshistory/ToolsHistoryPatch.kt) | Lists the hosts queried in Tools with their last options, and lets you star or delete them. Tapping an entry opens it in Tools. |
+| <a id="network-analyzer-upnp-browser"></a>[UPnP browser](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/upnp/UpnpBrowserPatch.kt) | Lists the UPnP devices on the Wi-Fi network with their model, manufacturer, embedded devices and services. |
+| <a id="network-analyzer-visual-traceroute"></a>[Visual traceroute](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/visualtraceroute/VisualTraceroutePatch.kt) | Shows the hops of the current or last traceroute on an OpenStreetMap map. Map tiles load from tile.openstreetmap.org. |
+| <a id="network-analyzer-wi-fi-channel-usage"></a>[Wi-Fi channel usage](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/channelusage/ChannelUsagePatch.kt) | Adds a chart of how busy each Wi-Fi channel is, stacking the networks that share it. |
+| <a id="network-analyzer-wi-fi-network-details"></a>[Wi-Fi network details](patches/src/main/kotlin/app/morphe/patches/netanalyzer/misc/wifidetails/WifiDetailsPatch.kt) | Adds a details page for each network in the Signal list with its channel range, utilization, beamforming support, maximum speed and modulation. |
+
+</details>
+
+<a id="notein"></a>
+<details>
+<summary><img src=".github/assets/icons/notein.png" width="18" align="top">&nbsp;&nbsp;Notein&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| v2.1.37.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="notein-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/notein/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro features and removes the notebook limit. AI and cloud sync are not included. |
+
+</details>
+
+<a id="notesnook"></a>
+<details>
+<summary><img src=".github/assets/icons/notesnook.png" width="18" align="top">&nbsp;&nbsp;Notesnook&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.4.12 | 3.4.13 | 3.4.14 | 3.4.15 |
+| :---: | :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="notesnook-material-you-theme"></a>[Material You theme](patches/src/main/kotlin/app/morphe/patches/notesnook/theme/MaterialYouThemePatch.kt) | Applies the system accent colours to the default light and dark themes. Colours refresh when the app restarts, and start from the second launch. Requires Android 12 or later. |
+| <a id="notesnook-unlock-pro"></a>[Unlock pro](patches/src/main/kotlin/app/morphe/patches/notesnook/misc/premium/UnlockProPatch.kt) | Unlocks task lists, callouts, app lock, and the notebook, tag, colour and reminder limits. Requires a signed-in account. The server still enforces storage, attachment size, monographs and SMS 2FA. |
+
+</details>
+
+<a id="ok"></a>
+<details>
+<summary><img src=".github/assets/icons/okru.png" width="18" align="top">&nbsp;&nbsp;OK&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.9.24 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="ok-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/okru/ads/RemoveAdsPatch.kt) | Removes sponsored posts, video and clip ads, and ads in messages, notifications, discussions, games, music and Dzen. |
+
+</details>
+
+<a id="one4home-launcher"></a>
+<details>
+<summary><img src=".github/assets/icons/one4home.png" width="18" align="top">&nbsp;&nbsp;One4Home Launcher&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 0.5.145 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="one4home-launcher-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/one4home/misc/premium/UnlockPremiumPatch.kt) | Unlocks One4Home Pro and the collector Pals. |
+
+</details>
+
+<a id="opal"></a>
+<details>
+<summary><img src=".github/assets/icons/opal.png" width="18" align="top">&nbsp;&nbsp;Opal&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.17.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="opal-skip-sign-in"></a>[Skip sign-in](patches/src/main/kotlin/app/morphe/patches/opal/misc/signin/SkipSignInPatch.kt) | Skips sign-in and runs Opal without an account. Features that need the Opal server are unavailable. |
+| <a id="opal-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/opal/misc/premium/UnlockPremiumPatch.kt) | Unlocks Opal Pro. |
+
+</details>
+
+<a id="patreon"></a>
+<details>
+<summary><img src=".github/assets/icons/patreon.png" width="18" align="top">&nbsp;&nbsp;Patreon&nbsp;&nbsp;•&nbsp;&nbsp;8 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 126.44.0.13 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| <a id="patreon-disable-quips-and-autoplay"></a>[Disable Quips and autoplay](patches/src/main/kotlin/app/morphe/patches/patreon/layout/quips/DisableQuipsAndAutoplayPatch.kt) | Removes Quip cards and the Quip button, and stops feed videos from autoplaying or preloading. |  |
+| <a id="patreon-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/patreon/misc/tracking/DisableTrackingPatch.kt) | Disables Amplitude, AppsFlyer, Sentry, Sift and Mux data collection. |  |
+| <a id="patreon-hide-home-tab"></a>[Hide Home tab](patches/src/main/kotlin/app/morphe/patches/patreon/layout/launcher/HideHomeTabPatch.kt) | Removes the Home tab and starts on Memberships. Accounts without memberships keep the tab. |  |
+| <a id="patreon-hide-navigation-buttons"></a>[Hide navigation buttons](patches/src/main/kotlin/app/morphe/patches/patreon/layout/navigation/HideNavigationButtonsPatch.kt) | Removes chosen tabs from the bottom bar. | • Hide Feed<br>• Hide Library<br>• Hide Quip<br>• Hide Community<br>• Hide Notifications |
+| <a id="patreon-hide-recommended-creators"></a>[Hide recommended creators](patches/src/main/kotlin/app/morphe/patches/patreon/layout/home/HideRecommendedCreatorsPatch.kt) | Limits Home to creators you're a member of. |  |
+| <a id="patreon-hide-search-suggestions"></a>[Hide search suggestions](patches/src/main/kotlin/app/morphe/patches/patreon/layout/search/HideSearchSuggestionsPatch.kt) | Removes suggested creators and topics from Explore. |  |
+| <a id="patreon-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/patreon/layout/promotions/HideUpgradePromotionsPatch.kt) | Removes upgrade, rejoin and gift banners, upsell sheets, social proof and the in-feed survey. |  |
+| <a id="patreon-remove-app-prompts"></a>[Remove app prompts](patches/src/main/kotlin/app/morphe/patches/patreon/misc/prompts/RemoveAppPromptsPatch.kt) | Removes the rating prompt and the in-app update prompt. |  |
+
+</details>
+
+<a id="period-tracker-and-calendar"></a>
+<details>
+<summary><img src=".github/assets/icons/periodcalendar.png" width="18" align="top">&nbsp;&nbsp;Period Tracker and Calendar&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 13.4.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="period-tracker-and-calendar-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/periodcalendar/misc/premium/UnlockPremiumPatch.kt) | Unlocks Premium and the cycle synchronization workbook. Removes ads. |
+
+</details>
+
+<a id="perplexity"></a>
+<details>
+<summary><img src=".github/assets/icons/perplexity.png" width="18" align="top">&nbsp;&nbsp;Perplexity&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.103.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="perplexity-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/perplexity/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black. |
+| <a id="perplexity-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/perplexity/misc/tracking/DisableTrackingPatch.kt) | Stops usage events, crash reports and performance data from reaching Perplexity, Singular and Firebase. |
+| <a id="perplexity-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="perplexity-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/perplexity/misc/upselling/HideUpgradePromotionsPatch.kt) | Hides the subscription offer after signing in, the Upgrade plan banner, home screen promotions and upgrade cards in answers. Plan limits still apply. |
+
+</details>
+
+<a id="photo-editor-pro"></a>
+<details>
+<summary><img src=".github/assets/icons/photoeditorpro.png" width="18" align="top">&nbsp;&nbsp;Photo Editor Pro&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.791.265 | 1.802.266 | 1.811.267 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="photo-editor-pro-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/photoeditorpro/ads/HideAdsPatch.kt) | Removes banner, interstitial, app-open and rewarded ads. |
+| <a id="photo-editor-pro-hide-share-options"></a>[Hide share options](patches/src/main/kotlin/app/morphe/patches/photoeditorpro/layout/HideShareOptionsPatch.kt) | Removes share buttons from the save screen and centers the saved photo. |
+| <a id="photo-editor-pro-inspect-ai-requests"></a>[Inspect AI requests](patches/src/main/kotlin/app/morphe/patches/photoeditorpro/diagnostics/TraceAiRequestsPatch.kt) | Shows the network calls an AI tool makes, such as HTTP requests and Firebase uploads. Keeps a log of them. |
+| <a id="photo-editor-pro-show-ai-progress"></a>[Show AI progress](patches/src/main/kotlin/app/morphe/patches/photoeditorpro/aitools/ShowAiProgressPatch.kt) | Shows the current stage of AI Remove and Enhance on their loading screens. |
+| <a id="photo-editor-pro-speed-up-ai-tools"></a>[Speed up AI tools](patches/src/main/kotlin/app/morphe/patches/photoeditorpro/aitools/SpeedUpAiToolsPatch.kt) | Shortens the AI tool wait by polling for the result more often and uploading the photo in larger chunks. |
+| <a id="photo-editor-pro-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/photoeditorpro/misc/premium/UnlockPremiumPatch.kt) | Unlocks pro tools and removes export watermarks and upgrade prompts. |
+
+</details>
+
+<a id="photone"></a>
+<details>
+<summary><img src=".github/assets/icons/photone.png" width="18" align="top">&nbsp;&nbsp;Photone&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.5.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="photone-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/photone/misc/premium/UnlockPremiumPatch.kt) | Unlocks all light sources, extended PAR, Pro guides, Pro settings and the full toolbox. Pro support is not included. |
+
+</details>
+
+<a id="pixlr"></a>
+<details>
+<summary><img src=".github/assets/icons/pixlr.png" width="18" align="top">&nbsp;&nbsp;Pixlr&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.9.3 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| <a id="pixlr-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/pixlr/misc/tracking/DisableTrackingPatch.kt) | Disables Firebase Analytics, Singular, Facebook App Events, Crashlytics and the app's own usage events. |  |
+| <a id="pixlr-hide-home-sections"></a>[Hide home sections](patches/src/main/kotlin/app/morphe/patches/pixlr/layout/home/HideHomeSectionsPatch.kt) | Hides the selected sections from the home screen. | • Hide featured carousel<br>• Hide AI Create<br>• Hide AI Tools<br>• Hide AI Video |
+| <a id="pixlr-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/pixlr/ads/RemoveAdsPatch.kt) | Removes ads and the advertising consent prompt. |  |
+| <a id="pixlr-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/pixlr/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium stickers and effects. Removes ads, subscription screens, the daily save limit and the video watermark. AI tools need account credits. |  |
+
+</details>
+
+<a id="pleco"></a>
+<details>
+<summary><img src=".github/assets/icons/pleco.png" width="18" align="top">&nbsp;&nbsp;Pleco&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.2.101 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="pleco-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/pleco/misc/tracking/DisableTrackingPatch.kt) | Stops device identifiers and usage counters from reaching Pleco's servers and usage events from reaching Google. |
+| <a id="pleco-unlock-add-ons"></a>[Unlock add-ons](patches/src/main/kotlin/app/morphe/patches/pleco/misc/addons/UnlockAddOnsPatch.kt) | Unlocks the Flashcard System, Document Reader, Optical Character Recognizer and Enhanced Handwriting Recognizer. Excludes paid dictionaries, audio and voices. |
+
+</details>
+
+<a id="pocket-whip"></a>
+<details>
+<summary><img src=".github/assets/icons/pocketwhip.png" width="18" align="top">&nbsp;&nbsp;Pocket Whip&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.3 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="pocket-whip-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/pocketwhip/ads/HideAdsPatch.kt) | Hides the banner and stops ads from loading. |
+| <a id="pocket-whip-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/pocketwhip/misc/premium/UnlockPremiumPatch.kt) | Unlocks all whips. |
+
+</details>
+
+<a id="poe"></a>
+<details>
+<summary><img src=".github/assets/icons/poe.png" width="18" align="top">&nbsp;&nbsp;Poe&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| a3.78.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="poe-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/poe/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics, Sessions and Performance Monitoring from collecting usage data. |
+| <a id="poe-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/poe/misc/fix/signature/SpoofSignaturePatch.kt) | Enables push notifications. |
+
+</details>
+
+<a id="prayer-times-and-qibla"></a>
+<details>
+<summary><img src=".github/assets/icons/prayertimes.png" width="18" align="top">&nbsp;&nbsp;Prayer Times and Qibla&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.3.2 | 3.8.3 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="prayer-times-and-qibla-remove-app-protection"></a>[Remove app protection](patches/src/main/kotlin/app/morphe/patches/prayertimes/misc/protection/RemoveAppProtectionPatch.kt) | Lets a patched build of the Wear OS app start. Syncing with the phone app requires both apps patched with the same signing key. |
+| <a id="prayer-times-and-qibla-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/prayertimes/misc/premium/UnlockPremiumPatch.kt) | Unlocks random Adhan, unlimited personal reminders, theme colors and other Pro settings. |
+
+</details>
+
+<a id="privacy-notes"></a>
+<details>
+<summary><img src=".github/assets/icons/privacynotes.png" width="18" align="top">&nbsp;&nbsp;Privacy Notes&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 0.654.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="privacy-notes-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/privacynotes/premium/UnlockPremiumPatch.kt) | Unlocks Pro features, unlimited devices and larger file uploads. The server still blocks note history and caps storage at 50 MB. |
+
+</details>
+
+<a id="projectivy-launcher"></a>
+<details>
+<summary><img src=".github/assets/icons/projectivy.png" width="18" align="top">&nbsp;&nbsp;Projectivy Launcher&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.72 | 4.71 | 4.70 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="projectivy-launcher-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/projectivy/misc/tracking/DisableTrackingPatch.kt) | Disables analytics and crash reporting. |
+
+</details>
+
+<a id="proton-authenticator"></a>
+<details>
+<summary><img src=".github/assets/icons/protonauthenticator.png" width="18" align="top">&nbsp;&nbsp;Proton Authenticator&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.3.10 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="proton-authenticator-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/protonauthenticator/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black and can dim menus, bars and buttons. |
+| <a id="proton-authenticator-custom-accent-color"></a>[Custom accent color](patches/src/main/kotlin/app/morphe/patches/protonauthenticator/misc/theme/AccentColorPatch.kt) | Changes the accent color. Choose a color in the patches menu. |
+| <a id="proton-authenticator-hide-layout-components"></a>[Hide layout components](patches/src/main/kotlin/app/morphe/patches/protonauthenticator/misc/layout/HideLayoutComponentsPatch.kt) | Adds settings to hide the Spread the word section, the Discover Proton section and the Proton Pass banner. |
+| <a id="proton-authenticator-m3e-loading-indicator"></a>[M3E loading indicator](patches/src/main/kotlin/app/morphe/patches/protonauthenticator/misc/loadingindicator/LoadingIndicatorPatch.kt) | Shows the pull to refresh indicator as the Material 3 Expressive shape-morphing loading indicator. |
+| <a id="proton-authenticator-material-3-switches"></a>[Material 3 switches](patches/src/main/kotlin/app/morphe/patches/protonauthenticator/misc/theme/MaterialSwitchesPatch.kt) | Adds check and close icons to switches. |
+
+</details>
+
+<a id="proton-lumo"></a>
+<details>
+<summary><img src=".github/assets/icons/lumo.png" width="18" align="top">&nbsp;&nbsp;Proton Lumo&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.1.4-gms | 2.1.5-nogms |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="proton-lumo-material-3-switches"></a>[Material 3 switches](patches/src/main/kotlin/app/morphe/patches/lumo/misc/materialswitch/MaterialSwitchesPatch.kt) | Shows switches in the Material 3 style with check and close icons. |
+| <a id="proton-lumo-remove-tap-highlight"></a>[Remove tap highlight](patches/src/main/kotlin/app/morphe/patches/lumo/misc/taphighlight/RemoveWebTapHighlightPatch.kt) | Removes the highlight flash on tapped buttons and links. |
+| <a id="proton-lumo-store-encryption-key-in-tee"></a>[Store encryption key in TEE](patches/src/main/kotlin/app/morphe/patches/lumo/misc/strongbox/StoreKeyInTeePatch.kt) | Stores the local encryption key in the TEE instead of StrongBox. Prevents the Encryption error on devices whose StrongBox rejects the key. |
+| <a id="proton-lumo-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/lumo/misc/premium/UnlockPremiumPatch.kt) | Unlocks unlimited projects and removes upgrade prompts. Usage limits for models, messages and images still apply. |
+
+</details>
+
+<a id="proton-mail"></a>
+<details>
+<summary><img src=".github/assets/icons/protonmail.png" width="18" align="top">&nbsp;&nbsp;Proton Mail&nbsp;&nbsp;•&nbsp;&nbsp;11 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.11.12 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="proton-mail-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black and can dim menus, bars and buttons. |
+| <a id="proton-mail-custom-accent-color"></a>[Custom accent color](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/theme/AccentColorPatch.kt) | Changes the accent color. Choose a color in the patches menu. |
+| <a id="proton-mail-hide-layout-components"></a>[Hide layout components](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/layout/HideLayoutComponentsPatch.kt) | Adds settings to hide the Subscription and Report a problem sidebar entries. |
+| <a id="proton-mail-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/upselling/HideUpgradePromotionsPatch.kt) | Hides the top-bar upgrade button, promotional sidebar rows and the auto-delete upgrade banner in Trash and Spam. Keeps the Empty trash and Empty spam buttons. |
+| <a id="proton-mail-m3e-loading-indicator"></a>[M3E loading indicator](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/loadingindicator/LoadingIndicatorPatch.kt) | Shows the pull to refresh indicator as the Material 3 Expressive shape-morphing loading indicator. |
+| <a id="proton-mail-material-3-switches"></a>[Material 3 switches](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/materialswitch/MaterialSwitchesPatch.kt) | Shows switches in the Material 3 style with check and close icons. |
+| <a id="proton-mail-remove-sent-from-signature"></a>[Remove 'Sent from' signature](patches/src/main/kotlin/app/morphe/patches/protonmail/signature/RemoveSentFromSignaturePatch.kt) | Removes the 'Sent from Proton Mail' signature and unlocks the mobile signature setting. |
+| <a id="proton-mail-remove-free-accounts-limit"></a>[Remove free accounts limit](patches/src/main/kotlin/app/morphe/patches/protonmail/account/RemoveFreeAccountsLimitPatch.kt) | Removes the limit on signed-in free accounts. |
+| <a id="proton-mail-scheduled-trash-and-spam-deletion"></a>[Scheduled Trash and Spam deletion](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/scheduleddeletion/ScheduledDeletionPatch.kt) | Deletes all messages in Trash and Spam on separate configurable schedules. Deleted messages cannot be recovered. |
+| <a id="proton-mail-swipe-to-switch-accounts"></a>[Swipe to switch accounts](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/accountswipe/SwipeToSwitchAccountsPatch.kt) | Switches between signed-in accounts by swiping up or down on the account avatar. |
+| <a id="proton-mail-unlock-custom-time-picker"></a>[Unlock custom time picker](patches/src/main/kotlin/app/morphe/patches/protonmail/misc/scheduling/UnlockCustomTimePickerPatch.kt) | Enables picking a custom date and time when snoozing conversations and scheduling messages. |
+
+</details>
+
+<a id="proton-pass"></a>
+<details>
+<summary><img src=".github/assets/icons/protonpass.png" width="18" align="top">&nbsp;&nbsp;Proton Pass&nbsp;&nbsp;•&nbsp;&nbsp;9 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.40.3 | 1.41.2 | 1.41.3 | 1.41.4 | 1.41.5 |
+| :---: | :---: | :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="proton-pass-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black and can dim menus, bars and buttons. |
+| <a id="proton-pass-custom-accent-color"></a>[Custom accent color](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/theme/AccentColorPatch.kt) | Changes the accent color. Choose a color in the patches menu. |
+| <a id="proton-pass-floating-navigation-bar"></a>[Floating navigation bar](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/navigationbar/FloatingNavigationBarPatch.kt) | Adds optional floating navigation with adjustable blur and glass. |
+| <a id="proton-pass-hide-layout-components"></a>[Hide layout components](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/layout/HideLayoutComponentsPatch.kt) | Adds settings to hide the Help center, Spread the word and About sections. |
+| <a id="proton-pass-hide-navigation-bar-on-scroll"></a>[Hide navigation bar on scroll](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/navigationbar/HideNavigationBarOnScrollPatch.kt) | Hides the bottom navigation bar on scroll down and shows it on scroll up. |
+| <a id="proton-pass-hide-promotional-messages"></a>[Hide promotional messages](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/inappmessages/HidePromotionalMessagesPatch.kt) | Hides promotional banners, offers and pop-up messages. |
+| <a id="proton-pass-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/upselling/HideUpgradePromotionsPatch.kt) | Hides the Upgrade buttons, upgrade prompts and the welcome offer after signing in. Plan limits still apply. |
+| <a id="proton-pass-m3e-loading-indicator"></a>[M3E loading indicator](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/loadingindicator/LoadingIndicatorPatch.kt) | Shows the pull to refresh indicator as the Material 3 Expressive shape-morphing loading indicator. |
+| <a id="proton-pass-material-3-switches"></a>[Material 3 switches](patches/src/main/kotlin/app/morphe/patches/protonpass/misc/theme/MaterialSwitchesPatch.kt) | Shows switches in the Material 3 style with check and close icons. |
+
+</details>
+
+<a id="proton-vpn"></a>
+<details>
+<summary><img src=".github/assets/icons/protonvpn.png" width="18" align="top">&nbsp;&nbsp;Proton VPN&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.21.9.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="proton-vpn-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black and can dim menus, bars and buttons. |
+| <a id="proton-vpn-custom-accent-color"></a>[Custom accent color](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/theme/AccentColorPatch.kt) | Changes the accent color. Choose a color in the patches menu. |
+| <a id="proton-vpn-disable-telemetry"></a>[Disable telemetry](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/telemetry/DisableTelemetryPatch.kt) | Stops sending usage statistics and diagnostics to Proton. |
+| <a id="proton-vpn-floating-navigation-bar"></a>[Floating navigation bar](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/navigationbar/FloatingNavigationBarPatch.kt) | Adds optional floating navigation with adjustable blur and glass. |
+| <a id="proton-vpn-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/upselling/HideUpgradePromotionsPatch.kt) | Hides settings that need a paid plan, upgrade banners, the Discover VPN Plus carousel and special offers. |
+| <a id="proton-vpn-material-3-switches"></a>[Material 3 switches](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/theme/MaterialSwitchesPatch.kt) | Adds check and close icons to switches. |
+| <a id="proton-vpn-remove-server-change-delay"></a>[Remove server change delay](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/delay/RemoveServerChangeDelayPatch.kt) | Removes the wait between server changes on free plans. |
+| <a id="proton-vpn-show-free-server-locations"></a>[Show free server locations](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/freeservers/ShowFreeServerLocationsPatch.kt) | Lists free server locations in Countries and Search and connects to the one you pick. Applies only to free plans. |
+| <a id="proton-vpn-unlock-lan-connections"></a>[Unlock LAN connections](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/lan/UnlockLanConnectionsPatch.kt) | Unlocks LAN connections on free plans. |
+| <a id="proton-vpn-unlock-netshield"></a>[Unlock NetShield](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/netshield/UnlockNetShieldPatch.kt) | Unlocks NetShield ad and tracker blocking on free plans. |
+| <a id="proton-vpn-unlock-connection-preferences"></a>[Unlock connection preferences](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/connectionpreferences/UnlockConnectionPreferencesPatch.kt) | Unlocks the default connection, recent connections and excluded locations on free plans. |
+| <a id="proton-vpn-unlock-custom-dns"></a>[Unlock custom DNS](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/customdns/UnlockCustomDnsPatch.kt) | Unlocks custom DNS on free plans. |
+| <a id="proton-vpn-unlock-profiles"></a>[Unlock profiles](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/profiles/UnlockProfilesPatch.kt) | Unlocks profiles on free plans and limits them to free locations. Profiles for other locations are hidden. |
+| <a id="proton-vpn-unlock-split-tunneling"></a>[Unlock split tunneling](patches/src/main/kotlin/app/morphe/patches/protonvpn/misc/splittunneling/UnlockSplitTunnelingPatch.kt) | Unlocks split tunneling on free plans. |
+
+</details>
+
+<a id="psiphon"></a>
+<details>
+<summary><img src=".github/assets/icons/psiphon.png" width="18" align="top">&nbsp;&nbsp;Psiphon&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.5.13 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="psiphon-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/psiphon/premium/UnlockPremiumPatch.kt) | Unlocks all regions. Removes ads and the upgrade button. |
+
+</details>
+
+<a id="public"></a>
+<details>
+<summary><img src=".github/assets/icons/publicvideos.png" width="18" align="top">&nbsp;&nbsp;Public&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.3.8 | 3.4.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="public-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/publicvideos/tracking/DisableTrackingPatch.kt) | Stops AppsFlyer, Flurry, comScore, Firebase Analytics and Facebook from collecting usage data. |
+| <a id="public-disable-video-preloading"></a>[Disable video preloading](patches/src/main/kotlin/app/morphe/patches/publicvideos/misc/preload/DisableVideoPreloadingPatch.kt) | Stops preloading upcoming videos in the feed and in dramas. |
+| <a id="public-follow-system-theme"></a>[Follow system theme](patches/src/main/kotlin/app/morphe/patches/publicvideos/misc/theme/FollowSystemThemePatch.kt) | Switches the app between light and dark with the system theme. The app's Night Mode setting has no effect. |
+| <a id="public-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="public-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/publicvideos/ads/HideAdsPatch.kt) | Removes ads from the feed, app open, interstitial and rewarded placements, and the sponsor banner on the launch screen. |
+| <a id="public-remove-promotions"></a>[Remove promotions](patches/src/main/kotlin/app/morphe/patches/publicvideos/promotions/RemovePromotionsPatch.kt) | Removes advertiser banners under posts and the VIP package and advertising offers on the profile. |
+| <a id="public-remove-screenshot-restriction"></a>[Remove screenshot restriction](patches/src/main/kotlin/app/morphe/patches/publicvideos/misc/screenshot/RemoveScreenshotRestrictionPatch.kt) | Allows screenshots and screen recording on every screen. |
+
+</details>
+
+<a id="pydroid-3"></a>
+<details>
+<summary><img src=".github/assets/icons/pydroid.png" width="18" align="top">&nbsp;&nbsp;Pydroid 3&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 8.6_arm64 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="pydroid-3-amoled-dark-theme"></a>AMOLED dark theme | Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active. |
+| <a id="pydroid-3-disable-tracking"></a>Disable tracking | Stops Firebase Analytics from collecting usage data. |
+| <a id="pydroid-3-unlock-premium"></a>Unlock premium | Unlocks premium and removes ads. |
+
+</details>
+
+<a id="qr-barcode-scanner"></a>
+<details>
+<summary><img src=".github/assets/icons/qrscanner.png" width="18" align="top">&nbsp;&nbsp;QR & Barcode Scanner&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.2.221 | 2.2.224 | 2.2.227 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="qr-barcode-scanner-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/gammascan/ads/HideAdsPatch.kt) | Disables banner, interstitial, and native ads. |
+
+</details>
+
+<a id="quick-cursor"></a>
+<details>
+<summary><img src=".github/assets/icons/quickcursor.png" width="18" align="top">&nbsp;&nbsp;Quick Cursor&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.0.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="quick-cursor-unlock-pro"></a>[Unlock pro](patches/src/main/kotlin/app/morphe/patches/quickcursor/misc/premium/UnlockProPatch.kt) | Unlocks trigger, tracker and edge actions, floating tracker and cursor customization. |
+
+</details>
+
+<a id="quranify"></a>
+<details>
+<summary><img src=".github/assets/icons/quranify.png" width="18" align="top">&nbsp;&nbsp;Quranify&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.2.8 | 2.2.9 | 2.2.91 | 2.3.0 |
+| :---: | :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="quranify-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/quranify/misc/premium/UnlockPremiumPatch.kt) | Unlocks downloading every surah, lyrics and tafsir, Android Auto, background playback controls, and insights. Removes the Free Premium challenge section from Settings. |
+
+</details>
+
+<a id="radio-javan"></a>
+<details>
+<summary><img src=".github/assets/icons/radiojavan.png" width="18" align="top">&nbsp;&nbsp;Radio Javan&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 11.20.1 | 11.23.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="radio-javan-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/radiojavan/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics and Firebase Sessions from collecting usage data. |
+| <a id="radio-javan-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/radiojavan/misc/ads/HideAdsPatch.kt) | Removes banner, interstitial, app open and podcast audio ads, the launch promo video and the ad consent form. |
+| <a id="radio-javan-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/radiojavan/misc/premium/UnlockPremiumPatch.kt) | Unlocks RJ Premium downloads, high quality audio, lyrics, unlimited skips and song selection, and hides ads. Requires a signed-in account. |
+
+</details>
+
+<a id="raindrop-io"></a>
+<details>
+<summary><img src=".github/assets/icons/raindrop.png" width="18" align="top">&nbsp;&nbsp;Raindrop.io&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.8.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| <a id="raindrop-io-accent-color"></a>[Accent color](patches/src/main/kotlin/app/morphe/patches/raindrop/theme/AccentColorPatch.kt) | Replaces the accent color with the wallpaper color on Android 12 and later, or with a chosen color. A new wallpaper color applies after the app restarts. | • Material You<br>• Accent color |
+| <a id="raindrop-io-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |  |
+| <a id="raindrop-io-hide-ai-assistant"></a>[Hide AI assistant](patches/src/main/kotlin/app/morphe/patches/raindrop/layout/ai/HideAiAssistantPatch.kt) | Hides the AI assistant button on the home screen, in collections and in the reader. |  |
+| <a id="raindrop-io-hide-settings-links"></a>[Hide Settings links](patches/src/main/kotlin/app/morphe/patches/raindrop/layout/settings/HideSettingsLinksPatch.kt) | Hides the Web and Desktop app, Blog, Help and Support links in Settings. |  |
+| <a id="raindrop-io-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/raindrop/misc/upselling/HideUpgradePromotionsPatch.kt) | Hides the Go Pro entry in Settings. |  |
+| <a id="raindrop-io-unlock-pro"></a>[Unlock pro](patches/src/main/kotlin/app/morphe/patches/raindrop/misc/premium/UnlockProPatch.kt) | Unlocks reminders and highlight notes. Adds duplicate and broken link filters, collection and tag suggestions, full-text search of saved pages, Wayback Machine copies and a weekly bookmark export to Downloads. Requires a signed-in account. |  |
+
+</details>
+
+<a id="rateglance"></a>
+<details>
+<summary><img src=".github/assets/icons/rateglance.png" width="18" align="top">&nbsp;&nbsp;RateGlance&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.17.6 | 1.18.6 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="rateglance-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/rateglance/misc/premium/UnlockPremiumPatch.kt) | Unlocks all premium features. |
+
+</details>
+
+<a id="readera"></a>
+<details>
+<summary><img src=".github/assets/icons/readera.png" width="18" align="top">&nbsp;&nbsp;ReadEra&nbsp;&nbsp;•&nbsp;&nbsp;27 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.05.20+2300 | 26.10.28+2340 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="readera-accent-color"></a>[Accent color](patches/src/main/kotlin/app/morphe/patches/readera/misc/accent/AccentColorPatch.kt) | Replaces ReadEra's yellow with the wallpaper color on Android 12 and later, or green below 12. Another color can be picked in the patches menu. |
+| <a id="readera-app-theme"></a>[App theme](patches/src/main/kotlin/app/morphe/patches/readera/misc/theme/AppThemePatch.kt) | Adds a black AMOLED theme for the library, menus and Settings, picked in the patches menu. Book pages keep their own colors. |
+| <a id="readera-background-listening"></a>[Background listening](patches/src/main/kotlin/app/morphe/patches/readera/misc/background/BackgroundListeningPatch.kt) | Keeps Read aloud playing after switching apps or turning the screen off. |
+| <a id="readera-colored-quotes"></a>[Colored quotes](patches/src/main/kotlin/app/morphe/patches/readera/misc/highlightcolors/ColoredQuotesPatch.kt) | Saves selected text as a quote in one of five colors, picked from the text selection menu. |
+| <a id="readera-copy-with-source"></a>[Copy with source](patches/src/main/kotlin/app/morphe/patches/readera/misc/selection/CopyWithSourcePatch.kt) | Copies selected text with the book title and author. Found under More in the text selection menu. |
+| <a id="readera-custom-fonts"></a>[Custom fonts](patches/src/main/kotlin/app/morphe/patches/readera/misc/fonts/CustomFontsPatch.kt) | Adds reading fonts from a folder on the device. The folder is picked on ReadEra's Fonts screen. |
+| <a id="readera-dictionary-section"></a>[Dictionary section](patches/src/main/kotlin/app/morphe/patches/readera/misc/dictionary/DictionarySectionPatch.kt) | Adds a side menu page with the words saved from every book. |
+| <a id="readera-dictionary-word-colors"></a>[Dictionary word colors](patches/src/main/kotlin/app/morphe/patches/readera/misc/highlightcolors/DictionaryWordColorsPatch.kt) | Saves a selected word to Dictionary in one of five colors. |
+| <a id="readera-full-book-descriptions"></a>[Full book descriptions](patches/src/main/kotlin/app/morphe/patches/readera/misc/descriptions/FullBookDescriptionsPatch.kt) | Shows the whole book description in About document, including very short and very long ones. |
+| <a id="readera-library-full-screen"></a>[Library full screen](patches/src/main/kotlin/app/morphe/patches/readera/misc/fullscreen/LibraryFullScreenPatch.kt) | Hides the status bar and navigation bar in the library, as full-screen mode does in the reader. Turned on in the patches menu. |
+| <a id="readera-library-view-modes"></a>[Library view modes](patches/src/main/kotlin/app/morphe/patches/readera/misc/viewmode/LibraryViewModesPatch.kt) | Adds Full, Brief, Thumbnails and Grid layouts for book lists to the library menu. |
+| <a id="readera-lock-screen-on-read-chapter-aloud"></a>Lock screen on Read chapter aloud | Locks the phone when Read chapter aloud starts, and the chapter keeps playing. Turned on in the patches menu. Needs device admin access. |
+| <a id="readera-material-3-controls"></a>[Material 3 controls](patches/src/main/kotlin/app/morphe/patches/readera/misc/materialcontrols/MaterialControlsPatch.kt) | Gives switches, checkboxes and radio buttons in Settings and dialogs the Material 3 look. |
+| <a id="readera-more-sleep-timer-choices"></a>[More sleep timer choices](patches/src/main/kotlin/app/morphe/patches/readera/misc/sleeptimer/MoreSleepTimerChoicesPatch.kt) | Adds 5 and 10 minute options to the Read aloud sleep timer. |
+| <a id="readera-omit-words-and-symbols"></a>[Omit words and symbols](patches/src/main/kotlin/app/morphe/patches/readera/misc/speechfilter/OmitWordsAndSymbolsPatch.kt) | Makes Read aloud skip the words and symbols on a list, without changing the book. The list is edited in the patches menu. |
+| <a id="readera-page-counter-in-long-chapters"></a>[Page counter in long chapters](patches/src/main/kotlin/app/morphe/patches/readera/misc/pagecounter/PageCounterInLongChaptersPatch.kt) | Keeps the page counter next to the chapter title in chapters of 1,000 pages or more. |
+| <a id="readera-page-thumbnails"></a>[Page thumbnails](patches/src/main/kotlin/app/morphe/patches/readera/misc/minipages/PageThumbnailsPatch.kt) | Adds a button next to the page slider that shows the book's pages as thumbnails. |
+| <a id="readera-quotes-and-notes-section"></a>[Quotes and notes section](patches/src/main/kotlin/app/morphe/patches/readera/misc/notes/QuotesAndNotesPatch.kt) | Adds a side menu page with the quotes, bookmarks and reviews from every book. Tapping one opens the book at that spot. |
+| <a id="readera-read-aloud-from-selection"></a>[Read aloud from selection](patches/src/main/kotlin/app/morphe/patches/readera/misc/selection/ReadAloudFromSelectionPatch.kt) | Starts Read aloud from the selected text. Found under More in the text selection menu. |
+| <a id="readera-read-aloud-notification-controls"></a>[Read aloud notification controls](patches/src/main/kotlin/app/morphe/patches/readera/misc/notification/ReadAloudNotificationControlsPatch.kt) | Adds Stop, Previous and Next buttons to the Read aloud notification. On Android 7 to 10 it also counts down the sleep timer. |
+| <a id="readera-read-chapter-aloud"></a>[Read chapter aloud](patches/src/main/kotlin/app/morphe/patches/readera/misc/chapterspeech/ReadChapterAloudPatch.kt) | Reads one chapter aloud and stops at its end. Long-press the chapter in Contents to start. |
+| <a id="readera-read-footnotes-aloud"></a>[Read footnotes aloud](patches/src/main/kotlin/app/morphe/patches/readera/misc/footnotes/ReadFootnotesAloudPatch.kt) | Reads each footnote aloud where the book refers to it, in place of its number. Works in EPUB, FB2 and MOBI books. |
+| <a id="readera-remove-nags"></a>[Remove nags](patches/src/main/kotlin/app/morphe/patches/readera/misc/nags/RemoveNagsPatch.kt) | Removes the rate-the-app and promotion pop-ups and the Go to Premium button. |
+| <a id="readera-search-selection-in-book"></a>[Search selection in book](patches/src/main/kotlin/app/morphe/patches/readera/misc/selection/SearchSelectionInBookPatch.kt) | Searches the book for the selected text and lists every match. Found under More in the text selection menu. |
+| <a id="readera-skip-headers-and-footers"></a>[Skip headers and footers](patches/src/main/kotlin/app/morphe/patches/readera/misc/skipheaders/SkipHeadersPatch.kt) | Makes Read aloud skip page headers, footers and page numbers in PDF and DjVu files. |
+| <a id="readera-speech-pitch-slider"></a>[Speech pitch slider](patches/src/main/kotlin/app/morphe/patches/readera/misc/speechpitch/SpeechPitchSliderPatch.kt) | Adds a voice pitch slider from 0.5x to 2x to Settings > Text to speech (TTS). |
+| <a id="readera-speech-rate-slider"></a>[Speech rate slider](patches/src/main/kotlin/app/morphe/patches/readera/misc/speechrate/SpeechRateSliderPatch.kt) | Sets Read aloud speed from 0.1x to 4x with a slider on the Speech rate screen. |
+
+</details>
+
+<a id="realme-link"></a>
+<details>
+<summary><img src=".github/assets/icons/realmelink.png" width="18" align="top">&nbsp;&nbsp;Realme Link&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.8.811.2814 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="realme-link-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/realmelink/theme/AmoledThemePatch.kt) | Replaces the light theme with a pure black dark theme. Requires Android 13 or later. |
+| <a id="realme-link-bypass-session-expiry"></a>[Bypass session expiry](patches/src/main/kotlin/app/morphe/patches/realmelink/session/BypassSessionExpiryPatch.kt) | Stops the session expired prompt and toast. |
+
+</details>
+
+<a id="resprite"></a>
+<details>
+<summary><img src=".github/assets/icons/resprite.png" width="18" align="top">&nbsp;&nbsp;Resprite&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.32.6 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| <a id="resprite-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/resprite/misc/premium/UnlockPremiumPatch.kt) | Unlocks every premium feature, including the export limit, symmetry, outline, filters, text, timelapse and custom brushes. | • Hide Get Premium |
+
+</details>
+
+<a id="ridmik-keyboard"></a>
+<details>
+<summary><img src=".github/assets/icons/ridmik.png" width="18" align="top">&nbsp;&nbsp;Ridmik Keyboard&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 19.1.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="ridmik-keyboard-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/ridmik/ads/RemoveAdsPatch.kt) | Removes banner, full-screen and app-open ads from the keyboard and the app, and sponsored results in GIF search. |
+
+</details>
+
+<a id="ringtone-maker"></a>
+<details>
+<summary><img src=".github/assets/icons/ringtonemaker.png" width="18" align="top">&nbsp;&nbsp;Ringtone Maker&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.02.01.1023 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="ringtone-maker-remove-rating-prompts"></a>[Remove rating prompts](patches/src/main/kotlin/app/morphe/patches/ringtonemaker/misc/rate/RemoveRatingPromptsPatch.kt) | Removes the prompts asking for a rating. |
+| <a id="ringtone-maker-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/ringtonemaker/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium, removes ads and skips the upgrade screens. |
+
+</details>
+
+<a id="rise-sleep-tracker"></a>
+<details>
+<summary><img src=".github/assets/icons/risesleep.png" width="18" align="top">&nbsp;&nbsp;RISE Sleep Tracker&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| Android V1.79.3 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="rise-sleep-tracker-disable-telemetry"></a>[Disable telemetry](patches/src/main/kotlin/app/morphe/patches/rise/misc/telemetry/DisableTelemetryPatch.kt) | Stops crash and error reports from reaching Sentry. |
+| <a id="rise-sleep-tracker-disable-usage-tracking"></a>[Disable usage tracking](patches/src/main/kotlin/app/morphe/patches/rise/misc/telemetry/DisableUsageTrackingPatch.kt) | Stops app usage events from being uploaded. Local usage tracking remains enabled. |
+| <a id="rise-sleep-tracker-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/rise/misc/premium/UnlockPremiumPatch.kt) | Unlocks the energy schedule, habit tools, smart alarm and progress insights. Requires a RISE account. |
+
+</details>
+
+<a id="rubber-bands"></a>
+<details>
+<summary><img src=".github/assets/icons/rubberbands.png" width="18" align="top">&nbsp;&nbsp;Rubber Bands&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.11 | 3.16 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="rubber-bands-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/rubberbands/misc/premium/UnlockPremiumPatch.kt) | Unlocks running and logging workouts, progress tracking and personal records. AI workout generation is not included. |
+
+</details>
+
+<a id="serializd"></a>
+<details>
+<summary><img src=".github/assets/icons/serializd.png" width="18" align="top">&nbsp;&nbsp;Serializd&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.992 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="serializd-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/serializd/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics and the Playwire advertising SDK from collecting usage data and the advertising ID. |
+| <a id="serializd-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/serializd/ads/RemoveAdsPatch.kt) | Removes ad placements and the advertising consent prompt. |
+| <a id="serializd-sharpen-launcher-icon"></a>[Sharpen launcher icon](patches/src/main/kotlin/app/morphe/patches/serializd/misc/icon/SharpenLauncherIconPatch.kt) | Sharpens the default launcher icon. Alternate icons are unchanged. |
+
+</details>
+
+<a id="sheytoon"></a>
+<details>
+<summary><img src=".github/assets/icons/sheytoon.png" width="18" align="top">&nbsp;&nbsp;Sheytoon&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="sheytoon-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/sheytoon/misc/premium/UnlockPremiumPatch.kt) | Unlocks Sheytoon Select: unlimited likes, superlikes and quick notes, incognito mode, Second Look, and unblurred photos of the people who liked or viewed you. |
+
+</details>
+
+<a id="showly"></a>
+<details>
+<summary><img src=".github/assets/icons/showly.png" width="18" align="top">&nbsp;&nbsp;Showly&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.70.0 | 3.72.0 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="showly-amoled-dark-theme"></a>[AMOLED dark theme](patches/src/main/kotlin/app/morphe/patches/showly/misc/theme/AmoledThemePatch.kt) | Replaces the dark theme background with pure black. |
+| <a id="showly-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/showly/misc/premium/UnlockPremiumPatch.kt) | Unlocks ad removal, light theme, custom images, list view types, quick ratings, transparent widgets, and the News feed. |
+
+</details>
+
+<a id="sqcom"></a>
+<details>
+<summary><img src=".github/assets/icons/sqcom.png" width="18" align="top">&nbsp;&nbsp;SQCOM&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.1.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="sqcom-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="sqcom-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/sqcom/ads/HideAdsPatch.kt) | Removes splash, banner, native, interstitial and rewarded ads, and the ad consent prompt. |
+
+</details>
+
+<a id="steezy"></a>
+<details>
+<summary><img src=".github/assets/icons/steezy.png" width="18" align="top">&nbsp;&nbsp;STEEZY&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.23.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="steezy-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/steezy/misc/tracking/DisableTrackingPatch.kt) | Stops RudderStack, Branch, Firebase Sessions and Crashlytics from collecting usage data. |
+| <a id="steezy-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="steezy-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/steezy/misc/upselling/HideUpgradePromotionsPatch.kt) | Skips the subscription offer shown after sign-up. |
+| <a id="steezy-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/steezy/misc/premium/UnlockPremiumPatch.kt) | Unlocks all classes and programs. Requires a STEEZY account. |
+
+</details>
+
+<a id="storywise"></a>
+<details>
+<summary><img src=".github/assets/icons/storywise.png" width="18" align="top">&nbsp;&nbsp;Storywise&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.0.3 | 1.0.5 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="storywise-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="storywise-remove-forced-update"></a>[Remove forced update](patches/src/main/kotlin/app/morphe/patches/storywise/misc/update/RemoveForcedUpdatePatch.kt) | Removes the update screen that blocks the app when a newer build is published. |
+| <a id="storywise-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/storywise/misc/premium/UnlockPremiumPatch.kt) | Unlocks locked lessons, quizzes and the full Report Card without a pass. The server caps the AI tutor at five questions a day and withholds lectures and live sessions. Signing in requires GmsCore support. |
+
+</details>
+
+<a id="sygic"></a>
+<details>
+<summary><img src=".github/assets/icons/sygic.png" width="18" align="top">&nbsp;&nbsp;Sygic&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.6.1-120585 | 26.6.2-121046 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="sygic-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="sygic-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/sygic/misc/premium/UnlockPremiumPatch.kt) | Unlocks Premium+ features, including live traffic, speed cameras and Motorbike mode. |
+
+</details>
+
+<a id="symfonium"></a>
+<details>
+<summary><img src=".github/assets/icons/symfonium.png" width="18" align="top">&nbsp;&nbsp;Symfonium&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 14.0.0 | 14.1.0 | 15.0.1 | 15.1.0 | [14.0.0 TV](https://www.apkmirror.com/apk/tolriq/symfonium-music-player-cast-android-tv/symfonium-music-player-cast-android-tv-14-0-0-tv-release/ "Download stock APK") | [15.1.0 TV](https://www.apkmirror.com/apk/tolriq/symfonium-music-player-cast-android-tv/symfonium-music-player-cast-android-tv-15-1-0-tv-release/ "Download stock APK") |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+
+Always verify the downloaded APK's SHA-256 against a trusted checksum before patching.
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="symfonium-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/symfonium/misc/premium/UnlockPremiumPatch.kt) | Unlocks all premium features. |
+
+</details>
+
+<a id="terabox"></a>
+<details>
+<summary><img src=".github/assets/icons/terabox.png" width="18" align="top">&nbsp;&nbsp;TeraBox&nbsp;&nbsp;•&nbsp;&nbsp;11 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.27.5 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| <a id="terabox-clone-app"></a>[Clone app](patches/src/main/kotlin/app/morphe/patches/terabox/misc/clone/CloneAppPatch.kt) | Installs TeraBox as a separate app alongside the original, with its own account. Each copy needs a different clone number. | • Package name<br>• App name |
+| <a id="terabox-fix-google-login"></a>[Fix Google login](patches/src/main/kotlin/app/morphe/patches/terabox/misc/login/FixGoogleLoginPatch.kt) | Restores signing in with a Google account. |  |
+| <a id="terabox-fix-transfers-over-vpn"></a>[Fix transfers over VPN](patches/src/main/kotlin/app/morphe/patches/terabox/misc/fix/vpn/FixTransfersOverVpnPatch.kt) | Runs uploads, downloads and saves from shared links while a VPN is active. |  |
+| <a id="terabox-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/terabox/ads/HideAdsPatch.kt) | Removes feed, banner and video ads, plus interstitial and app-open ads. Rewarded ads still play when requested from Benefits. |  |
+| <a id="terabox-hide-consent-form"></a>[Hide consent form](patches/src/main/kotlin/app/morphe/patches/terabox/misc/consent/HideConsentFormPatch.kt) | Hides the ad consent form shown at startup. |  |
+| <a id="terabox-hide-home-shortcuts"></a>[Hide home shortcuts](patches/src/main/kotlin/app/morphe/patches/terabox/misc/shortcuts/HideHomeShortcutsPatch.kt) | Removes Trending and Short Drama from Home and More, and Translate where it appears. Options hide the Creative Generation tools, Signature, PDF Encryption and Add Watermark too. | • Hide Creative Generation<br>• Hide Translate<br>• Hide Signature<br>• Hide PDF Encryption<br>• Hide Add Watermark<br>• Hide Short Drama<br>• Hide Trending |
+| <a id="terabox-hide-promotions"></a>[Hide promotions](patches/src/main/kotlin/app/morphe/patches/terabox/misc/promotions/HidePromotionsPatch.kt) | Removes Premium and sale offers, plus prize and campaign cards, speed-up prompts, floating invites and coupon popups. |  |
+| <a id="terabox-hide-video-recommendations"></a>[Hide video recommendations](patches/src/main/kotlin/app/morphe/patches/terabox/misc/recommendations/HideVideoRecommendationsPatch.kt) | Removes recommendations below the player. |  |
+| <a id="terabox-remove-recent-panel"></a>[Remove recent panel](patches/src/main/kotlin/app/morphe/patches/terabox/misc/recent/RemoveRecentPanelPatch.kt) | Removes Recent, Starred and Offline from Home. |  |
+| <a id="terabox-show-backup-count"></a>[Show backup count](patches/src/main/kotlin/app/morphe/patches/terabox/misc/backup/ShowBackupCountPatch.kt) | Shows remaining files on Home and Photos, including paused backups. |  |
+| <a id="terabox-unlock-premium-plus"></a>[Unlock Premium Plus](patches/src/main/kotlin/app/morphe/patches/terabox/misc/premium/UnlockPremiumPatch.kt) | Unlocks HD, 3x speed and uploads, with HD up to original quality. HD buffers faster over parallel connections. |  |
+
+</details>
+
+<a id="tradingview"></a>
+<details>
+<summary><img src=".github/assets/icons/tradingview.png" width="18" align="top">&nbsp;&nbsp;TradingView&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.20.86.0.1002565 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="tradingview-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="tradingview-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/tradingview/ads/HideAdsPatch.kt) | Hides the ads and upgrade cards in the Ideas and Community feeds. |
+| <a id="tradingview-hide-upgrade-promotions"></a>[Hide upgrade promotions](patches/src/main/kotlin/app/morphe/patches/tradingview/misc/upselling/HideUpgradePromotionsPatch.kt) | Hides the Upgrade button, plan banners, subscription card and paywalls. Extra indicators, watchlists, flag colors, alerts, second and tick intervals, and intraday replay are not unlocked. |
+| <a id="tradingview-unlock-multi-chart-layouts"></a>[Unlock multi-chart layouts](patches/src/main/kotlin/app/morphe/patches/tradingview/layouts/UnlockChartLayoutsPatch.kt) | Unlocks chart layouts with up to 8 charts on one screen. |
+
+</details>
+
+<a id="trainline"></a>
+<details>
+<summary><img src=".github/assets/icons/trainline.png" width="18" align="top">&nbsp;&nbsp;Trainline&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 439.0.0.184323 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="trainline-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/trainline/ads/HideAdsPatch.kt) | Removes the adverts shown between search results. |
+
+</details>
+
+<a id="transparent-clock-weather"></a>
+<details>
+<summary><img src=".github/assets/icons/transparentclock.png" width="18" align="top">&nbsp;&nbsp;Transparent clock & weather&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 9.18.2 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="transparent-clock-weather-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/transparentclock/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics and Singular from collecting usage data, and disables Crashlytics. |
+| <a id="transparent-clock-weather-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/transparentclock/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium features and removes ads. Premium themes and widgets downloaded from Google Play are not included. |
+
+</details>
+
+<a id="tunneldoom-vpn"></a>
+<details>
+<summary><img src=".github/assets/icons/tunneldoomvpn.png" width="18" align="top">&nbsp;&nbsp;TunnelDOOM VPN&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.3.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="tunneldoom-vpn-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/tunneldoom/misc/ads/RemoveAdsPatch.kt) | Removes app open, banner, interstitial and rewarded ads and the ad consent form. |
+| <a id="tunneldoom-vpn-remove-time-limit"></a>[Remove time limit](patches/src/main/kotlin/app/morphe/patches/tunneldoom/misc/time/RemoveTimeLimitPatch.kt) | Keeps the VPN connected without adding time by watching ads. |
+
+</details>
+
+<a id="u-dictionary"></a>
+<details>
+<summary><img src=".github/assets/icons/udictionary.png" width="18" align="top">&nbsp;&nbsp;U Dictionary&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.7.5 | 6.7.6 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="u-dictionary-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/udictionary/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro features and removes ads. |
+
+</details>
+
+<a id="ultimate-guitar"></a>
+<details>
+<summary><img src=".github/assets/icons/ultimateguitar.png" width="18" align="top">&nbsp;&nbsp;Ultimate Guitar&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.3.36 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="ultimate-guitar-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="ultimate-guitar-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/ultimateguitar/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro, Courses, Sing and Practice features and removes ads. Songbooks are not unlocked. |
+
+</details>
+
+<a id="ultimea"></a>
+<details>
+<summary><img src=".github/assets/icons/ultimea.png" width="18" align="top">&nbsp;&nbsp;ULTIMEA&nbsp;&nbsp;•&nbsp;&nbsp;9 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.4.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="ultimea-accent-color"></a>[Accent color](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/theme/AccentColorPatch.kt) | Changes accent colors with a chosen color or Material You. |
+| <a id="ultimea-dark-theme"></a>[Dark theme](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/theme/DarkThemePatch.kt) | Adds dark and AMOLED themes with light text and controls. |
+| <a id="ultimea-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/tracking/DisableTrackingPatch.kt) | Disables Firebase Analytics, Crashlytics, Logan and usage event uploads. |
+| <a id="ultimea-fine-equalizer"></a>[Fine equalizer](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/equalizer/FineEqualizerPatch.kt) | Adds 0.1 dB adjustment, band values and Undo. |
+| <a id="ultimea-local-equalizer-presets"></a>[Local equalizer presets](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/presets/LocalEqualizerPresetsPatch.kt) | Adds named local curves with duplicate, export and import actions. |
+| <a id="ultimea-remove-distractions"></a>[Remove distractions](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/distractions/RemoveDistractionsPatch.kt) | Removes community, message and support entries. |
+| <a id="ultimea-remove-popups"></a>[Remove popups](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/popups/RemovePopupsPatch.kt) | Removes promotional and rating popups. |
+| <a id="ultimea-stop-firmware-reminders"></a>[Stop firmware reminders](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/firmware/StopFirmwareRemindersPatch.kt) | Stops automatic firmware reminders. Keeps manual update checks. |
+| <a id="ultimea-xupmix"></a>[Xupmix](patches/src/main/kotlin/app/morphe/patches/ultimea/misc/controls/XupmixPatch.kt) | Enables Xupmix control on Poseidon D80. |
+
+</details>
+
+<a id="uptcl"></a>
+<details>
+<summary><img src=".github/assets/icons/uptcl.png" width="18" align="top">&nbsp;&nbsp;UPTCL&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 11.0.41 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="uptcl-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/uptcl/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics, Firebase Sessions, Facebook, TikTok and the app's own event reporting from collecting usage data. |
+| <a id="uptcl-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/uptcl/ads/HideAdsPatch.kt) | Hides banner, native and full-screen ads. |
+| <a id="uptcl-hide-launch-promotion"></a>[Hide launch promotion](patches/src/main/kotlin/app/morphe/patches/uptcl/misc/promotion/HideLaunchPromotionPatch.kt) | Hides the promotional banner and video on the launch splash screen and the full-screen offer on the home screen. |
+| <a id="uptcl-match-system-bar-color"></a>[Match system bar color](patches/src/main/kotlin/app/morphe/patches/uptcl/misc/systembars/MatchSystemBarColorPatch.kt) | Colors the status bar and navigation bar white to match the app's screens. |
+| <a id="uptcl-remove-forced-update"></a>[Remove forced update](patches/src/main/kotlin/app/morphe/patches/uptcl/misc/update/RemoveForcedUpdatePatch.kt) | Removes the update prompts that block the app at launch. |
+
+</details>
+
+<a id="usa-vpn"></a>
+<details>
+<summary><img src=".github/assets/icons/usavpn.png" width="18" align="top">&nbsp;&nbsp;USA VPN&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.171 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="usa-vpn-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/usavpn/misc/premium/UnlockPremiumPatch.kt) | Unlocks PRO servers and removes ads and the connection time limit. |
+
+</details>
+
+<a id="viber"></a>
+<details>
+<summary><img src=".github/assets/icons/viber.png" width="18" align="top">&nbsp;&nbsp;Viber&nbsp;&nbsp;•&nbsp;&nbsp;23 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 29.3.1.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| <a id="viber-disable-ai-features"></a>[Disable AI features](patches/src/main/kotlin/app/morphe/patches/viber/layout/ai/DisableAiFeaturesPatch.kt) | Removes AI and inline Translate. |  |
+| <a id="viber-disable-analytics"></a>[Disable analytics](patches/src/main/kotlin/app/morphe/patches/viber/misc/analytics/DisableAnalyticsPatch.kt) | Stops Mixpanel, Adjust, Braze, Firebase, Crashlytics and Snap Kit from collecting and sending usage data. |  |
+| <a id="viber-disable-update-prompts"></a>[Disable update prompts](patches/src/main/kotlin/app/morphe/patches/viber/misc/updates/DisableUpdatePromptsPatch.kt) | Stops the optional Google Play update dialog. Required updates still show. |  |
+| <a id="viber-disappearing-media-privacy"></a>[Disappearing media privacy](patches/src/main/kotlin/app/morphe/patches/viber/layout/mediaprivacy/DisappearingMediaPrivacyPatch.kt) | Stops screenshot alerts and opening reports for disappearing messages. Opening reports resume once you read a newer message in that chat. |  |
+| <a id="viber-enable-viber-plus-features"></a>[Enable Viber Plus features](patches/src/main/kotlin/app/morphe/patches/viber/misc/premium/UnlockViberPlusPatch.kt) | Enables Viber Plus app icons and the typing privacy switch. The Plus badge and Invisible Mode need a paid subscription. |  |
+| <a id="viber-filter-business-chats"></a>[Filter business chats](patches/src/main/kotlin/app/morphe/patches/viber/layout/business/FilterBusinessChatsPatch.kt) | Filters selected business chats after reading and removes inbox discovery prompts. Shows unread chats and verification-code chats. |  |
+| <a id="viber-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |  |
+| <a id="viber-hide-more-screen-items"></a>[Hide More screen items](patches/src/main/kotlin/app/morphe/patches/viber/layout/more/HideMoreItemsPatch.kt) | Hides selected entries from the main screen and More screen. | • Hide About and FAQ<br>• Hide Business Account<br>• Hide Caller ID<br>• Hide Viber Dating<br>• Hide eSIM<br>• Hide Get free stickers<br>• Hide Invite friends<br>• Hide Open Business Account<br>• Hide promotional banners<br>• Hide Rakuten account<br>• Hide Viber Lenses<br>• Hide Viber Out<br>• Hide Viber Plus<br>• Hide Your News |
+| <a id="viber-hide-viber-out-and-channel-promotions"></a>[Hide Viber Out and channel promotions](patches/src/main/kotlin/app/morphe/patches/viber/layout/promotions/HidePromotionsPatch.kt) | Hides the Viber Out banners and intro on the Calls tab and the channel and bot suggestions in the chat list. |  |
+| <a id="viber-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/viber/ads/HideAdsPatch.kt) | Hides ads in the chat list, the More screen, Explore, search and after calls. |  |
+| <a id="viber-hide-navigation-buttons"></a>[Hide navigation buttons](patches/src/main/kotlin/app/morphe/patches/viber/layout/navigation/HideNavigationButtonsPatch.kt) | Hides the selected tabs from the bottom navigation bar. | • Hide Calls<br>• Hide ChatGPT<br>• Hide Explore<br>• Hide Marketplace<br>• Hide Pay<br>• Hide Shortica |
+| <a id="viber-link-as-secondary-device"></a>[Link as secondary device](patches/src/main/kotlin/app/morphe/patches/viber/misc/secondary/LinkAsSecondaryDevicePatch.kt) | Links to your main Viber phone. |  |
+| <a id="viber-raise-folder-limit"></a>[Raise folder limit](patches/src/main/kotlin/app/morphe/patches/viber/layout/folders/RaiseFolderLimitPatch.kt) | Allows up to 10 chat folders. |  |
+| <a id="viber-remove-caller-id-prompts"></a>[Remove Caller ID prompts](patches/src/main/kotlin/app/morphe/patches/viber/layout/callerid/RemoveCallerIdPromptsPatch.kt) | Removes Caller ID introduction sheets and the Calls tab banner. |  |
+| <a id="viber-remove-chat-payment-actions"></a>[Remove chat payment actions](patches/src/main/kotlin/app/morphe/patches/viber/layout/payments/RemoveChatPaymentsPatch.kt) | Removes payment actions from chat menus. |  |
+| <a id="viber-remove-list-gaps"></a>[Remove list gaps](patches/src/main/kotlin/app/morphe/patches/viber/layout/gaps/RemoveListGapsPatch.kt) | Removes list gaps and extra scrolling. |  |
+| <a id="viber-remove-locked-plus-items"></a>[Remove locked Plus items](patches/src/main/kotlin/app/morphe/patches/viber/layout/lockedplus/RemoveLockedPlusItemsPatch.kt) | Removes Invisible status options, Plus badge settings and locked Plus entries. |  |
+| <a id="viber-remove-online-status-limit"></a>[Remove online status limit](patches/src/main/kotlin/app/morphe/patches/viber/misc/onlinestatus/RemoveOnlineStatusLimitPatch.kt) | Removes the 24-hour wait between online status changes. |  |
+| <a id="viber-remove-typing-privacy-banner"></a>[Remove typing privacy banner](patches/src/main/kotlin/app/morphe/patches/viber/layout/typingbanner/RemoveTypingPrivacyBannerPatch.kt) | Removes typing privacy promotions. |  |
+| <a id="viber-save-disappearing-media"></a>[Save disappearing media](patches/src/main/kotlin/app/morphe/patches/viber/layout/media/SaveDisappearingMediaPatch.kt) | Shows Save to gallery for disappearing photos and videos. |  |
+| <a id="viber-spoof-signature"></a>[Spoof signature](patches/src/main/kotlin/app/morphe/patches/viber/misc/fix/signature/SpoofSignaturePatch.kt) | Lets the app send and receive messages and get its push token. |  |
+| <a id="viber-start-folder"></a>[Start folder](patches/src/main/kotlin/app/morphe/patches/viber/layout/startfolder/StartFolderPatch.kt) | Opens Chats in the selected folder. |  |
+| <a id="viber-unfiled-chats"></a>[Unfiled chats](patches/src/main/kotlin/app/morphe/patches/viber/layout/unfiled/UnfiledChatsPatch.kt) | Adds a folder tab for chats outside your custom folders. |  |
+
+</details>
+
+<a id="video-editor"></a>
+<details>
+<summary><img src=".github/assets/icons/videoeditor.png" width="18" align="top">&nbsp;&nbsp;Video Editor&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.630.199 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="video-editor-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/videoeditor/UnlockPremiumPatch.kt) | Unlocks Pro features. |
+
+</details>
+
+<a id="vllo"></a>
+<details>
+<summary><img src=".github/assets/icons/vllo.png" width="18" align="top">&nbsp;&nbsp;VLLO&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 13.9.0 | 13.9.6 | 13.9.18 |
+| :---: | :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="vllo-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/vllo/misc/tracking/DisableTrackingPatch.kt) | Stops AppsFlyer, Firebase Analytics, and Facebook from collecting usage data. |
+| <a id="vllo-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/vllo/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium editing features, removes ads and the export watermark, and skips the ad before importing audio. Hides the store button. The AI tools are not included. |
+
+</details>
+
+<a id="vpn-india"></a>
+<details>
+<summary><img src=".github/assets/icons/vpnindia.png" width="18" align="top">&nbsp;&nbsp;VPN India&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.175 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="vpn-india-unlock-premium"></a>Unlock premium | Unlocks PRO servers and removes ads and the connection time limit. |
+
+</details>
+
+<a id="vpn-super-unlimited-proxy"></a>
+<details>
+<summary><img src=".github/assets/icons/vpnsuper.png" width="18" align="top">&nbsp;&nbsp;VPN Super Unlimited Proxy&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.36.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="vpn-super-unlimited-proxy-disconnect-from-notification"></a>[Disconnect from notification](patches/src/main/kotlin/app/morphe/patches/vpnsuper/misc/notification/DisconnectFromNotificationPatch.kt) | Skips opening the app when Disconnect is tapped in the notification. Doesn't work on Android TV. |
+| <a id="vpn-super-unlimited-proxy-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/vpnsuper/premium/UnlockPremiumPatch.kt) | Unlocks premium servers and removes ads, upgrade banners, the launch paywall and the Android TV sign-in screen. |
+
+</details>
+
+<a id="vpnify"></a>
+<details>
+<summary><img src=".github/assets/icons/vpnify.png" width="18" align="top">&nbsp;&nbsp;vpnify&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.3.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="vpnify-disable-rating-prompt"></a>[Disable rating prompt](patches/src/main/kotlin/app/morphe/patches/vpnify/misc/review/DisableRatingPromptPatch.kt) | Stops the Google Play rating prompt from appearing. |
+| <a id="vpnify-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/vpnify/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium, removes ads and the free session time limit. |
+
+</details>
+
+<a id="wallmaa"></a>
+<details>
+<summary><img src=".github/assets/icons/wallmaa.png" width="18" align="top">&nbsp;&nbsp;Wallmaa&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.0.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="wallmaa-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/wallmaa/misc/tracking/DisableTrackingPatch.kt) | Stops the LevelPlay ad mediation SDK and its ad networks from starting. Ads no longer load. |
+| <a id="wallmaa-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/wallmaa/misc/premium/UnlockPremiumPatch.kt) | Unlocks every collection and removes ads and the download and apply limits. |
+
+</details>
+
+<a id="walp"></a>
+<details>
+<summary><img src=".github/assets/icons/walp.png" width="18" align="top">&nbsp;&nbsp;WalP&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 10.2.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="walp-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/walp/misc/premium/UnlockPremiumPatch.kt) | Unlocks Pro filters and wallpaper rotation from categories, and removes ads. |
+
+</details>
+
+<a id="watch-it"></a>
+<details>
+<summary><img src=".github/assets/icons/watchit.png" width="18" align="top">&nbsp;&nbsp;WATCH IT&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.30.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="watch-it-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/watchit/misc/tracking/DisableTrackingPatch.kt) | Stops Firebase Analytics, Crashlytics, Facebook app events and Brightcove video analytics from collecting usage data. |
+| <a id="watch-it-remove-ads"></a>[Remove ads](patches/src/main/kotlin/app/morphe/patches/watchit/ads/RemoveAdsPatch.kt) | Removes video ads, pause ads, sponsor overlays, interactive ads and advertiser logos. |
+
+</details>
+
+<a id="wattpad"></a>
+<details>
+<summary><img src=".github/assets/icons/wattpad.png" width="18" align="top">&nbsp;&nbsp;Wattpad&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 11.42.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="wattpad-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="wattpad-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/wattpad/ads/HideAdsPatch.kt) | Hides ads in the library, story pages, reader and comments. Rewarded videos for coins still play. |
+| <a id="wattpad-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/wattpad/misc/premium/UnlockPremiumPatch.kt) | Unlocks Premium+ with unlimited offline stories, reading themes and no interstitials in the reader. Paid stories still cost coins. |
+
+</details>
+
+<a id="weather24"></a>
+<details>
+<summary><img src=".github/assets/icons/weather24.png" width="18" align="top">&nbsp;&nbsp;weather24&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2.78.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="weather24-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/weather24/misc/premium/UnlockPremiumPatch.kt) | Removes banner, interstitial and video ads and unlocks the premium weather icons. |
+
+</details>
+
+<a id="x-plore-file-manager"></a>
+<details>
+<summary><img src=".github/assets/icons/xplore.png" width="18" align="top">&nbsp;&nbsp;X-plore File Manager&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 4.50.05 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="x-plore-file-manager-gmscore-support"></a>GmsCore support | Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed. |
+| <a id="x-plore-file-manager-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/xplore/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium features and removes ads. |
+
+</details>
+
+<a id="xianyu"></a>
+<details>
+<summary><img src=".github/assets/icons/idlefish.png" width="18" align="top">&nbsp;&nbsp;Xianyu&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 7.28.86.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="xianyu-allow-sharing-without-login"></a>[Allow sharing without login](patches/src/main/kotlin/app/morphe/patches/idlefish/misc/share/ShareWithoutLoginPatch.kt) | Shares a public listing link through the Android share sheet when signed out. |
+| <a id="xianyu-skip-login-prompts"></a>[Skip login prompts](patches/src/main/kotlin/app/morphe/patches/idlefish/misc/login/SkipLoginPromptsPatch.kt) | Skips login screens that open at launch, on search and listing taps and during background requests. |
+
+</details>
+
+<a id="xtream-player"></a>
+<details>
+<summary><img src=".github/assets/icons/xtreamplayer.png" width="18" align="top">&nbsp;&nbsp;Xtream Player&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.8.12 | 2.0.10 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="xtream-player-disable-tracking"></a>[Disable tracking](patches/src/main/kotlin/app/morphe/patches/xtreamplayer/misc/tracking/DisableTrackingPatch.kt) | Disables ML Kit usage reporting. |
+| <a id="xtream-player-full-android-auto-screen"></a>[Full Android Auto screen](patches/src/main/kotlin/app/morphe/patches/xtreamplayer/misc/androidauto/AndroidAutoSupportPatch.kt) | Shows full app in Android Auto while parked. Requires Android 15 or newer and Unknown sources in Android Auto developer settings. |
+| <a id="xtream-player-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/xtreamplayer/misc/premium/UnlockPremiumPatch.kt) | Unlocks premium media features and visualizers. |
+
+</details>
+
+<a id="yanosik"></a>
+<details>
+<summary><img src=".github/assets/icons/pl.neptis.yanosik.mobi.android.png" width="18" align="top">&nbsp;&nbsp;Yanosik&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.9.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="yanosik-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/yanosik/misc/premium/UnlockPremiumPatch.kt) | Removes ads and enables the floating widget, dynamic island, route editing and tab customization. Points, quests and rankings are not included. |
+
+</details>
+
+<a id="yi-iot"></a>
+<details>
+<summary><img src=".github/assets/icons/yiiot.png" width="18" align="top">&nbsp;&nbsp;Yi iot&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.1.8_20261021 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="yi-iot-hide-ads"></a>[Hide ads](patches/src/main/kotlin/app/morphe/patches/yiiot/ads/HideAdsPatch.kt) | Removes splash, interstitial, banner and native ads. Keeps the optional ad that unlocks an alarm video. |
+
+</details>
+
+<a id="yuka"></a>
+<details>
+<summary><img src=".github/assets/icons/yuka.png" width="18" align="top">&nbsp;&nbsp;Yuka&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 5.7 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| <a id="yuka-sign-in-token"></a>[Sign-in token](patches/src/main/kotlin/app/morphe/patches/yuka/misc/signin/SignInTokenPatch.kt) | Signs in on a standard install with an App Check token. Requires a token copied from Yuka installed from Google Play on a rooted phone. Steps are in the Yuka section of the README. | • App Check token |
+| <a id="yuka-unlock-premium"></a>[Unlock premium](patches/src/main/kotlin/app/morphe/patches/yuka/misc/premium/UnlockPremiumPatch.kt) | Unlocks food preferences, diet alerts and the full history. Search and offline downloads don't work. Signing in on a standard install needs Sign-in token. A root mount install signs in without it. |  |
+
+**Sign-in token** needs an App Check token from Yuka installed from Google Play on a rooted phone. Yuka uses
+the token only to sign in. You need a new one only if you sign out or clear Yuka's data. A root mount install
+signs in without a token.
+
+1. On the rooted phone, open Yuka, go to the sign-in screen, enter any email address and tap **Continue**. You
+   don't need to enter a password.
+2. In [Termux](https://f-droid.org/packages/com.termux), run this command and allow root. It prints one long
+   line starting with `eyJ`.
+
+   ```sh
+   su --mount-master -c "grep -o 'eyJ[A-Za-z0-9_.-]*' /data/data/io.yuka.android/shared_prefs/com.google.firebase.appcheck.store.*.xml"
+   ```
+
+   `No such file or directory` means Yuka hasn't fetched a token yet. Repeat step 1, then run the command again.
+
+   With [Termux:API](https://f-droid.org/packages/com.termux.api) and `pkg install termux-api`, add
+   `| termux-clipboard-set` to copy the token straight to the clipboard.
+
+3. Paste the line into the **App Check token** option in Morphe Manager, then patch, install and sign in on
+   the same day.
+
+</details>
+
+<a id="universal"></a>
+<details>
+<summary>🌐&nbsp;Universal&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description |
+|----------|----------------|
+| <a id="universal-override-certificate-pinning"></a>[Override certificate pinning](patches/src/main/kotlin/app/morphe/patches/all/misc/network/OverrideCertificatePinningPatch.kt) | Lets a proxy inspect the app's network traffic. Requires the proxy's certificate installed on the device. |
+
+</details>
+
+</details>
+
+<!-- PATCHES_END -->
+
+&nbsp;
+## Build from source
+
+You need Java 21, the Android SDK (`ANDROID_HOME` or `sdk.dir` in `local.properties`) and a GitHub token with `read:packages`:
+
+```bash
+./gradlew buildAndroid
+```
+
+The bundle is written to `patches/build/libs/`. See the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation) for setup.
+
+## Disclaimer
+
+- Use these patches only on apps you own or that are free. Don't use them to get paid content or redistribute patched apps.
+- This repo holds patch source code and build scripts. It doesn't host APKs.
+- This is a non-commercial project. Don't sell these patches or patched apps.
+- Modifying apps can break them or break their terms of service. Use at your own risk. The authors give no warranty.
+- This project isn't affiliated with Google, Morphe, ReVanced or any app developer. Trademarks belong to their owners.
+
+## License
+
+Licensed under GPLv3 (see [LICENSE](LICENSE)). The terms in [NOTICE](NOTICE) apply, including the rule that modified versions must not use the "Morphe" name or branding. Based on prior work by ReVanced.
+
+## Credits
+
+Patches are written and ported by the contributors named in each source file's header. Third-party components and their licenses are listed in [NOTICE](NOTICE).

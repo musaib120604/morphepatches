@@ -1,0 +1,70 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.protonmail.misc.upselling
+
+import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patches.protonmail.misc.banner.autoDeleteBannerStatePatch
+import app.morphe.patches.protonmail.misc.settings.patchesSettingsPatch
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.proton.UPSELLING_VISIBILITY_CLASS
+import app.morphe.patches.shared.misc.proton.markFeaturePatched
+import app.morphe.patches.shared.misc.proton.markPatchMetadata
+import app.morphe.patches.shared.misc.proton.returnVoidWhenUpsellingHidden
+import org.w3c.dom.Element
+
+private val unhandledSidebarUpsellingPatch = resourcePatch {
+    execute {
+        val declared = document(get("res/values/public.xml").inputStream()).use { document ->
+            val resources = document.documentElement.childNodes
+
+            (0 until resources.length)
+                .mapNotNull { resources.item(it) as? Element }
+                .filter { it.getAttribute("type") == ResourceType.STRING.value }
+                .map { it.getAttribute("name") }
+                .filter { it.startsWith(SIDEBAR_UPSELLING_LABEL_PREFIX) }
+        }
+
+        val unhandled = declared - SIDEBAR_UPSELLING_LABELS.toSet()
+
+        if (unhandled.isNotEmpty()) {
+            throw PatchException("Unhandled sidebar upselling rows: ${unhandled.joinToString()}")
+        }
+    }
+}
+
+@Suppress("unused")
+val hideUpgradePromotionsPatch: BytecodePatch = bytecodePatch(
+    name = "Hide upgrade promotions",
+    description = "Hides the top-bar upgrade button, promotional sidebar rows and the auto-delete " +
+        "upgrade banner in Trash and Spam. Keeps the Empty trash and Empty spam buttons.",
+) {
+    compatibleWith(AppCompatibilities.PROTON_MAIL)
+    dependsOn(
+        patchesSettingsPatch,
+        unhandledSidebarUpsellingPatch,
+        autoDeleteBannerStatePatch,
+    )
+
+    extendWith("extensions/extension.mpe")
+
+    execute {
+        markPatchMetadata("hideUpgradePromotions", hideUpgradePromotionsPatch, withDescription = true)
+        markFeaturePatched(UPSELLING_VISIBILITY_CLASS)
+
+        val rows = sidebarUpsellingRowFingerprints.mapNotNull { it.methodOrNull }
+
+        if (rows.isEmpty()) throw PatchException("No sidebar upselling rows matched")
+
+        rows.forEach { it.returnVoidWhenUpsellingHidden() }
+
+        UpgradeUpsellingButtonFingerprint.matchAll(UPGRADE_BUTTON_COUNT..UPGRADE_BUTTON_COUNT).forEach {
+            it.method.returnVoidWhenUpsellingHidden()
+        }
+    }
+}

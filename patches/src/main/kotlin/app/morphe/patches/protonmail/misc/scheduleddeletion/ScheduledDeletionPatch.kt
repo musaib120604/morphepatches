@@ -1,0 +1,128 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.protonmail.misc.scheduleddeletion
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.matchSingle
+import app.morphe.patches.protonmail.misc.banner.autoDeleteBannerStatePatch
+import app.morphe.patches.protonmail.misc.settings.patchesSettingsPatch
+import app.morphe.patches.protonmail.shared.uniffiCallsPatch
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.proton.markPatchApplied
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+
+private const val BANNER_CLASS = "Lapp/morphepatches/extension/protonmail/AutoDeleteBanner;"
+private const val EXTENSION_CLASS = "Lapp/morphepatches/extension/protonmail/ScheduledDeletion;"
+
+private val scheduledDeletionStringsPatch = resourcePatch {
+    execute {
+        document("res/values/strings.xml").use { document ->
+            mapOf(
+                "hx_scheduled_deletion_banner" to
+                    "Trash and Spam are deleted on the schedules set in morphepatches patches.",
+                "hx_scheduled_deletion_banner_trash" to
+                    "Trash is deleted on the schedule set in morphepatches patches.",
+                "hx_scheduled_deletion_banner_spam" to
+                    "Spam is deleted on the schedule set in morphepatches patches.",
+            ).forEach { (name, value) ->
+                val text = document.createElement("string")
+                text.setAttribute("name", name)
+                text.setAttribute("translatable", "false")
+                text.textContent = value
+                document.documentElement.appendChild(text)
+            }
+        }
+    }
+}
+
+@Suppress("unused")
+val scheduledDeletionPatch: BytecodePatch = bytecodePatch(
+    name = "Scheduled Trash and Spam deletion",
+    description = "Deletes all messages in Trash and Spam on separate configurable schedules. " +
+        "Deleted messages cannot be recovered.",
+) {
+    compatibleWith(AppCompatibilities.PROTON_MAIL)
+    dependsOn(
+        patchesSettingsPatch,
+        autoDeleteBannerStatePatch,
+        scheduledDeletionStringsPatch,
+        uniffiCallsPatch,
+    )
+    extendWith("extensions/extension.mpe")
+
+    execute {
+        markPatchApplied("scheduledDeletion", scheduledDeletionPatch)
+
+        AutoDeleteBannerTextFingerprint.matchSingle().let { match ->
+            val bannerTextIndex = match.instructionMatches.single().index
+            val enabledIndex = match.method.indexOfFirstInstructionReversedOrThrow(
+                bannerTextIndex,
+                Opcode.IGET_BOOLEAN,
+            )
+            val enabledRegister = match.method
+                .getInstruction<OneRegisterInstruction>(enabledIndex).registerA
+
+            val bannerTextRegister = match.method
+                .getInstruction<OneRegisterInstruction>(bannerTextIndex).registerA
+
+            match.method.addInstructions(
+                bannerTextIndex + 1,
+                """
+                    invoke-static/range { v$bannerTextRegister .. v$bannerTextRegister }, $BANNER_CLASS->textResource(I)I
+                    move-result v$bannerTextRegister
+                """,
+            )
+
+            match.method.addInstructions(
+                enabledIndex + 1,
+                """
+                    invoke-static/range { v$enabledRegister .. v$enabledRegister }, $BANNER_CLASS->isAutoDeleteEnabled(Z)Z
+                    move-result v$enabledRegister
+                """,
+            )
+        }
+
+        listOf(ScrollMessagesForLabelFingerprint, ScrollConversationsForLabelFingerprint)
+            .forEach { fingerprint ->
+                fingerprint.matchSingle().method.addInstructions(
+                    0,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onMailboxShown(Ljava/lang/Object;)V",
+                )
+            }
+
+        NewMailboxFingerprint.matchSingle().let { match ->
+            val newMailboxCall = match.instructionMatches.first()
+            val call = newMailboxCall.getInstruction<FiveRegisterInstruction>()
+            val result = match.instructionMatches.last()
+            val resultRegister = result.getInstruction<OneRegisterInstruction>().registerA
+            val sessionRegister = match.method.getFreeRegisterProvider(
+                newMailboxCall.index, 1, call.registerC, call.registerD, resultRegister,
+            ).getFreeRegister()
+            if (sessionRegister > 15 || resultRegister > 15) {
+                throw PatchException("Mailbox capture registers exceed invoke-static encoding limit")
+            }
+
+            match.method.addInstructions(
+                result.index + 1,
+                "invoke-static { v$resultRegister, v$sessionRegister }, " +
+                    "$EXTENSION_CLASS->captureMailbox(Ljava/lang/Object;Ljava/lang/Object;)V",
+            )
+            match.method.addInstructions(
+                newMailboxCall.index,
+                "move-object/from16 v$sessionRegister, v${call.registerC}",
+            )
+        }
+
+    }
+}

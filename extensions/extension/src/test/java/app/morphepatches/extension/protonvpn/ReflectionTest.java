@@ -1,0 +1,134 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Additional term under GPLv3 Section 7(b): When conveying this material
+ * or modified versions, preserve this notice and credit Musaib Bhat for this
+ * material in any Appropriate Legal Notices displayed by works containing it.
+ */
+package app.morphepatches.extension.protonvpn;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.lang.reflect.InvocationTargetException;
+
+import org.junit.Test;
+
+public final class ReflectionTest {
+
+    static final class Target {
+
+        private final Object value = new Object();
+
+        public Object getValue() {
+            return this.value;
+        }
+
+        public int getCount() {
+            return 7;
+        }
+
+        public boolean isReady() {
+            return true;
+        }
+
+        public void nothing() {
+        }
+
+        public void explode() {
+            throw new UnsupportedOperationException("exploded");
+        }
+
+        public String echo(String text) {
+            return text;
+        }
+
+        @SuppressWarnings("unused")
+        private String hidden() {
+            return "hidden";
+        }
+
+    }
+
+    @Test
+    public void returnsTheMethodResult() {
+        // given
+        final Target target = new Target();
+
+        // when
+        final Object result = Reflection.call(target, "getValue");
+
+        // then
+        assertSame(target.getValue(), result);
+    }
+
+    @Test
+    public void boxesPrimitiveResults() {
+        final Target target = new Target();
+        assertEquals(7, Reflection.call(target, "getCount"));
+        assertEquals(Boolean.TRUE, Reflection.call(target, "isReady"));
+    }
+
+    @Test
+    public void voidMethodsReturnNull() {
+        assertNull(Reflection.call(new Target(), "nothing"));
+    }
+
+    @Test
+    public void findsPublicMethodsInheritedFromObject() {
+        final Target target = new Target();
+        assertEquals(target.hashCode(), Reflection.call(target, "hashCode"));
+        assertEquals(target.toString(), Reflection.call(target, "toString"));
+    }
+
+    @Test
+    public void missingMethodIsReportedAsIllegalState() {
+        try {
+            Reflection.call(new Target(), "getMissing");
+            fail("expected an IllegalStateException");
+        } catch (IllegalStateException thrown) {
+            assertTrue(thrown.getCause() instanceof NoSuchMethodException);
+        }
+    }
+
+    @Test
+    public void nonPublicOrParameterizedMethodsAreNotFound() {
+        for (String name : new String[] { "hidden", "echo" }) {
+            try {
+                Reflection.call(new Target(), name);
+                fail("expected an IllegalStateException for " + name);
+            } catch (IllegalStateException thrown) {
+                assertTrue(name, thrown.getCause() instanceof NoSuchMethodException);
+            }
+        }
+    }
+
+    @Test
+    public void failureInsideTheMethodIsWrappedWithItsOriginalCause() {
+        try {
+            Reflection.call(new Target(), "explode");
+            fail("expected an IllegalStateException");
+        } catch (IllegalStateException thrown) {
+            assertTrue(thrown.getCause() instanceof InvocationTargetException);
+            assertTrue(thrown.getCause().getCause() instanceof UnsupportedOperationException);
+            assertEquals("exploded", thrown.getCause().getCause().getMessage());
+        }
+    }
+
+}

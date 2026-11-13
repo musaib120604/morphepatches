@@ -1,0 +1,71 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+package app.morphe.patches.protonpass.misc.theme
+
+import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.protonpass.misc.settings.patchesSettingsPatch
+import app.morphe.patches.shared.compat.AppCompatibilities
+import app.morphe.patches.shared.misc.proton.AMOLED_THEME_CLASS
+import app.morphe.patches.shared.misc.proton.amoledBackgroundOverlayPatch
+import app.morphe.patches.shared.misc.proton.markFeaturePatched
+import app.morphe.patches.shared.misc.proton.markPatchMetadata
+import app.morphe.patches.shared.misc.proton.transformCoreDarkBackgrounds
+import app.morphe.util.findElementByAttributeValueOrThrow
+
+private const val BACKGROUND_NORM = 41
+private const val BACKGROUND_WEAK = 42
+private const val BACKGROUND_STRONG = 44
+private const val BOTTOM_SHEET_BACKGROUND = 64
+private const val ITEM_DETAIL_BACKGROUND = 65
+private const val DARK_BACKGROUND_PALETTE_FIELD = "EerieBlack"
+private val DARK_BACKGROUND_ROLES = listOf(BACKGROUND_NORM, BACKGROUND_STRONG, ITEM_DETAIL_BACKGROUND)
+    .associateWith { DARK_BACKGROUND_PALETTE_FIELD }
+private const val DARK_RAISED_SURFACE_PALETTE_FIELD = "DarkGunmetal"
+private val DARK_RAISED_SURFACE_ROLES = listOf(BACKGROUND_WEAK, BOTTOM_SHEET_BACKGROUND)
+    .associateWith { DARK_RAISED_SURFACE_PALETTE_FIELD }
+private const val NIGHT_STYLES = "res/values-night/styles.xml"
+private const val SPLASH_STYLE = "ProtonTheme.Splash.Pass"
+private const val SPLASH_BACKGROUND_ITEM = "windowSplashScreenBackground"
+private const val BLACK_RESOURCE = "@android:color/black"
+
+private val amoledSplashBackgroundPatch = resourcePatch {
+    execute {
+        document(NIGHT_STYLES).use { document ->
+            document.getElementsByTagName("style")
+                .findElementByAttributeValueOrThrow("name", SPLASH_STYLE)
+                .getElementsByTagName("item")
+                .findElementByAttributeValueOrThrow("name", SPLASH_BACKGROUND_ITEM)
+                .textContent = BLACK_RESOURCE
+        }
+    }
+}
+
+@Suppress("unused")
+val amoledThemePatch: BytecodePatch = bytecodePatch(
+    name = "AMOLED dark theme",
+    description = "Replaces the dark theme background with pure black and can dim menus, bars and buttons.",
+) {
+    compatibleWith(AppCompatibilities.PROTON_PASS)
+    dependsOn(patchesSettingsPatch, amoledSplashBackgroundPatch, amoledBackgroundOverlayPatch)
+
+    execute {
+        markPatchMetadata("amoledDarkTheme", amoledThemePatch, withDescription = true)
+        markFeaturePatched(AMOLED_THEME_CLASS)
+        transformCoreDarkBackgrounds()
+
+        PassColorsInitializerFingerprint.method.transformPassColors(
+            DARK_COLORS_FIELD,
+            DARK_BACKGROUND_ROLES,
+            "$AMOLED_THEME_CLASS->transformPackedBackground(J)J",
+        )
+        PassColorsInitializerFingerprint.method.transformPassColors(
+            DARK_COLORS_FIELD,
+            DARK_RAISED_SURFACE_ROLES,
+            "$AMOLED_THEME_CLASS->transformPackedRaisedSurface(J)J",
+        )
+    }
+}

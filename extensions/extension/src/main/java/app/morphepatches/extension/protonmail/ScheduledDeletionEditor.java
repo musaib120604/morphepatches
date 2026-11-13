@@ -1,0 +1,365 @@
+/*
+ * Copyright (C) 2026 Musaib Bhat
+ * SPDX-License-Identifier: GPL-3.0-only
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Additional term under GPLv3 Section 7(b): When conveying this material
+ * or modified versions, preserve this notice and credit Musaib Bhat for this
+ * material in any Appropriate Legal Notices displayed by works containing it.
+ */
+package app.morphepatches.extension.protonmail;
+
+import java.util.List;
+import java.util.Locale;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.text.InputType;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+import app.morphe.extension.shared.Utils;
+
+import app.morphepatches.extension.proton.AccentColor;
+import app.morphepatches.extension.proton.PatchesDialog;
+import app.morphepatches.extension.proton.PatchesTheme;
+import app.morphepatches.extension.proton.SwitchStyle;
+
+@SuppressLint("SetTextI18n")
+@SuppressWarnings("deprecation")
+public final class ScheduledDeletionEditor {
+
+    public static final String SETTINGS_ROW_TITLE = "Scheduled deletion";
+
+    private static final int[] UNIT_SECONDS = { 60, 3600, 86400 };
+
+    private static final String[] UNIT_LABELS = { "Minutes", "Hours", "Days" };
+
+    private static final int DEFAULT_SECONDS = 30 * 86400;
+
+    private static final int TOUCH_TARGET_DP = 48;
+
+    private static final int CONTROL_SPACING_DP = 8;
+
+    private static final int SECTION_SPACING_DP = 16;
+
+    private static final int BODY_TEXT_SP = 14;
+
+    private ScheduledDeletionEditor() {
+
+    }
+
+    public static String summary(Context context) {
+        final String schedules = schedules(context);
+        return (schedules.isEmpty()) ? "Off" : schedules;
+    }
+
+    private static String schedules(Context context) {
+        final StringBuilder summary = new StringBuilder();
+        for (String label : ScheduledDeletion.EMPTIED_LABELS) {
+            final int seconds = ScheduledDeletionSettings.intervalSeconds(context, label);
+            if (seconds <= ScheduledDeletionSettings.OFF) {
+                continue;
+            }
+            if (summary.length() > 0) {
+                summary.append(", ");
+            }
+            summary.append(folderName(label)).append(" every ").append(intervalLabel(seconds));
+        }
+        return summary.toString();
+    }
+
+    static void showDeleted(List<String> labels) {
+        if (labels.isEmpty()) {
+            return;
+        }
+        if (!ScheduledDeletionSettings.showsToast(Utils.getContext())) {
+            return;
+        }
+
+        Utils.showToastLong("Deleted all messages in " + folderNames(labels));
+    }
+
+    private static String folderNames(List<String> labels) {
+        final StringBuilder names = new StringBuilder(folderName(labels.get(0)));
+        for (int index = 1; index < labels.size(); index++) {
+            names.append((index != labels.size() - 1) ? ", " : " and ").append(folderName(labels.get(index)));
+        }
+        return names.toString();
+    }
+
+    public static void show(Activity activity, Runnable onSettingChanged) {
+        if (activity.isFinishing() || activity.isDestroyed()) {
+            return;
+        }
+
+        final LinearLayout content = new LinearLayout(activity);
+        content.setOrientation(LinearLayout.VERTICAL);
+        content.setFocusableInTouchMode(true);
+        content.requestFocus();
+
+        final String[] labels = ScheduledDeletion.EMPTIED_LABELS;
+        final LabelSection[] sections = new LabelSection[labels.length];
+        for (int index = 0; index < labels.length; index++) {
+            sections[index] = new LabelSection(activity, labels[index]);
+            sections[index].addTo(content, index > 0);
+        }
+
+        final Switch toastSwitch = new Switch(activity);
+        toastSwitch.setText("Show a toast after each deletion");
+        toastSwitch.setGravity(Gravity.CENTER_VERTICAL);
+        toastSwitch.setMinimumHeight(dp(activity, TOUCH_TARGET_DP));
+        toastSwitch.setChecked(ScheduledDeletionSettings.showsToast(activity));
+
+        final TextView warningText = new TextView(activity);
+        warningText.setText("Deletes everything in each folder on its own schedule, regardless "
+                + "of when a message arrived there. Deleted messages cannot be recovered.");
+        warningText.setTextSize(TypedValue.COMPLEX_UNIT_SP, BODY_TEXT_SP);
+
+        final LinearLayout.LayoutParams toastParams = matchWidth();
+        toastParams.topMargin = dp(activity, SECTION_SPACING_DP);
+        content.addView(toastSwitch, toastParams);
+
+        final LinearLayout.LayoutParams warningParams = matchWidth();
+        warningParams.topMargin = dp(activity, CONTROL_SPACING_DP);
+        warningParams.bottomMargin = dp(activity, CONTROL_SPACING_DP);
+        content.addView(warningText, warningParams);
+
+        final ScrollView scroll = new ScrollView(activity);
+        scroll.setVerticalScrollBarEnabled(false);
+        scroll.addView(content);
+
+        final LinearLayout surface = PatchesDialog.createContentLayout(activity);
+        surface.addView(PatchesDialog.createTitle(activity, SETTINGS_ROW_TITLE));
+        surface.addView(scroll, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
+
+        final Dialog dialog = PatchesDialog.createDialog(activity, surface);
+        final int accentColor = AccentColor
+            .getAccentColor(PatchesTheme.isDark(PatchesTheme.backgroundSecondary(activity)));
+        final int textWeakColor = PatchesTheme.textWeak(activity);
+
+        final LinearLayout actions = PatchesDialog.createButtonRow(activity);
+        actions.addView(PatchesDialog.configureActionButton(activity,
+                PatchesDialog.createTextView(activity, "Cancel", BODY_TEXT_SP, textWeakColor), dialog::dismiss));
+        actions.addView(PatchesDialog.configureActionButton(activity,
+                PatchesDialog.createTextView(activity, "Save", BODY_TEXT_SP, accentColor), () -> {
+                    final int[] seconds = new int[sections.length];
+                    for (int index = 0; index < sections.length; index++) {
+                        seconds[index] = sections[index].selectedSeconds();
+                        if (seconds[index] < 0) {
+                            Toast
+                                .makeText(activity, "The interval must be between 1 minute and 365 days",
+                                        Toast.LENGTH_LONG)
+                                .show();
+                            return;
+                        }
+                    }
+                    for (int index = 0; index < sections.length; index++) {
+                        ScheduledDeletionSettings.saveIntervalSeconds(activity, sections[index].label, seconds[index]);
+                    }
+                    ScheduledDeletionSettings.saveShowsToast(activity, toastSwitch.isChecked());
+                    Toast.makeText(activity, savedMessage(activity), Toast.LENGTH_SHORT).show();
+                    onSettingChanged.run();
+                    dialog.dismiss();
+                }));
+        surface.addView(actions, matchWidth());
+
+        SwitchStyle.apply(toastSwitch, accentColor);
+        toastSwitch.setTextColor(PatchesTheme.textNorm(activity));
+        warningText.setTextColor(textWeakColor);
+        for (LabelSection section : sections) {
+            section.applyTheme(accentColor, textWeakColor);
+        }
+
+        final Window window = dialog.getWindow();
+        if (window != null) {
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        }
+        dialog.show();
+    }
+
+    private static void setEnabled(View[] views, boolean enabled) {
+        for (View view : views) {
+            view.setEnabled(enabled);
+            view.setAlpha((enabled) ? 1f : 0.4f);
+        }
+    }
+
+    private static int parseIntervalSeconds(String text, int unitSeconds) {
+        final String trimmed = text.trim();
+        if (trimmed.isEmpty()) {
+            return -1;
+        }
+        try {
+            final long amount = Long.parseLong(trimmed);
+            if (amount < 1 || amount > ScheduledDeletionSettings.MAXIMUM_SECONDS / unitSeconds) {
+                return -1;
+            }
+            final long seconds = amount * unitSeconds;
+            if (seconds < ScheduledDeletionSettings.MINIMUM_SECONDS
+                    || seconds > ScheduledDeletionSettings.MAXIMUM_SECONDS) {
+                return -1;
+            }
+            return (int) seconds;
+        } catch (NumberFormatException ex) {
+            return -1;
+        }
+    }
+
+    private static int largestExactUnit(int seconds) {
+        for (int index = UNIT_SECONDS.length - 1; index >= 0; index--) {
+            if (seconds >= UNIT_SECONDS[index] && seconds % UNIT_SECONDS[index] == 0) {
+                return index;
+            }
+        }
+        return UNIT_SECONDS.length - 1;
+    }
+
+    static String intervalLabel(int seconds) {
+        final int index = largestExactUnit(seconds);
+        final int amount = seconds / UNIT_SECONDS[index];
+        final String unit = UNIT_LABELS[index].toLowerCase(Locale.US);
+        return String.format(Locale.US, "%d %s", amount, (amount != 1) ? unit : unit.substring(0, unit.length() - 1));
+    }
+
+    private static String folderName(String label) {
+        return label.charAt(0) + label.substring(1).toLowerCase(Locale.US);
+    }
+
+    private static String savedMessage(Context context) {
+        final String schedules = schedules(context);
+        return (schedules.isEmpty()) ? "Trash and Spam will not be deleted" : schedules;
+    }
+
+    private static int dp(Context context, int value) {
+        return PatchesTheme.dpToPx(context, value);
+    }
+
+    private static LinearLayout.LayoutParams matchWidth() {
+        return new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+
+    private static final class LabelSection {
+
+        private final String label;
+
+        private final Switch enabledSwitch;
+
+        private final TextView periodLabel;
+
+        private final EditText amountInput;
+
+        private final Spinner unitSpinner;
+
+        private final LinearLayout periodInput;
+
+        LabelSection(Activity activity, String label) {
+            this.label = label;
+            final String folder = folderName(label);
+            final int intervalSeconds = ScheduledDeletionSettings.intervalSeconds(activity, label);
+            final int displayedSeconds = (intervalSeconds > ScheduledDeletionSettings.OFF) ? intervalSeconds
+                    : DEFAULT_SECONDS;
+            final int unitIndex = largestExactUnit(displayedSeconds);
+
+            this.enabledSwitch = new Switch(activity);
+            this.enabledSwitch.setText("Delete " + folder + " on a schedule");
+            this.enabledSwitch.setGravity(Gravity.CENTER_VERTICAL);
+            this.enabledSwitch.setMinimumHeight(dp(activity, TOUCH_TARGET_DP));
+            this.enabledSwitch.setChecked(intervalSeconds > ScheduledDeletionSettings.OFF);
+
+            this.periodLabel = new TextView(activity);
+            this.periodLabel.setText("Delete every");
+            this.periodLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, BODY_TEXT_SP);
+
+            this.amountInput = new EditText(activity);
+            this.amountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
+            this.amountInput.setSingleLine(true);
+            this.amountInput.setSelectAllOnFocus(true);
+            this.amountInput.setImeOptions(EditorInfo.IME_ACTION_DONE);
+            this.amountInput.setText(String.valueOf(displayedSeconds / UNIT_SECONDS[unitIndex]));
+            this.amountInput.setContentDescription(folder + " deletion interval");
+            this.amountInput.setMinimumHeight(dp(activity, TOUCH_TARGET_DP));
+
+            this.unitSpinner = new Spinner(activity);
+            final ArrayAdapter<String> unitAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item,
+                    UNIT_LABELS);
+            unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            this.unitSpinner.setAdapter(unitAdapter);
+            this.unitSpinner.setSelection(unitIndex);
+            this.unitSpinner.setContentDescription(folder + " interval unit");
+            this.unitSpinner.setMinimumHeight(dp(activity, TOUCH_TARGET_DP));
+
+            this.periodInput = new LinearLayout(activity);
+            this.periodInput.setOrientation(LinearLayout.HORIZONTAL);
+            this.periodInput.setGravity(Gravity.CENTER_VERTICAL);
+            this.periodInput.addView(this.amountInput,
+                    new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+            final LinearLayout.LayoutParams unitParams = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            unitParams.setMarginStart(dp(activity, CONTROL_SPACING_DP));
+            this.periodInput.addView(this.unitSpinner, unitParams);
+
+            final View[] settingViews = { this.periodLabel, this.amountInput, this.unitSpinner };
+            setEnabled(settingViews, this.enabledSwitch.isChecked());
+            this.enabledSwitch.setOnCheckedChangeListener((button, checked) -> setEnabled(settingViews, checked));
+        }
+
+        void applyTheme(int accentColor, int textWeakColor) {
+            SwitchStyle.apply(this.enabledSwitch, accentColor);
+            PatchesTheme.tintTextInput(this.amountInput, accentColor);
+            this.enabledSwitch.setTextColor(PatchesTheme.textNorm(this.enabledSwitch.getContext()));
+            this.periodLabel.setTextColor(textWeakColor);
+            this.amountInput.setTextColor(PatchesTheme.textNorm(this.amountInput.getContext()));
+        }
+
+        void addTo(LinearLayout content, boolean separated) {
+            final Context context = content.getContext();
+            final LinearLayout.LayoutParams switchParams = matchWidth();
+            if (separated) {
+                switchParams.topMargin = dp(context, SECTION_SPACING_DP);
+            }
+            content.addView(this.enabledSwitch, switchParams);
+
+            final LinearLayout.LayoutParams periodLabelParams = matchWidth();
+            periodLabelParams.topMargin = dp(context, CONTROL_SPACING_DP);
+            content.addView(this.periodLabel, periodLabelParams);
+
+            content.addView(this.periodInput, matchWidth());
+        }
+
+        int selectedSeconds() {
+            if (!this.enabledSwitch.isChecked()) {
+                return ScheduledDeletionSettings.OFF;
+            }
+            return parseIntervalSeconds(this.amountInput.getText().toString(),
+                    UNIT_SECONDS[this.unitSpinner.getSelectedItemPosition()]);
+        }
+
+    }
+
+}
